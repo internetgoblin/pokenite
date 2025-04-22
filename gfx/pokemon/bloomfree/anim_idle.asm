@@ -1,0 +1,1 @@
+	endanim ; only static front sprite
