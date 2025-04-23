@@ -136,21 +136,13 @@ ClairGroup:
 
 Rival1Group:
 	next_list_item ; RIVAL1 (1)
-	db "?@", TRAINERTYPE_NORMAL
-	db 5
-	dw CHIKORITA
-	db -1 ; end
-
-	next_list_item ; RIVAL1 (2)
-	db "?@", TRAINERTYPE_NORMAL
-	db 5
-	dw CYNDAQUIL
-	db -1 ; end
-
-	next_list_item ; RIVAL1 (3)
-	db "?@", TRAINERTYPE_NORMAL
-	db 5
-	dw TOTODILE
+	db "SHILOH@", TRAINERTYPE_ITEM
+	db 3
+	dw EEVEE
+	db BERRY
+	db 3
+	dw VENONAT
+	db BERRY
 	db -1 ; end
 
 	next_list_item ; RIVAL1 (4)

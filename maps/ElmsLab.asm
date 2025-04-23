@@ -4,14 +4,12 @@
 	const ELMSLAB_POKE_BALL1
 	const ELMSLAB_POKE_BALL2
 	const ELMSLAB_POKE_BALL3
-	const ELMSLAB_OFFICER
 
 ElmsLab_MapScripts:
 	def_scene_scripts
 	scene_script ElmsLabMeetElmScene, SCENE_ELMSLAB_MEET_ELM
 	scene_script ElmsLabNoop1Scene,   SCENE_ELMSLAB_CANT_LEAVE
 	scene_script ElmsLabNoop2Scene,   SCENE_ELMSLAB_NOOP
-	scene_script ElmsLabNoop3Scene,   SCENE_ELMSLAB_MEET_OFFICER
 	scene_script ElmsLabNoop4Scene,   SCENE_ELMSLAB_UNUSED
 	scene_script ElmsLabNoop5Scene,   SCENE_ELMSLAB_AIDE_GIVES_POTION
 	scene_const SCENE_ELMSLAB_AIDE_GIVES_POKE_BALLS
@@ -272,7 +270,6 @@ ElmDirectionsScript:
 	waitbutton
 	closetext
 	setevent EVENT_GOT_A_POKEMON_FROM_ELM
-	setevent EVENT_RIVAL_CHERRYGROVE_CITY
 	setscene SCENE_ELMSLAB_AIDE_GIVES_POTION
 	setmapscene NEW_BARK_TOWN, SCENE_NEWBARKTOWN_NOOP
 	end
@@ -545,25 +542,6 @@ AideScript_AfterTheft:
 	closetext
 	end
 
-MeetCopScript2:
-	applymovement PLAYER, MeetCopScript2_StepLeft
-
-MeetCopScript:
-	applymovement PLAYER, MeetCopScript_WalkUp
-CopScript:
-	turnobject ELMSLAB_OFFICER, LEFT
-	opentext
-	writetext ElmsLabOfficerText1
-	promptbutton
-	special NameRival
-	writetext ElmsLabOfficerText2
-	waitbutton
-	closetext
-	applymovement ELMSLAB_OFFICER, OfficerLeavesMovement
-	disappear ELMSLAB_OFFICER
-	setscene SCENE_ELMSLAB_NOOP
-	end
-
 ElmsLabWindow:
 	opentext
 	checkflag ENGINE_FLYPOINT_VIOLET
@@ -621,24 +599,6 @@ ElmsLab_WalkUpToElmMovement:
 
 ElmsLab_CantLeaveMovement:
 	step UP
-	step_end
-
-MeetCopScript2_StepLeft:
-	step LEFT
-	step_end
-
-MeetCopScript_WalkUp:
-	step UP
-	step UP
-	turn_head RIGHT
-	step_end
-
-OfficerLeavesMovement:
-	step DOWN
-	step DOWN
-	step DOWN
-	step DOWN
-	step DOWN
 	step_end
 
 AideWalksRight1:
@@ -1269,35 +1229,6 @@ AideText_ExplainBalls:
 	cont "to get them."
 	done
 
-ElmsLabOfficerText1:
-	text "I heard a #MON"
-	line "was stolen here…"
-
-	para "I was just getting"
-	line "some information"
-	cont "from PROF.ELM."
-
-	para "Apparently, it was"
-	line "a young male with"
-	cont "long, red hair…"
-
-	para "What?"
-
-	para "You battled a"
-	line "trainer like that?"
-
-	para "Did you happen to"
-	line "get his name?"
-	done
-
-ElmsLabOfficerText2:
-	text "OK! So <RIVAL>"
-	line "was his name."
-
-	para "Thanks for helping"
-	line "my investigation!"
-	done
-
 ElmsLabWindowText1:
 	text "The window's open."
 
@@ -1378,8 +1309,6 @@ ElmsLab_MapEvents:
 	def_coord_events
 	coord_event  4,  6, SCENE_ELMSLAB_CANT_LEAVE, LabTryToLeaveScript
 	coord_event  5,  6, SCENE_ELMSLAB_CANT_LEAVE, LabTryToLeaveScript
-	coord_event  4,  5, SCENE_ELMSLAB_MEET_OFFICER, MeetCopScript
-	coord_event  5,  5, SCENE_ELMSLAB_MEET_OFFICER, MeetCopScript2
 	coord_event  4,  8, SCENE_ELMSLAB_AIDE_GIVES_POTION, AideScript_WalkPotion1
 	coord_event  5,  8, SCENE_ELMSLAB_AIDE_GIVES_POTION, AideScript_WalkPotion2
 	coord_event  4,  8, SCENE_ELMSLAB_AIDE_GIVES_POKE_BALLS, AideScript_WalkBalls1
@@ -1409,4 +1338,3 @@ ElmsLab_MapEvents:
 	object_event  6,  3, SPRITE_POKE_BALL, SPRITEMOVEDATA_STILL, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, CyndaquilPokeBallScript, EVENT_CYNDAQUIL_POKEBALL_IN_ELMS_LAB
 	object_event  7,  3, SPRITE_POKE_BALL, SPRITEMOVEDATA_STILL, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, TotodilePokeBallScript, EVENT_TOTODILE_POKEBALL_IN_ELMS_LAB
 	object_event  8,  3, SPRITE_POKE_BALL, SPRITEMOVEDATA_STILL, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, ChikoritaPokeBallScript, EVENT_CHIKORITA_POKEBALL_IN_ELMS_LAB
-	object_event  5,  3, SPRITE_OFFICER, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_SCRIPT, 0, CopScript, EVENT_COP_IN_ELMS_LAB

@@ -53,9 +53,7 @@ DEF KRIS EQU __trainer_class__
 	const CLAIR1
 
 	trainerclass RIVAL1 ; 9
-	const RIVAL1_1_CHIKORITA
-	const RIVAL1_1_CYNDAQUIL
-	const RIVAL1_1_TOTODILE
+	const SHILOH1
 	const RIVAL1_2_CHIKORITA
 	const RIVAL1_2_CYNDAQUIL
 	const RIVAL1_2_TOTODILE

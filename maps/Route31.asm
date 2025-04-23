@@ -6,12 +6,21 @@
 	const ROUTE31_FRUIT_TREE
 	const ROUTE31_POKE_BALL1
 	const ROUTE31_POKE_BALL2
+	const ROUTE31_RIVAL
 
 Route31_MapScripts:
 	def_scene_scripts
+	scene_script Route31Noop1Scene, SCENE_ROUTE31_MEET_RIVAL
+	scene_script Route31Noop2Scene, SCENE_ROUTE31_NOOP
 
 	def_callbacks
 	callback MAPCALLBACK_NEWMAP, Route31CheckMomCallCallback
+
+Route31Noop1Scene:
+	end
+
+Route31Noop2Scene:
+	end
 
 Route31CheckMomCallCallback:
 	checkevent EVENT_TALKED_TO_MOM_AFTER_MYSTERY_EGG_QUEST
@@ -265,6 +274,84 @@ Route31Potion:
 Route31PokeBall:
 	itemball POKE_BALL
 
+Route31RivalScene:
+	special FadeOutMusic
+	pause 15
+	playsound SFX_ENTER_DOOR
+	appear ROUTE31_RIVAL
+	waitsfx
+	applymovement ROUTE31_RIVAL, Route31_RivalWalksToYou
+	showemote EMOTE_SHOCK, ROUTE31_RIVAL, 15
+	turnobject ROUTE31_RIVAL, DOWN
+	playmusic MUSIC_RIVAL_ENCOUNTER
+	opentext
+	writetext Route31RivalText_Seen
+	waitbutton
+	closetext
+	winlosstext RivalRoute31WinText, RivalRoute31LossText
+	setlasttalked ROUTE31_RIVAL
+	loadtrainer RIVAL1, SHILOH1
+	loadvar VAR_BATTLETYPE, BATTLETYPE_CANLOSE
+	startbattle
+	dontrestartmapmusic
+	reloadmap
+	iftrue .AfterVictorious
+	sjump .AfterYourDefeat
+
+.AfterVictorious:
+	playmusic MUSIC_RIVAL_AFTER
+	opentext
+	writetext Route31RivalText_YouWon
+	waitbutton
+	closetext
+	sjump .FinishRival
+
+.AfterYourDefeat:
+	playmusic MUSIC_RIVAL_AFTER
+	opentext
+	writetext Route31RivalText_YouLost
+	waitbutton
+	closetext
+.FinishRival:
+	playsound SFX_TACKLE
+	applymovement PLAYER, Route31_RivalPushesYouOutOfTheWay
+	turnobject PLAYER, LEFT
+	applymovement ROUTE31_RIVAL, Route31_RivalExitsStageLeft
+	disappear ROUTE31_RIVAL
+	setscene SCENE_ROUTE31_NOOP
+	special HealParty
+	playmapmusic
+	end
+
+Route31_RivalWalksToYou:
+	step RIGHT
+	step RIGHT
+	step RIGHT
+	step RIGHT
+	step RIGHT
+	step_end
+
+Route31_RivalPushesYouOutOfTheWay:
+	big_step DOWN
+	turn_head DOWN
+	step_end
+
+Route31_UnusedMovementData: ; unreferenced
+	step RIGHT
+	turn_head DOWN
+	step_end
+
+Route31_RivalExitsStageLeft:
+	big_step RIGHT
+	big_step RIGHT
+	big_step RIGHT
+	big_step RIGHT
+	big_step RIGHT
+	big_step RIGHT
+	big_step RIGHT
+	big_step RIGHT
+	step_end
+
 Route31CooltrainerMText:
 	text "DARK CAVE…"
 
@@ -408,11 +495,64 @@ Route31SignText:
 	text "ROUTE 31"
 
 	para "VIOLET CITY -"
-	line "CHERRYGROVE CITY"
+	line "Route31 CITY"
 	done
 
 DarkCaveSignText:
 	text "DARK CAVE"
+	done
+
+Route31RivalText_Seen: ; Shiloh1 fight
+	text "<……> <……> <……>"
+
+	para "You got a #MON" ; temporary
+	line "at the LAB."
+
+	para "What a waste." ; temporary
+	line "A wimp like you." ; temporary
+
+	para "<……> <……> <……>" ; temporary
+
+	para "Don't you get what" ; temporary
+	line "I'm saying?"
+
+	para "Well, I too, have" ; temporary
+	line "a good #MON."
+
+	para "I'll show you" ; temporary
+	line "what I mean!"
+	done
+
+RivalRoute31WinText:
+	text "Humph. Are you" ; temporary
+	line "happy you won?"
+	done
+
+Route31RivalText_YouLost:
+	text "<……> <……> <……>" ; temporary
+
+	para "My name's ???." ; temporary
+
+	para "I'm going to be" ; temporary
+	line "the world's great-"
+	cont "est #MON"
+	cont "trainer."
+	done
+
+RivalRoute31LossText:
+	text "Humph. That was a" ; temporary
+	line "waste of time."
+	done
+
+Route31RivalText_YouWon:
+	text "<……> <……> <……>" ; temporary
+
+	para "My name's ???." ; temporary
+
+	para "I'm going to be" ; temporary
+	line "the world's great-"
+	cont "est #MON"
+	cont "trainer."
 	done
 
 Route31_MapEvents:
@@ -424,6 +564,7 @@ Route31_MapEvents:
 	warp_event 34,  5, DARK_CAVE_VIOLET_ENTRANCE, 1
 
 	def_coord_events
+	coord_event 9,  8, SCENE_ROUTE31_MEET_RIVAL, Route31RivalScene
 
 	def_bg_events
 	bg_event  7,  5, BGEVENT_READ, Route31Sign
@@ -437,3 +578,4 @@ Route31_MapEvents:
 	object_event 16,  7, SPRITE_FRUIT_TREE, SPRITEMOVEDATA_STILL, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, Route31FruitTree, -1
 	object_event 29,  5, SPRITE_POKE_BALL, SPRITEMOVEDATA_STILL, 0, 0, -1, -1, 0, OBJECTTYPE_ITEMBALL, 0, Route31Potion, EVENT_ROUTE_31_POTION
 	object_event 19, 15, SPRITE_POKE_BALL, SPRITEMOVEDATA_STILL, 0, 0, -1, -1, 0, OBJECTTYPE_ITEMBALL, 0, Route31PokeBall, EVENT_ROUTE_31_POKE_BALL
+	object_event  4,  7, SPRITE_RIVAL, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PAL_NPC_BLUE, OBJECTTYPE_SCRIPT, 0, ObjectEvent, EVENT_RIVAL_ROUTE31

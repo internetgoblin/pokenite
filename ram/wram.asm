@@ -3133,6 +3133,7 @@ wRoute29SceneID::                                 db
 wCherrygroveCitySceneID::                         db
 wMrPokemonsHouseSceneID::                         db
 wRoute32SceneID::                                 db
+wRoute31SceneID::                                 db ; new
 wRoute35NationalParkGateSceneID::                 db
 wRoute36SceneID::                                 db
 wRoute36NationalParkGateSceneID::                 db
