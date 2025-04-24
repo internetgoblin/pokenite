@@ -136,13 +136,15 @@ ClairGroup:
 
 Rival1Group:
 	next_list_item ; RIVAL1 (1)
-	db "SHILOH@", TRAINERTYPE_ITEM
+	db "SHILOH@", TRAINERTYPE_ITEM_MOVES
 	db 3
 	dw EEVEE
 	db BERRY
+	dw TACKLE, TAIL_WHIP, NO_MOVE, NO_MOVE
 	db 3
 	dw VENONAT
 	db BERRY
+	dw TACKLE, FORESIGHT, NO_MOVE, NO_MOVE ; Level Up, minus DISABLE
 	db -1 ; end
 
 	next_list_item ; RIVAL1 (4)

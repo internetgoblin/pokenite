@@ -275,28 +275,34 @@ Route31PokeBall:
 	itemball POKE_BALL
 
 Route31RivalScene:
-	special FadeOutMusic
-	pause 15
-	playsound SFX_ENTER_DOOR
+	applymovement PLAYER, Route31_Walkup
 	appear ROUTE31_RIVAL
-	waitsfx
 	applymovement ROUTE31_RIVAL, Route31_RivalWalksToYou
+	opentext
+	writetext Route31RivalText_Appear
+	waitbutton
+	closetext
+	special FadeOutMusic
 	showemote EMOTE_SHOCK, ROUTE31_RIVAL, 15
-	turnobject ROUTE31_RIVAL, DOWN
+	applymovement ROUTE31_RIVAL, Route31_PlayerBumpsIntoRivalMovement
 	playmusic MUSIC_RIVAL_ENCOUNTER
+	opentext
+	writetext Route31RivalText_Surprised
+	waitbutton
+	closetext
+	pause 5
+	applymovement ROUTE31_RIVAL, Route31_RivalDown
 	opentext
 	writetext Route31RivalText_Seen
 	waitbutton
 	closetext
-	winlosstext RivalRoute31WinText, RivalRoute31LossText
+	winlosstext RivalRoute31WinText, 0
 	setlasttalked ROUTE31_RIVAL
 	loadtrainer RIVAL1, SHILOH1
-	loadvar VAR_BATTLETYPE, BATTLETYPE_CANLOSE
 	startbattle
 	dontrestartmapmusic
 	reloadmap
-	iftrue .AfterVictorious
-	sjump .AfterYourDefeat
+	sjump .AfterVictorious
 
 .AfterVictorious:
 	playmusic MUSIC_RIVAL_AFTER
@@ -306,16 +312,8 @@ Route31RivalScene:
 	closetext
 	sjump .FinishRival
 
-.AfterYourDefeat:
-	playmusic MUSIC_RIVAL_AFTER
-	opentext
-	writetext Route31RivalText_YouLost
-	waitbutton
-	closetext
 .FinishRival:
-	playsound SFX_TACKLE
-	applymovement PLAYER, Route31_RivalPushesYouOutOfTheWay
-	turnobject PLAYER, LEFT
+	turnobject PLAYER, RIGHT
 	applymovement ROUTE31_RIVAL, Route31_RivalExitsStageLeft
 	disappear ROUTE31_RIVAL
 	setscene SCENE_ROUTE31_NOOP
@@ -323,17 +321,25 @@ Route31RivalScene:
 	playmapmusic
 	end
 
-Route31_RivalWalksToYou:
-	step RIGHT
-	step RIGHT
-	step RIGHT
-	step RIGHT
-	step RIGHT
+Route31_Walkup:
+	step UP
 	step_end
 
-Route31_RivalPushesYouOutOfTheWay:
-	big_step DOWN
+Route31_RivalWalksToYou:
+	big_step RIGHT
+	big_step RIGHT
+	big_step RIGHT
+	big_step RIGHT
+	big_step RIGHT
+	step_end
+
+Route31_PlayerBumpsIntoRivalMovement:
+	big_step UP
 	turn_head DOWN
+	step_end
+
+Route31_RivalDown:
+	big_step DOWN
 	step_end
 
 Route31_UnusedMovementData: ; unreferenced
@@ -345,9 +351,7 @@ Route31_RivalExitsStageLeft:
 	big_step RIGHT
 	big_step RIGHT
 	big_step RIGHT
-	big_step RIGHT
-	big_step RIGHT
-	big_step RIGHT
+	jump_step RIGHT
 	big_step RIGHT
 	big_step RIGHT
 	step_end
@@ -502,57 +506,65 @@ DarkCaveSignText:
 	text "DARK CAVE"
 	done
 
-Route31RivalText_Seen: ; Shiloh1 fight
-	text "<……> <……> <……>"
+Route31RivalText_Appear:
+	text "Should see what's"
+	line "inside that CAVE."
+	done
 
-	para "You got a #MON" ; temporary
-	line "at the LAB."
+Route31RivalText_Surprised:
+	text "Gaah! Where'd you"
+	line "come from!"
 
-	para "What a waste." ; temporary
-	line "A wimp like you." ; temporary
+	para "<……> <……> <……>"
+	done
 
-	para "<……> <……> <……>" ; temporary
+Route31RivalText_Seen:
+	text "I see. That's where"
+	line "I'm heading."
 
-	para "Don't you get what" ; temporary
-	line "I'm saying?"
+	para "Visiting DARK."
+	line "CAVE and beyond."
 
-	para "Well, I too, have" ; temporary
-	line "a good #MON."
+	para "<……> <……> <……>"
 
-	para "I'll show you" ; temporary
-	line "what I mean!"
+	para "You have a new"
+	line "#DEX too?"
+
+	para "Guess fate had"
+	line "a hand in our"
+	cont "meeting."
+
+	para "Not to let a"
+	line "coincidence like"
+	cont "this be wasted,"
+
+	para "…let's battle!"
 	done
 
 RivalRoute31WinText:
-	text "Humph. Are you" ; temporary
-	line "happy you won?"
-	done
-
-Route31RivalText_YouLost:
-	text "<……> <……> <……>" ; temporary
-
-	para "My name's ???." ; temporary
-
-	para "I'm going to be" ; temporary
-	line "the world's great-"
-	cont "est #MON"
-	cont "trainer."
-	done
-
-RivalRoute31LossText:
-	text "Humph. That was a" ; temporary
-	line "waste of time."
+	text "Well! You're"
+	line "pretty good for"
+	cont "a newbie."
 	done
 
 Route31RivalText_YouWon:
-	text "<……> <……> <……>" ; temporary
+	text "Not bad…"
 
-	para "My name's ???." ; temporary
+	para "<……> <……> <……>"
 
-	para "I'm going to be" ; temporary
-	line "the world's great-"
-	cont "est #MON"
-	cont "trainer."
+	para "Didn't catch"
+	line "your name…"
+
+	para "<……> <……> <……>"
+
+	para "<PLAYER>?"
+
+	para "Right! I should"
+	line "get going!"
+
+	para "I expect I'll"
+	line "be seeing you"
+	cont "later."
 	done
 
 Route31_MapEvents:
@@ -564,7 +576,7 @@ Route31_MapEvents:
 	warp_event 34,  5, DARK_CAVE_VIOLET_ENTRANCE, 1
 
 	def_coord_events
-	coord_event 9,  8, SCENE_ROUTE31_MEET_RIVAL, Route31RivalScene
+	coord_event 9,  9, SCENE_ROUTE31_MEET_RIVAL, Route31RivalScene
 
 	def_bg_events
 	bg_event  7,  5, BGEVENT_READ, Route31Sign
@@ -572,10 +584,10 @@ Route31_MapEvents:
 
 	def_object_events
 	object_event 17,  7, SPRITE_FISHER, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, Route31MailRecipientScript, -1
-	object_event  9,  5, SPRITE_YOUNGSTER, SPRITEMOVEDATA_WANDER, 1, 1, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, Route31YoungsterScript, -1
+	object_event 11,  5, SPRITE_YOUNGSTER, SPRITEMOVEDATA_STANDING_DOWN, 1, 1, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, Route31YoungsterScript, -1
 	object_event 21, 13, SPRITE_BUG_CATCHER, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, PAL_NPC_BROWN, OBJECTTYPE_TRAINER, 5, TrainerBugCatcherWade1, -1
 	object_event 33,  8, SPRITE_COOLTRAINER_M, SPRITEMOVEDATA_WANDER, 1, 1, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, Route31CooltrainerMScript, -1
 	object_event 16,  7, SPRITE_FRUIT_TREE, SPRITEMOVEDATA_STILL, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, Route31FruitTree, -1
 	object_event 29,  5, SPRITE_POKE_BALL, SPRITEMOVEDATA_STILL, 0, 0, -1, -1, 0, OBJECTTYPE_ITEMBALL, 0, Route31Potion, EVENT_ROUTE_31_POTION
 	object_event 19, 15, SPRITE_POKE_BALL, SPRITEMOVEDATA_STILL, 0, 0, -1, -1, 0, OBJECTTYPE_ITEMBALL, 0, Route31PokeBall, EVENT_ROUTE_31_POKE_BALL
-	object_event  4,  7, SPRITE_RIVAL, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PAL_NPC_BLUE, OBJECTTYPE_SCRIPT, 0, ObjectEvent, EVENT_RIVAL_ROUTE31
+	object_event  4,  7, SPRITE_RIVAL, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, ObjectEvent, EVENT_RIVAL_ROUTE31
