@@ -1,7 +1,6 @@
 	object_const_def
 	const NEWBARKTOWN_TEACHER
 	const NEWBARKTOWN_FISHER
-	const NEWBARKTOWN_RIVAL
 
 NewBarkTown_MapScripts:
 	def_scene_scripts
@@ -104,27 +103,6 @@ NewBarkTownTeacherScript:
 NewBarkTownFisherScript:
 	jumptextfaceplayer Text_ElmDiscoveredNewMon
 
-NewBarkTownRivalScript:
-	opentext
-	writetext NewBarkTownRivalText1
-	waitbutton
-	closetext
-	turnobject NEWBARKTOWN_RIVAL, LEFT
-	opentext
-	writetext NewBarkTownRivalText2
-	waitbutton
-	closetext
-	follow PLAYER, NEWBARKTOWN_RIVAL
-	applymovement PLAYER, NewBarkTown_RivalPushesYouAwayMovement
-	stopfollow
-	pause 5
-	turnobject NEWBARKTOWN_RIVAL, DOWN
-	pause 5
-	playsound SFX_TACKLE
-	applymovement PLAYER, NewBarkTown_RivalShovesYouOutMovement
-	applymovement NEWBARKTOWN_RIVAL, NewBarkTown_RivalReturnsToTheShadowsMovement
-	end
-
 NewBarkTownSign:
 	jumptext NewBarkTownSignText
 
@@ -168,22 +146,6 @@ NewBarkTown_TeacherBringsYouBackMovement2:
 	step RIGHT
 	step RIGHT
 	turn_head LEFT
-	step_end
-
-NewBarkTown_RivalPushesYouAwayMovement:
-	turn_head UP
-	step DOWN
-	step_end
-
-NewBarkTown_RivalShovesYouOutMovement:
-	turn_head UP
-	fix_facing
-	jump_step DOWN
-	remove_fixed_facing
-	step_end
-
-NewBarkTown_RivalReturnsToTheShadowsMovement:
-	step RIGHT
 	step_end
 
 Text_GearIsImpressive:
@@ -246,19 +208,6 @@ Text_ElmDiscoveredNewMon:
 	cont "new #MON."
 	done
 
-NewBarkTownRivalText1:
-	text "<……>"
-
-	para "So this is the"
-	line "famous ELM #MON"
-	cont "LAB…"
-	done
-
-NewBarkTownRivalText2:
-	text "…What are you"
-	line "staring at?"
-	done
-
 NewBarkTownSignText:
 	text "NEW BARK TOWN"
 
@@ -301,4 +250,3 @@ NewBarkTown_MapEvents:
 	def_object_events
 	object_event  6,  8, SPRITE_TEACHER, SPRITEMOVEDATA_SPINRANDOM_SLOW, 1, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, NewBarkTownTeacherScript, -1
 	object_event 12,  9, SPRITE_FISHER, SPRITEMOVEDATA_WALK_UP_DOWN, 0, 1, -1, -1, PAL_NPC_GREEN, OBJECTTYPE_SCRIPT, 0, NewBarkTownFisherScript, -1
-	object_event  3,  2, SPRITE_RIVAL, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, NewBarkTownRivalScript, EVENT_RIVAL_NEW_BARK_TOWN

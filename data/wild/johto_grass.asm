@@ -1654,32 +1654,32 @@ JohtoGrassWildMons:
 	dbw 27, GRAVELER
 	end_grass_wildmons
 
-	def_grass_wildmons ROUTE_46
+	def_grass_wildmons ROUTE_46 ; GOLD ENCOUNTER TABLES
 	db 10 percent, 10 percent, 10 percent ; encounter rates: morn/day/nite
 	; morn
-	dbw 2, GEODUDE
-	dbw 2, SPEAROW
 	dbw 3, GEODUDE
-	dbw 3, RATTATA
-	dbw 2, PHANPY
+	dbw 2, SPEAROW
 	dbw 2, RATTATA
-	dbw 2, RATTATA
+	dbw 2, GEODUDE
+	dbw 3, SPEAROW
+	dbw 3, JIGGLYPUFF
+	dbw 5, JIGGLYPUFF
 	; day
-	dbw 2, GEODUDE
+	dbw 3, GEODUDE
 	dbw 2, SPEAROW
-	dbw 3, GEODUDE
-	dbw 3, RATTATA
 	dbw 2, RATTATA
-	dbw 2, RATTATA
-	dbw 2, RATTATA
-	; nite
 	dbw 2, GEODUDE
-	dbw 2, RATTATA
+	dbw 3, SPEAROW
+	dbw 3, JIGGLYPUFF
+	dbw 5, JIGGLYPUFF
+	; nite
 	dbw 3, GEODUDE
 	dbw 3, RATTATA
 	dbw 2, RATTATA
-	dbw 2, RATTATA
-	dbw 2, RATTATA
+	dbw 2, GEODUDE
+	dbw 4, GEODUDE
+	dbw 3, JIGGLYPUFF
+	dbw 5, JIGGLYPUFF
 	end_grass_wildmons
 
 	def_grass_wildmons SILVER_CAVE_OUTSIDE

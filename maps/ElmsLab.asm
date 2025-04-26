@@ -923,8 +923,8 @@ ElmsLabHealingMachineText2:
 	done
 
 ElmAfterTheftText1:
-	text "ELM: <PLAY_G>, this"
-	line "is terrible…"
+	text "ELM: Welcome back"
+	line "<PLAY_G>!"
 
 	para "Oh, yes, what was"
 	line "MR.#MON's big"

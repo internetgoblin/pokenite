@@ -63,7 +63,6 @@ ElmPhoneCalleeScript:
 
 ElmPhoneCallerScript:
 	readvar VAR_SPECIALPHONECALL
-	ifequal SPECIALCALL_ROBBED, .disaster
 	ifequal SPECIALCALL_ASSISTANT, .assistant
 	ifequal SPECIALCALL_WEIRDBROADCAST, .rocket
 	ifequal SPECIALCALL_SSTICKET, .gift
