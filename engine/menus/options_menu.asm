@@ -453,6 +453,7 @@ Options_MenuAccount:
 .Off: db "OFF@"
 .On:  db "ON @"
 
+DEF NUM_TEXTBOC_FRAMES EQU 9 ; Implemented code written by WasabiRaptor
 Options_Frame:
 	ld hl, wTextboxFrame
 	ldh a, [hJoyPressed]
@@ -466,16 +467,22 @@ Options_Frame:
 .RightPressed:
 	ld a, [hl]
 	inc a
+	cp NUM_TEXTBOC_FRAMES
+	jr nz, .Save
+	xor a
 	jr .Save
 
 .LeftPressed:
 	ld a, [hl]
 	dec a
+	cp $ff
+	jr nz, .Save
+	ld a, NUM_TEXTBOC_FRAMES -1
 
 .Save:
 	maskbits NUM_FRAMES
 	ld [hl], a
-UpdateFrame:
+UpdateFrame: ; Implemented code written by WasabiRaptor
 	ld a, [wTextboxFrame]
 	hlcoord 16, 15 ; where on the screen the number is drawn
 	add "1"

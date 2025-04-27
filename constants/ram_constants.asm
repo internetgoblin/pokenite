@@ -60,7 +60,8 @@ DEF TEXT_DELAY_SLOW EQU %101 ; 5
 	const FRAME_6 ; 5
 	const FRAME_7 ; 6
 	const FRAME_8 ; 7
-DEF NUM_FRAMES EQU const_value
+	const FRAME_9 ; 8
+DEF NUM_FRAMES EQU 9
 
 ; wTextboxFlags::
 	const_def
