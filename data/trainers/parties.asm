@@ -5245,13 +5245,16 @@ GruntFGroup:
 
 ElderGroup:
 	next_list_item ; ELDER (1)
-	db "LI@", TRAINERTYPE_NORMAL
+	db "LI@", TRAINERTYPE_MOVES
 	db 7
 	dw BELLSPROUT
+	dw VINE_WHIP, GROWTH, NO_MOVE, NO_MOVE
 	db 7
 	dw BELLSPROUT
+	dw VINE_WHIP, GROWTH, FLASH, NO_MOVE
 	db 10
 	dw HOOTHOOT
+	dw TACKLE, GROWL, FORESIGHT, FLASH
 	db -1 ; end
 
 	end_list_items

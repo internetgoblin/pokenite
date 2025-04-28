@@ -165,7 +165,7 @@ Moves1:
 	move EFFECT_SPEED_DOWN_HIT,     20, WATER,         100, 30,  10      ;BUBBLE
 	move EFFECT_CONFUSE_HIT,        70, NORMAL,        100, 10,  20      ;DIZZY_PUNCH
 	move EFFECT_SLEEP,               0, GRASS,         100, 15,   0      ;SPORE
-	move EFFECT_ACCURACY_DOWN,       0, NORMAL,         70, 20,   0      ;FLASH
+	move EFFECT_ACCURACY_DOWN,       0, NORMAL,        100, 20,   0      ;FLASH
 	move EFFECT_PSYWAVE,             1, PSYCHIC_TYPE,   80, 15,   0      ;PSYWAVE
 	move EFFECT_SPLASH,              0, NORMAL,        100, 40,   0      ;SPLASH
 	move EFFECT_DEFENSE_UP_2,        0, POISON,        100, 40,   0      ;ACID_ARMOR

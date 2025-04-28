@@ -500,6 +500,9 @@ Route32RuinsSign:
 Route32UnionCaveSign:
 	jumptext Route32UnionCaveSignText
 
+Route32Demo1EndTree: ; temporary
+	jumptext Route32Demo1EndTreeText
+
 Route32PokecenterSign:
 	jumpstd PokecenterSignScript
 
@@ -920,6 +923,13 @@ Route32UnionCaveSignText:
 	line "AHEAD"
 	done
 
+Route32Demo1EndTreeText: ; temporary
+	text "Stubby tree to"
+	line "block progress."
+
+	para "Not cuttable!"
+	done
+
 Route32_MapEvents:
 	db 0, 0 ; filler
 
@@ -940,6 +950,7 @@ Route32_MapEvents:
 	bg_event 12, 73, BGEVENT_READ, Route32PokecenterSign
 	bg_event 12, 67, BGEVENT_ITEM, Route32HiddenGreatBall
 	bg_event 11, 40, BGEVENT_ITEM, Route32HiddenSuperPotion
+	bg_event 18,  9, BGEVENT_READ, Route32Demo1EndTree ; temporary
 
 	def_object_events
 	object_event  8, 49, SPRITE_FISHER, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_GREEN, OBJECTTYPE_TRAINER, 1, TrainerFisherJustin, -1
