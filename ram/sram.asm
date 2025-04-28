@@ -55,8 +55,19 @@ sBackupMysteryGiftItemEnd::
 
 	ds $30
 
-sRTCStatusFlags:: db
-	ds 7
+sRTCStatusFlags:: ds 1
+
+sRTC:: ; part of a planned port of Prism's expanded RTC tracking system
+sRTCBaseDay:: ds 1
+sRTCBaseHours:: ds 1
+sRTCBaseMinutes:: ds 1
+sRTCBaseSeconds:: ds 1
+sRTCBaseYear:: ds 1
+sRTCBaseMonth:: ds 1
+sRTCEnd::
+
+	ds 4
+
 sLuckyNumberDay:: db
 sLuckyIDNumber::  dw
 

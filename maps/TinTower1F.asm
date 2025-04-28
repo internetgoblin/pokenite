@@ -2,7 +2,6 @@
 	const TINTOWER1F_SUICUNE
 	const TINTOWER1F_RAIKOU
 	const TINTOWER1F_ENTEI
-	const TINTOWER1F_EUSINE
 	const TINTOWER1F_SAGE1
 	const TINTOWER1F_SAGE2
 	const TINTOWER1F_SAGE3
@@ -45,7 +44,6 @@ TinTower1FNPCsCallback:
 .GotRainbowWing:
 	checkevent EVENT_FOUGHT_HO_OH
 	iffalse .Done
-	appear TINTOWER1F_EUSINE
 .Done:
 	endcallback
 
@@ -139,12 +137,6 @@ TinTower1FSuicuneBattleScript:
 	clearevent EVENT_SET_WHEN_FOUGHT_HO_OH
 	reloadmapafterbattle
 	pause 20
-	turnobject PLAYER, DOWN
-	playmusic MUSIC_MYSTICALMAN_ENCOUNTER
-	playsound SFX_ENTER_DOOR
-	moveobject TINTOWER1F_EUSINE, 10, 15
-	appear TINTOWER1F_EUSINE
-	applymovement TINTOWER1F_EUSINE, TinTower1FEusineEntersMovement
 	playsound SFX_ENTER_DOOR
 	moveobject TINTOWER1F_SAGE1, 9, 15
 	appear TINTOWER1F_SAGE1
@@ -160,18 +152,6 @@ TinTower1FSuicuneBattleScript:
 	moveobject TINTOWER1F_SAGE1, 7, 13
 	moveobject TINTOWER1F_SAGE2, 9, 13
 	moveobject TINTOWER1F_SAGE3, 11, 13
-	turnobject PLAYER, RIGHT
-	opentext
-	writetext TinTower1FEusineSuicuneText
-	waitbutton
-	closetext
-	applymovement TINTOWER1F_EUSINE, TinTower1FEusineLeavesMovement
-	playsound SFX_EXIT_BUILDING
-	disappear TINTOWER1F_EUSINE
-	waitsfx
-	special FadeOutMusic
-	pause 20
-	playmapmusic
 	end
 
 TinTower1FSage1Script:
@@ -231,9 +211,6 @@ TinTower1FSage6Script:
 .FoughtHoOh:
 	jumptextfaceplayer TinTower1FSage6Text2
 
-TinTower1FEusine:
-	jumptextfaceplayer TinTower1FEusineHoOhText
-
 TinTower1FPlayerEntersMovement:
 	slow_step UP
 	slow_step UP
@@ -281,19 +258,6 @@ TinTower1FPlayerBacksUpMovement:
 	remove_fixed_facing
 	step_end
 
-TinTower1FEusineEntersMovement:
-	step UP
-	step UP
-	step UP
-	turn_head LEFT
-	step_end
-
-TinTower1FEusineLeavesMovement:
-	step DOWN
-	step DOWN
-	step DOWN
-	step_end
-
 TinTower1FSage1EntersMovement:
 	step UP
 	step UP
@@ -313,44 +277,6 @@ TinTower1FSage3EntersMovement:
 	step RIGHT
 	step UP
 	step_end
-
-TinTower1FEusineSuicuneText:
-	text "EUSINE: Awesome!"
-	line "Too awesome, even!"
-
-	para "I've never seen a"
-	line "battle that great."
-
-	para "That was truly"
-	line "inspiring to see."
-
-	para "SUICUNE was tough,"
-	line "but you were even"
-
-	para "more incredible,"
-	line "<PLAYER>."
-
-	para "I heard SUICUNE's"
-	line "mystic power"
-
-	para "summons a rainbow-"
-	line "colored #MON."
-
-	para "Maybe, just maybe,"
-	line "what went on today"
-
-	para "will cause that"
-	line "#MON to appear."
-
-	para "I'm going to study"
-	line "the legends more."
-
-	para "Thanks for showing"
-	line "me that fantastic"
-	cont "battle."
-
-	para "Later, <PLAYER>!"
-	done
 
 TinTower1FSage1Text:
 	text "According to"
@@ -447,28 +373,6 @@ TinTower1FSage6Text1:
 	cont "and advance."
 	done
 
-TinTower1FEusineHoOhText:
-	text "I knew it."
-
-	para "I knew you'd get"
-	line "to see the #MON"
-
-	para "of rainbow colors,"
-	line "<PLAYER>."
-
-	para "It happened just"
-	line "as I envisioned."
-
-	para "My research isn't"
-	line "bad, I might say."
-
-	para "I'm going to keep"
-	line "studying #MON"
-
-	para "to become a famous"
-	line "#MANIAC!"
-	done
-
 TinTower1FSage4Text2:
 	text "The legendary"
 	line "#MON are said"
@@ -543,7 +447,6 @@ TinTower1F_MapEvents:
 	object_event  9,  9, SPRITE_SUICUNE, SPRITEMOVEDATA_STILL, 0, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_SCRIPT, 0, ObjectEvent, EVENT_TIN_TOWER_1F_SUICUNE
 	object_event  7,  9, SPRITE_RAIKOU, SPRITEMOVEDATA_STILL, 0, 0, -1, -1, PAL_NPC_BROWN, OBJECTTYPE_SCRIPT, 0, ObjectEvent, EVENT_TIN_TOWER_1F_RAIKOU
 	object_event 12,  9, SPRITE_ENTEI, SPRITEMOVEDATA_STILL, 0, 0, -1, -1, PAL_NPC_RED, OBJECTTYPE_SCRIPT, 0, ObjectEvent, EVENT_TIN_TOWER_1F_ENTEI
-	object_event  8,  3, SPRITE_SUPER_NERD, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_SCRIPT, 0, TinTower1FEusine, EVENT_TIN_TOWER_1F_EUSINE
 	object_event  5,  9, SPRITE_SAGE, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, TinTower1FSage1Script, EVENT_TIN_TOWER_1F_WISE_TRIO_1
 	object_event 11, 11, SPRITE_SAGE, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, TinTower1FSage2Script, EVENT_TIN_TOWER_1F_WISE_TRIO_1
 	object_event 14,  6, SPRITE_SAGE, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, TinTower1FSage3Script, EVENT_TIN_TOWER_1F_WISE_TRIO_1

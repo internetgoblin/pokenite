@@ -4692,16 +4692,6 @@ SageGroup:
 	dw BELLSPROUT
 	db -1 ; end
 
-	next_list_item ; SAGE (9)
-	db "LI@", TRAINERTYPE_NORMAL
-	db 7
-	dw BELLSPROUT
-	db 7
-	dw BELLSPROUT
-	db 10
-	dw HOOTHOOT
-	db -1 ; end
-
 	next_list_item ; SAGE (10)
 	db "GAKU@", TRAINERTYPE_NORMAL
 	db 32
@@ -5253,18 +5243,15 @@ GruntFGroup:
 
 	end_list_items
 
-MysticalmanGroup:
-	next_list_item ; MYSTICALMAN (1)
-	db "EUSINE@", TRAINERTYPE_MOVES
-	db 23
-	dw DROWZEE
-	dw DREAM_EATER, HYPNOSIS, DISABLE, CONFUSION
-	db 23
-	dw HAUNTER
-	dw LICK, HYPNOSIS, MEAN_LOOK, CURSE
-	db 25
-	dw ELECTRODE
-	dw SCREECH, SONICBOOM, THUNDER, ROLLOUT
+ElderGroup:
+	next_list_item ; ELDER (1)
+	db "LI@", TRAINERTYPE_NORMAL
+	db 7
+	dw BELLSPROUT
+	db 7
+	dw BELLSPROUT
+	db 10
+	dw HOOTHOOT
 	db -1 ; end
 
 	end_list_items

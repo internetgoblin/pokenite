@@ -618,7 +618,6 @@ DEF KRIS EQU __trainer_class__
 	const PING
 	const EDMOND
 	const NEAL
-	const LI
 	const GAKU
 	const MASA
 	const KOJI
@@ -698,7 +697,7 @@ DEF KRIS EQU __trainer_class__
 	const GRUNTF_4
 	const GRUNTF_5
 
-	trainerclass MYSTICALMAN ; 43
-	const EUSINE
+	trainerclass ELDER ; 43
+	const LI
 
 DEF NUM_TRAINER_CLASSES EQU __trainer_class__ - 1

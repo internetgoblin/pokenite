@@ -5,61 +5,10 @@
 	const SPROUTTOWER3F_SAGE4
 	const SPROUTTOWER3F_POKE_BALL1
 	const SPROUTTOWER3F_POKE_BALL2
-	const SPROUTTOWER3F_RIVAL
 
 SproutTower3F_MapScripts:
 	def_scene_scripts
-	scene_script SproutTower3FNoop1Scene, SCENE_SPROUTTOWER3F_RIVAL_ENCOUNTER
-	scene_script SproutTower3FNoop2Scene, SCENE_SPROUTTOWER3F_NOOP
-
 	def_callbacks
-
-SproutTower3FNoop1Scene:
-	end
-
-SproutTower3FNoop2Scene:
-	end
-
-SproutTower3FRivalScene:
-	turnobject PLAYER, UP
-	showemote EMOTE_SHOCK, PLAYER, 15
-	special FadeOutMusic
-	playsound SFX_TACKLE
-	playsound SFX_ELEVATOR
-	earthquake 79
-	pause 15
-	playsound SFX_TACKLE
-	playsound SFX_ELEVATOR
-	earthquake 79
-	applymovement PLAYER, SproutTower3FPlayerApproachesRivalMovement
-	applymovement SPROUTTOWER3F_RIVAL, SproutTower3FRivalApproachesElderMovement
-	opentext
-	writetext SproutTowerElderLecturesRivalText
-	waitbutton
-	closetext
-	showemote EMOTE_SHOCK, SPROUTTOWER3F_RIVAL, 15
-	turnobject SPROUTTOWER3F_RIVAL, DOWN
-	pause 15
-	applymovement SPROUTTOWER3F_RIVAL, SproutTower3FRivalLeavesElderMovement
-	playmusic MUSIC_RIVAL_ENCOUNTER
-	opentext
-	writetext SproutTowerRivalOnlyCareAboutStrongText
-	waitbutton
-	closetext
-	turnobject SPROUTTOWER3F_RIVAL, UP
-	opentext
-	writetext SproutTowerRivalUsedEscapeRopeText
-	pause 15
-	closetext
-	playsound SFX_WARP_TO
-	special FadeOutToBlack
-	special ReloadSpritesNoPalettes
-	disappear SPROUTTOWER3F_RIVAL
-	waitsfx
-	special FadeInFromBlack
-	setscene SCENE_SPROUTTOWER3F_NOOP
-	special RestartMapMusic
-	end
 
 SageLiScript:
 	faceplayer
@@ -70,7 +19,7 @@ SageLiScript:
 	waitbutton
 	closetext
 	winlosstext SageLiBeatenText, 0
-	loadtrainer SAGE, LI
+	loadtrainer ELDER, LI
 	startbattle
 	reloadmapafterbattle
 	opentext
@@ -134,74 +83,6 @@ SproutTower3FPotion:
 
 SproutTower3FEscapeRope:
 	itemball ESCAPE_ROPE
-
-SproutTower3FPlayerApproachesRivalMovement:
-	step UP
-	step UP
-	step UP
-	step UP
-	step_end
-
-SproutTower3FRivalApproachesElderMovement:
-	step UP
-	step_end
-
-SproutTower3FRivalLeavesElderMovement:
-	step RIGHT
-	step DOWN
-	step_end
-
-SproutTowerElderLecturesRivalText:
-	text "ELDER: You are in-"
-	line "deed skilled as a"
-	cont "trainer."
-
-	para "As promised, here"
-	line "is your HM."
-
-	para "But let me say"
-	line "this: You should"
-
-	para "treat your"
-	line "#MON better."
-
-	para "The way you battle"
-	line "is far too harsh."
-
-	para "#MON are not"
-	line "tools of war…"
-	done
-
-SproutTowerRivalOnlyCareAboutStrongText:
-	text "…"
-	line "…Humph!"
-
-	para "He claims to be"
-	line "the ELDER but"
-	cont "he's weak."
-
-	para "It stands to"
-	line "reason."
-
-	para "I'd never lose to"
-	line "fools who babble"
-
-	para "about being nice"
-	line "to #MON."
-
-	para "I only care about"
-	line "strong #MON"
-	cont "that can win."
-
-	para "I really couldn't"
-	line "care less about"
-	cont "weak #MON."
-	done
-
-SproutTowerRivalUsedEscapeRopeText:
-	text "<RIVAL> used an"
-	line "ESCAPE ROPE!"
-	done
 
 SageLiSeenText:
 	text "So good of you to"
@@ -317,7 +198,7 @@ SageNealAfterBattleText:
 SproutTower3FPaintingText:
 	text "It's a powerful"
 	line "painting of a"
-	cont "BELLSPROUT."
+	cont "BELLSPROUT…"
 	done
 
 SproutTower3FStatueText:
@@ -334,7 +215,6 @@ SproutTower3F_MapEvents:
 	warp_event 10, 14, SPROUT_TOWER_2F, 4
 
 	def_coord_events
-	coord_event 11,  9, SCENE_SPROUTTOWER3F_RIVAL_ENCOUNTER, SproutTower3FRivalScene
 
 	def_bg_events
 	bg_event  8,  1, BGEVENT_READ, SproutTower3FStatue
@@ -351,4 +231,3 @@ SproutTower3F_MapEvents:
 	object_event 11, 11, SPRITE_SAGE, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_TRAINER, 3, TrainerSageNeal, -1
 	object_event  6, 14, SPRITE_POKE_BALL, SPRITEMOVEDATA_STILL, 0, 0, -1, -1, 0, OBJECTTYPE_ITEMBALL, 0, SproutTower3FPotion, EVENT_SPROUT_TOWER_3F_POTION
 	object_event 14,  1, SPRITE_POKE_BALL, SPRITEMOVEDATA_STILL, 0, 0, -1, -1, 0, OBJECTTYPE_ITEMBALL, 0, SproutTower3FEscapeRope, EVENT_SPROUT_TOWER_3F_ESCAPE_ROPE
-	object_event 10,  4, SPRITE_RIVAL, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, ObjectEvent, EVENT_RIVAL_SPROUT_TOWER

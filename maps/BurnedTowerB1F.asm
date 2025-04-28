@@ -7,7 +7,6 @@
 	const BURNEDTOWERB1F_ENTEI2
 	const BURNEDTOWERB1F_SUICUNE2
 	const BURNEDTOWERB1F_POKE_BALL
-	const BURNEDTOWERB1F_EUSINE
 
 BurnedTowerB1F_MapScripts:
 	def_scene_scripts
@@ -83,37 +82,15 @@ ReleaseTheBeasts:
 	setevent EVENT_RELEASED_THE_BEASTS
 	special InitRoamMons
 	setmapscene ECRUTEAK_GYM, SCENE_ECRUTEAKGYM_NOOP
-	setmapscene CIANWOOD_CITY, SCENE_CIANWOODCITY_SUICUNE_AND_EUSINE
 	clearevent EVENT_SAW_SUICUNE_AT_CIANWOOD_CITY
 	setevent EVENT_ECRUTEAK_GYM_GRAMPS
 	clearevent EVENT_ECRUTEAK_CITY_GRAMPS
 	setevent EVENT_BURNED_TOWER_MORTY
-	setevent EVENT_BURNED_TOWER_1F_EUSINE
-	appear BURNEDTOWERB1F_EUSINE
 	reanchormap
 	changeblock 6, 14, $1b ; ladder
 	refreshmap
 	closetext
 	setscene SCENE_BURNEDTOWERB1F_NOOP
-	end
-
-BurnedTowerB1FEusine:
-	faceplayer
-	opentext
-	writetext BurnedTowerB1FEusineText
-	waitbutton
-	closetext
-	readvar VAR_FACING
-	ifequal UP, .Movement2
-	applymovement BURNEDTOWERB1F_EUSINE, BurnedTowerB1FEusineMovement1
-	sjump .Finish
-
-.Movement2:
-	applymovement BURNEDTOWERB1F_EUSINE, BurnedTowerB1FEusineMovement2
-.Finish:
-	disappear BURNEDTOWERB1F_EUSINE
-	playsound SFX_EXIT_BUILDING
-	waitsfx
 	end
 
 BurnedTowerB1FTMEndure:
@@ -172,67 +149,6 @@ BurnedTowerSuicuneMovement3:
 	remove_sliding
 	step_end
 
-BurnedTowerB1FEusineMovement2:
-	step LEFT
-	step LEFT
-	step DOWN
-	step DOWN
-	step LEFT
-	step DOWN
-	step_end
-
-BurnedTowerB1FEusineMovement1:
-	step DOWN
-	step LEFT
-	step LEFT
-	step LEFT
-	step DOWN
-	step DOWN
-	step_end
-
-BurnedTowerB1FEusineText:
-	text "EUSINE: I dug a"
-	line "hole here, too…"
-
-	para "I was shocked!"
-
-	para "SUICUNE raced by"
-	line "like a blur, right"
-
-	para "in front of my"
-	line "eyes!"
-
-	para "For ten years I"
-	line "chased SUICUNE,"
-
-	para "and I finally got"
-	line "to see it."
-
-	para "I'm all choked up!"
-
-	para "<PLAYER>, I owe"
-	line "this all to you!"
-
-	para "Thank you!"
-
-	para "I heard that the"
-	line "legendary #MON"
-
-	para "of ECRUTEAK test"
-	line "chosen humans by"
-
-	para "allowing them to"
-	line "get close."
-
-	para "I'm going to track"
-	line "SUICUNE."
-
-	para "<PLAYER>, let's"
-	line "meet again!"
-
-	para "Farewell!"
-	done
-
 BurnedTowerB1F_MapEvents:
 	db 0, 0 ; filler
 
@@ -258,4 +174,3 @@ BurnedTowerB1F_MapEvents:
 	object_event 12,  3, SPRITE_ENTEI, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_EMOTE, OBJECTTYPE_SCRIPT, 0, ObjectEvent, EVENT_BURNED_TOWER_B1F_BEASTS_2
 	object_event 10,  4, SPRITE_SUICUNE, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_EMOTE, OBJECTTYPE_SCRIPT, 0, ObjectEvent, EVENT_BURNED_TOWER_B1F_BEASTS_2
 	object_event 16,  4, SPRITE_POKE_BALL, SPRITEMOVEDATA_STILL, 0, 0, -1, -1, 0, OBJECTTYPE_ITEMBALL, 0, BurnedTowerB1FTMEndure, EVENT_BURNED_TOWER_B1F_TM_ENDURE
-	object_event 10, 12, SPRITE_SUPER_NERD, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_SCRIPT, 0, BurnedTowerB1FEusine, EVENT_EUSINE_IN_BURNED_TOWER
