@@ -53,11 +53,17 @@ CherrygroveCityGuideGent:
 	writetext GuideGentSeaText
 	waitbutton
 	closetext
+	applymovement CHERRYGROVECITY_GRAMPS, GuideGentMovement4_2
+	turnobject PLAYER, UP
+	opentext
+	writetext GuideGentOldCherryText
+	waitbutton
+	closetext
 	applymovement CHERRYGROVECITY_GRAMPS, GuideGentMovement5
 	turnobject PLAYER, UP
-	pause 60
-	turnobject CHERRYGROVECITY_GRAMPS, LEFT
-	turnobject PLAYER, RIGHT
+	pause 30
+	turnobject CHERRYGROVECITY_GRAMPS, RIGHT
+	turnobject PLAYER, LEFT
 	opentext
 	writetext GuideGentGiftText
 	promptbutton
@@ -153,6 +159,9 @@ CherrygroveCityPokecenterSign:
 CherrygroveCityMartSign:
 	jumpstd MartSignScript
 
+CherrygroveCityOldCherrySign:
+	jumptext OldCherrySignText
+
 GuideGentMovement1:
 	step LEFT
 	step LEFT
@@ -194,26 +203,48 @@ GuideGentMovement4:
 	turn_head LEFT
 	step_end
 
+GuideGentMovement4_2:
+	step DOWN
+	step DOWN
+	step RIGHT
+	step RIGHT
+	step RIGHT
+	step RIGHT
+	step RIGHT
+	step RIGHT
+	step RIGHT
+	step RIGHT
+	step RIGHT
+	step RIGHT
+	step DOWN
+	step DOWN
+	step RIGHT
+	step RIGHT
+	step RIGHT
+	step DOWN
+	step DOWN
+	step DOWN
+	step DOWN
+	step DOWN
+	step RIGHT
+	step RIGHT
+	step RIGHT
+	step RIGHT
+	turn_head UP
+	step_end
+
 GuideGentMovement5:
-	step DOWN
-	step DOWN
 	step RIGHT
 	step RIGHT
-	step RIGHT
-	step RIGHT
-	step RIGHT
-	step RIGHT
-	step RIGHT
-	step RIGHT
-	step RIGHT
-	step RIGHT
-	step DOWN
-	step DOWN
-	step RIGHT
-	step RIGHT
-	step RIGHT
-	step RIGHT
-	step RIGHT
+	step UP
+	step UP
+	step UP
+	step UP
+	step UP
+	step LEFT
+	step LEFT
+	step LEFT
+	step LEFT
 	turn_head UP
 	step_end
 
@@ -284,6 +315,21 @@ GuideGentSeaText:
 	para "Some #MON are"
 	line "found only in"
 	cont "water."
+	done
+
+GuideGentOldCherryText:
+	text "This here is"
+	line "the OLD CHERRY."
+
+	para "It's a tree"
+	line "almost as old as"
+	cont "me."
+
+	para "Hohohoho!"
+
+	para "People come from"
+	line "all over just to"
+	cont "see it's beauty."
 	done
 
 GuideGentGiftText:
@@ -380,6 +426,14 @@ GuideGentsHouseSignText:
 	text "GUIDE GENT'S HOUSE"
 	done
 
+OldCherrySignText:
+	text "The OLD CHERRY"
+
+	para "Thought to be"
+	line "over 1000 years"
+	cont "old."
+	done
+
 CherrygroveCity_MapEvents:
 	db 0, 0 ; filler
 
@@ -397,9 +451,10 @@ CherrygroveCity_MapEvents:
 	bg_event 23,  9, BGEVENT_READ, GuideGentsHouseSign
 	bg_event 24,  3, BGEVENT_READ, CherrygroveCityMartSign
 	bg_event 30,  3, BGEVENT_READ, CherrygroveCityPokecenterSign
+	bg_event 25, 15, BGEVENT_READ, CherrygroveCityOldCherrySign
 
 	def_object_events
 	object_event 32,  6, SPRITE_GRAMPS, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, CherrygroveCityGuideGent, EVENT_GUIDE_GENT_IN_HIS_HOUSE
-	object_event 27, 12, SPRITE_TEACHER, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 1, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_SCRIPT, 0, CherrygroveTeacherScript, -1
+	object_event 21, 15, SPRITE_TEACHER, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 1, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_SCRIPT, 0, CherrygroveTeacherScript, -1
 	object_event 23,  7, SPRITE_YOUNGSTER, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 1, 0, -1, -1, PAL_NPC_RED, OBJECTTYPE_SCRIPT, 0, CherrygroveYoungsterScript, -1
 	object_event  7, 12, SPRITE_FISHER, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, PAL_NPC_GREEN, OBJECTTYPE_SCRIPT, 0, MysticWaterGuy, -1
