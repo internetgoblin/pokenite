@@ -697,6 +697,7 @@ TextCommands::
 	dw TextCommand_MOVE          ; TX_MOVE
 	dw TextCommand_BOX           ; TX_BOX
 	dw TextCommand_LOW           ; TX_LOW
+	dw TextCommand_HIGH
 	dw TextCommand_PROMPT_BUTTON ; TX_PROMPT_BUTTON
 	dw TextCommand_SCROLL        ; TX_SCROLL
 	dw TextCommand_START_ASM     ; TX_START_ASM
@@ -811,6 +812,11 @@ TextCommand_BOX::
 TextCommand_LOW::
 ; write text at (1,16)
 	bccoord TEXTBOX_INNERX, TEXTBOX_INNERY + 2
+	ret
+
+TextCommand_HIGH::
+;
+	bccoord TEXTBOX_INNERX, TEXTBOX_INNERY - 2
 	ret
 
 TextCommand_PROMPT_BUTTON::

@@ -211,7 +211,9 @@ MomWalksBackMovement:
 	step_end
 
 ElmsLookingForYouText:
-	text "Oh, <PLAYER>…! Our"
+	text_high
+	text " MOM "
+	next "Oh, <PLAYER>…! Our"
 	line "neighbor, PROF."
 
 	para "ELM, was looking"
