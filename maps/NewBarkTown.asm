@@ -4,9 +4,8 @@
 
 NewBarkTown_MapScripts:
 	def_scene_scripts
-	scene_script NewBarkTownNoop1Scene, SCENE_NEWBARKTOWN_TEACHER_STOPS_YOU
-	scene_script NewBarkTownNoop2Scene, SCENE_NEWBARKTOWN_MEET_SILVIA_FIRST
-	scene_script NewBarkTownNoop3Scene, SCENE_NEWBARKTOWN_NOOP
+	scene_script NewBarkTownNoop1Scene, SCENE_NEWBARKTOWN_TEACHER_STOPS_YOU ; Note: These are like different map states
+	scene_script NewBarkTownNoop2Scene, SCENE_NEWBARKTOWN_NOOP
 
 	def_callbacks
 	callback MAPCALLBACK_NEWMAP, NewBarkTownFlypointCallback
@@ -15,9 +14,6 @@ NewBarkTownNoop1Scene:
 	end
 
 NewBarkTownNoop2Scene:
-	end
-
-NewBarkTownNoop3Scene:
 	end
 
 NewBarkTownFlypointCallback:
@@ -72,12 +68,14 @@ NewBarkTown_TeacherStopsYouScene2:
 	special RestartMapMusic
 	end
 
-NewBarkTown_MeetSilviaFirst:
-	;checkflag EVENT_SILVIA_LEAVES
-	;iftrue .NewBarkTown_PlayerAwayFromLab
-	;end
-;.NewBarkTown_PlayerAwayFromLab
+NewBarkTown_MeetSilviaFirstScene:
+	checkevent EVENT_SILVIA_LEAVES ; not checkflag
+	iffalse .NewBarkTown_PlayerAwayFromLab
+	end
+
+.NewBarkTown_PlayerAwayFromLab
 	applymovement PLAYER, NewBarkTown_PlayerAwayFromLabMovement
+	opentext
 	writetext MeetSilviaFirstText
 	waitbutton
 	closetext
@@ -221,7 +219,7 @@ Text_CallMomOnGear:
 
 MeetSilviaFirstText:
 	text "Not until I"
-	line "tell Silvia."
+	line "tell SILVIA."
 	done
 
 Text_ElmDiscoveredNewMon:
@@ -264,7 +262,7 @@ NewBarkTown_MapEvents:
 	def_coord_events
 	coord_event  1,  8, SCENE_NEWBARKTOWN_TEACHER_STOPS_YOU, NewBarkTown_TeacherStopsYouScene1
 	coord_event  1,  9, SCENE_NEWBARKTOWN_TEACHER_STOPS_YOU, NewBarkTown_TeacherStopsYouScene2
-	coord_event  6,  4, SCENE_NEWBARKTOWN_MEET_SILVIA_FIRST, NewBarkTown_MeetSilviaFirst
+	coord_event  6,  4, SCENE_NEWBARKTOWN_TEACHER_STOPS_YOU, NewBarkTown_MeetSilviaFirstScene
 
 	def_bg_events
 	bg_event  8,  8, BGEVENT_READ, NewBarkTownSign
