@@ -816,8 +816,13 @@ TextCommand_LOW::
 
 TextCommand_HIGH::
 ;
-	bccoord TEXTBOX_INNERX, TEXTBOX_INNERY - 2
-	ret
+	/*ld a, [wOptions]
+	set NO_TEXT_SCROLL, a
+	ld [wOptions], a*/
+    bccoord TEXTBOX_INNERX, 12
+    /*res NO_TEXT_SCROLL, a
+    ld [wOptions], a*/
+    ret
 
 TextCommand_PROMPT_BUTTON::
 ; wait for button press; show arrow

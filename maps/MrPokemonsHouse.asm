@@ -120,8 +120,8 @@ MrPokemonsHouse_OakScript:
 	writetext MrPokemonText_ImDependingOnYou
 	waitbutton
 	closetext
-	setevent EVENT_PLAYERS_HOUSE_1F_NEIGHBOR
-	clearevent EVENT_PLAYERS_NEIGHBORS_HOUSE_NEIGHBOR
+	setevent EVENT_PLAYERS_HOUSE_1F_SILVIASMOM
+	clearevent EVENT_SILVIAS_HOUSE_SILVIA
 	setscene SCENE_MRPOKEMONSHOUSE_NOOP
 	clearevent EVENT_COP_IN_ELMS_LAB
 	checkevent EVENT_GOT_TOTODILE_FROM_ELM

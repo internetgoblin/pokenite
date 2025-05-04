@@ -164,7 +164,9 @@ LookTownMapText:
 	done
 
 WindowText:
-	text "My reflection!"
+	text_high
+	text " <PLAYER> "
+	next "My reflection!"
 	line "Lookin' good!"
 	done
 

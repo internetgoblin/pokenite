@@ -5,7 +5,8 @@
 NewBarkTown_MapScripts:
 	def_scene_scripts
 	scene_script NewBarkTownNoop1Scene, SCENE_NEWBARKTOWN_TEACHER_STOPS_YOU
-	scene_script NewBarkTownNoop2Scene, SCENE_NEWBARKTOWN_NOOP
+	scene_script NewBarkTownNoop2Scene, SCENE_NEWBARKTOWN_MEET_SILVIA_FIRST
+	scene_script NewBarkTownNoop3Scene, SCENE_NEWBARKTOWN_NOOP
 
 	def_callbacks
 	callback MAPCALLBACK_NEWMAP, NewBarkTownFlypointCallback
@@ -14,6 +15,9 @@ NewBarkTownNoop1Scene:
 	end
 
 NewBarkTownNoop2Scene:
+	end
+
+NewBarkTownNoop3Scene:
 	end
 
 NewBarkTownFlypointCallback:
@@ -66,6 +70,17 @@ NewBarkTown_TeacherStopsYouScene2:
 	waitbutton
 	closetext
 	special RestartMapMusic
+	end
+
+NewBarkTown_MeetSilviaFirst:
+	;checkflag EVENT_SILVIA_LEAVES
+	;iftrue .NewBarkTown_PlayerAwayFromLab
+	;end
+;.NewBarkTown_PlayerAwayFromLab
+	applymovement PLAYER, NewBarkTown_PlayerAwayFromLabMovement
+	writetext MeetSilviaFirstText
+	waitbutton
+	closetext
 	end
 
 NewBarkTownTeacherScript:
@@ -148,6 +163,10 @@ NewBarkTown_TeacherBringsYouBackMovement2:
 	turn_head LEFT
 	step_end
 
+NewBarkTown_PlayerAwayFromLabMovement:
+	step DOWN
+	step_end
+
 Text_GearIsImpressive:
 	text "Wow, your #GEAR"
 	line "is impressive!"
@@ -200,6 +219,11 @@ Text_CallMomOnGear:
 	line "you're doing."
 	done
 
+MeetSilviaFirstText:
+	text "Not until I"
+	line "tell Silvia."
+	done
+
 Text_ElmDiscoveredNewMon:
 	text "Yo, <PLAYER>!"
 
@@ -234,12 +258,13 @@ NewBarkTown_MapEvents:
 	def_warp_events
 	warp_event  6,  3, ELMS_LAB, 1
 	warp_event 13,  5, PLAYERS_HOUSE_1F, 1
-	warp_event  3, 11, PLAYERS_NEIGHBORS_HOUSE, 1
+	warp_event  3, 11, SILVIAS_HOUSE, 1
 	warp_event 11, 13, ELMS_HOUSE, 1
 
 	def_coord_events
 	coord_event  1,  8, SCENE_NEWBARKTOWN_TEACHER_STOPS_YOU, NewBarkTown_TeacherStopsYouScene1
 	coord_event  1,  9, SCENE_NEWBARKTOWN_TEACHER_STOPS_YOU, NewBarkTown_TeacherStopsYouScene2
+	coord_event  6,  4, SCENE_NEWBARKTOWN_MEET_SILVIA_FIRST, NewBarkTown_MeetSilviaFirst
 
 	def_bg_events
 	bg_event  8,  8, BGEVENT_READ, NewBarkTownSign

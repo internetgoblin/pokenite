@@ -62,20 +62,7 @@ MeetMomScript:
 	iffalse .SetDayOfWeek
 .DayOfWeekDone:
 	writetext ComeHomeForDSTText
-	yesorno
-	iffalse .ExplainPhone
-	sjump .KnowPhone
-
-.KnowPhone:
-	writetext KnowTheInstructionsText
-	promptbutton
-	sjump .FinishPhone
-
-.ExplainPhone:
-	writetext DontKnowTheInstructionsText
-	promptbutton
-	sjump .FinishPhone
-
+	waitbutton
 .FinishPhone:
 	writetext InstructionsNextText
 	waitbutton
@@ -150,7 +137,7 @@ MomScript:
 	closetext
 	end
 
-NeighborScript:
+SilviasMomVisitScript:
 	faceplayer
 	opentext
 	checktime MORN
@@ -161,22 +148,22 @@ NeighborScript:
 	iftrue .NiteScript
 
 .MornScript:
-	writetext NeighborMornIntroText
+	writetext SilviasMomMornIntroText
 	promptbutton
 	sjump .Main
 
 .DayScript:
-	writetext NeighborDayIntroText
+	writetext SilviasMomDayIntroText
 	promptbutton
 	sjump .Main
 
 .NiteScript:
-	writetext NeighborNiteIntroText
+	writetext SilviasMomNiteIntroText
 	promptbutton
 	sjump .Main
 
 .Main:
-	writetext NeighborText
+	writetext SilviasMomVisitText
 	waitbutton
 	closetext
 	turnobject PLAYERSHOUSE1F_POKEFAN_F, RIGHT
@@ -224,10 +211,8 @@ ElmsLookingForYouText:
 	cont "thing for him."
 
 	para "Oh! I almost for-"
-	line "got! Your #MON"
-
-	para "GEAR is back from"
-	line "the repair shop."
+	line "got! I got you"
+	cont "something special."
 
 	para "Here you go!"
 	done
@@ -259,22 +244,8 @@ ComeHomeForDSTText:
 	para "for Daylight"
 	line "Saving Time."
 
-	para "By the way, do you"
-	line "know how to use"
-	cont "the PHONE?"
-	done
-
-KnowTheInstructionsText:
-	text "Don't you just"
-	line "turn the #GEAR"
-
-	para "on and select the"
-	line "PHONE icon?"
-	done
-
-DontKnowTheInstructionsText:
-	text "I'll read the"
-	line "instructions."
+	para "Let me read"
+	line "the instructions."
 
 	para "Turn the #GEAR"
 	line "on and select the"
@@ -320,26 +291,26 @@ ImBehindYouText:
 	line "the way!"
 	done
 
-NeighborMornIntroText:
+SilviasMomMornIntroText:
 	text "Good morning,"
 	line "<PLAY_G>!"
 
 	para "I'm visiting!"
 	done
 
-NeighborDayIntroText:
+SilviasMomDayIntroText:
 	text "Hello, <PLAY_G>!"
 	line "I'm visiting!"
 	done
 
-NeighborNiteIntroText:
+SilviasMomNiteIntroText:
 	text "Good evening,"
 	line "<PLAY_G>!"
 
 	para "I'm visiting!"
 	done
 
-NeighborText:
+SilviasMomVisitText:
 	text "<PLAY_G>, have you"
 	line "heard?"
 
@@ -408,4 +379,4 @@ PlayersHouse1F_MapEvents:
 	object_event  2,  2, SPRITE_MOM, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, MORN, 0, OBJECTTYPE_SCRIPT, 0, MomScript, EVENT_PLAYERS_HOUSE_MOM_2
 	object_event  7,  4, SPRITE_MOM, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, DAY, 0, OBJECTTYPE_SCRIPT, 0, MomScript, EVENT_PLAYERS_HOUSE_MOM_2
 	object_event  0,  2, SPRITE_MOM, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, NITE, 0, OBJECTTYPE_SCRIPT, 0, MomScript, EVENT_PLAYERS_HOUSE_MOM_2
-	object_event  4,  4, SPRITE_POKEFAN_F, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, PAL_NPC_RED, OBJECTTYPE_SCRIPT, 0, NeighborScript, EVENT_PLAYERS_HOUSE_1F_NEIGHBOR
+	object_event  4,  4, SPRITE_POKEFAN_F, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, PAL_NPC_RED, OBJECTTYPE_SCRIPT, 0, SilviasMomVisitScript, EVENT_PLAYERS_HOUSE_1F_SILVIASMOM
