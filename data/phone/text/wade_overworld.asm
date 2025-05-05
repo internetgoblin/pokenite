@@ -1,4 +1,4 @@
-WadeAskNumber1Text:
+WadeAskNumber1Text: ; forages for dropped berries with his bug Pokemon
 	text "You're awesome!"
 	line "I like you!"
 

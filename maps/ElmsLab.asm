@@ -1,6 +1,7 @@
 	object_const_def
 	const ELMSLAB_ELM
 	const ELMSLAB_ELMS_AIDE
+	const ELMSLAB_SILVIA
 	const ELMSLAB_POKE_BALL1
 	const ELMSLAB_POKE_BALL2
 	const ELMSLAB_POKE_BALL3
@@ -15,7 +16,7 @@ ElmsLab_MapScripts:
 	scene_const SCENE_ELMSLAB_AIDE_GIVES_POKE_BALLS
 
 	def_callbacks
-	callback MAPCALLBACK_OBJECTS, ElmsLabMoveElmCallback
+	callback MAPCALLBACK_OBJECTS, ElmsLabMoveSilviaCallback
 
 ElmsLabMeetElmScene:
 	sdefer ElmsLabWalkUpToElmScript
@@ -36,17 +37,18 @@ ElmsLabNoop4Scene:
 ElmsLabNoop5Scene:
 	end
 
-ElmsLabMoveElmCallback:
+ElmsLabMoveSilviaCallback:
 	checkscene
 	iftrue .Skip ; not SCENE_ELMSLAB_MEET_ELM
-	moveobject ELMSLAB_ELM, 3, 4
+	moveobject ELMSLAB_SILVIA, 5, 6
 .Skip:
 	endcallback
 
 ElmsLabWalkUpToElmScript:
+	turnobject ELMSLAB_SILVIA, UP
 	applymovement PLAYER, ElmsLab_WalkUpToElmMovement
 	showemote EMOTE_SHOCK, ELMSLAB_ELM, 15
-	turnobject ELMSLAB_ELM, RIGHT
+	applymovement ELMSLAB_ELM, ElmsLab_ElmAwayFromComputer1
 	opentext
 	writetext ElmText_Intro
 .MustSayYes:
@@ -64,23 +66,29 @@ ElmsLabWalkUpToElmScript:
 	playsound SFX_GLASS_TING
 	pause 30
 	showemote EMOTE_SHOCK, ELMSLAB_ELM, 10
-	turnobject ELMSLAB_ELM, DOWN
+	turnobject ELMSLAB_ELM, RIGHT
+	applymovement ELMSLAB_ELM, ElmsLab_ElmBackToPC
 	opentext
 	writetext ElmText_GotAnEmail
 	waitbutton
 	closetext
 	opentext
-	turnobject ELMSLAB_ELM, RIGHT
 	writetext ElmText_MissionFromMrPokemon
 	waitbutton
 	closetext
 	applymovement ELMSLAB_ELM, ElmsLab_ElmToDefaultPositionMovement1
 	turnobject PLAYER, UP
 	applymovement ELMSLAB_ELM, ElmsLab_ElmToDefaultPositionMovement2
-	turnobject PLAYER, RIGHT
+	turnobject PLAYER, UP
 	opentext
 	writetext ElmText_ChooseAPokemon
 	waitbutton
+	closetext
+	turnobject ELMSLAB_SILVIA, LEFT
+	opentext
+	writetext SilviaText_GoFirst
+	waitbutton
+	turnobject ELMSLAB_SILVIA, UP
 	setscene SCENE_ELMSLAB_CANT_LEAVE
 	closetext
 	end
@@ -182,7 +190,7 @@ CyndaquilPokeBallScript:
 	readvar VAR_FACING
 	ifequal RIGHT, ElmDirectionsScript
 	applymovement PLAYER, AfterCyndaquilMovement
-	sjump ElmDirectionsScript
+	sjump SilviaPicksTotodile
 
 TotodilePokeBallScript:
 	checkevent EVENT_GOT_A_POKEMON_FROM_ELM
@@ -210,7 +218,7 @@ TotodilePokeBallScript:
 	givepoke TOTODILE, 5, BERRY
 	closetext
 	applymovement PLAYER, AfterTotodileMovement
-	sjump ElmDirectionsScript
+	sjump SilviaPicksChikorita
 
 ChikoritaPokeBallScript:
 	checkevent EVENT_GOT_A_POKEMON_FROM_ELM
@@ -238,13 +246,61 @@ ChikoritaPokeBallScript:
 	givepoke CHIKORITA, 5, BERRY
 	closetext
 	applymovement PLAYER, AfterChikoritaMovement
-	sjump ElmDirectionsScript
+	sjump SilviaPicksCyndaquil
 
 DidntChooseStarterScript:
 	writetext DidntChooseStarterText
 	waitbutton
 	closetext
 	end
+
+SilviaPicksTotodile:
+	opentext
+	writetext SilviaPicksStarterText
+	waitbutton
+	disappear ELMSLAB_POKE_BALL2
+	writetext ChoseStarterText2
+	promptbutton
+	waitsfx
+	getmonname STRING_BUFFER_3, TOTODILE
+	writetext ReceivedStarterText2
+	playsound SFX_CAUGHT_MON
+	waitsfx
+	promptbutton
+	closetext
+	sjump ElmDirectionsScript
+
+SilviaPicksChikorita:
+	opentext
+	writetext SilviaPicksStarterText
+	waitbutton
+	disappear ELMSLAB_POKE_BALL2
+	writetext ChoseStarterText2
+	promptbutton
+	waitsfx
+	getmonname STRING_BUFFER_3, CHIKORITA
+	writetext ReceivedStarterText2
+	playsound SFX_CAUGHT_MON
+	waitsfx
+	promptbutton
+	closetext
+	sjump ElmDirectionsScript
+
+SilviaPicksCyndaquil:
+	opentext
+	writetext SilviaPicksStarterText
+	waitbutton
+	disappear ELMSLAB_POKE_BALL2
+	writetext ChoseStarterText2
+	promptbutton
+	waitsfx
+	getmonname STRING_BUFFER_3, CYNDAQUIL
+	writetext ReceivedStarterText2
+	playsound SFX_CAUGHT_MON
+	waitsfx
+	promptbutton
+	closetext
+	sjump ElmDirectionsScript
 
 ElmDirectionsScript:
 	turnobject PLAYER, UP
@@ -439,7 +495,6 @@ ElmJumpUpScript:
 	end
 
 ElmJumpDownScript:
-	applymovement ELMSLAB_ELM, ElmJumpDownMovement
 	opentext
 	end
 
@@ -562,6 +617,14 @@ ElmsLabWindow:
 	closetext
 	end
 
+ElmsLabSilviaScript: ; NEW
+	faceplayer
+	opentext
+	writetext SilviaText_Working
+	waitbutton
+	closetext
+	end
+
 ElmsLabTravelTip1:
 	jumptext ElmsLabTravelTip1Text
 
@@ -592,9 +655,16 @@ ElmsLab_WalkUpToElmMovement:
 	step UP
 	step UP
 	step UP
-	step UP
-	step UP
-	turn_head LEFT
+	step_end
+
+ElmsLab_ElmAwayFromComputer1:
+	step RIGHT
+	turn_head DOWN
+	step_end
+
+ElmsLab_ElmBackToPC:
+	big_step LEFT
+	turn_head DOWN
 	step_end
 
 ElmsLab_CantLeaveMovement:
@@ -687,8 +757,8 @@ ElmText_Intro:
 	text "ELM: <PLAY_G>!"
 	line "There you are!"
 
-	para "I needed to ask"
-	line "you a favor."
+	para "I need to ask"
+	line "you both a favor."
 
 	para "I'm conducting new"
 	line "#MON research"
@@ -696,8 +766,8 @@ ElmText_Intro:
 	para "right now. I was"
 	line "wondering if you"
 
-	para "could help me with"
-	line "it, <PLAY_G>."
+	para "two could help me"
+	line "with it."
 
 	para "You see…"
 
@@ -713,10 +783,11 @@ ElmText_Intro:
 	para "quite understand"
 	line "yet."
 
-	para "So!"
+	para "So! I'd like each"
+	line "of you"
 
-	para "I'd like you to"
-	line "raise a #MON"
+	para "To raise a"
+	line "rare #MON"
 
 	para "that I recently"
 	line "caught."
@@ -845,11 +916,24 @@ DidntChooseStarterText:
 ChoseStarterText:
 	text "ELM: I think"
 	line "that's a great"
+	cont "#MON!"
+	done
+
+ChoseStarterText2:
+	text "ELM: I think"
+	line "that's a great"
 	cont "#MON too!"
 	done
 
 ReceivedStarterText:
 	text "<PLAYER> received"
+	line "@"
+	text_ram wStringBuffer3
+	text "!"
+	done
+
+ReceivedStarterText2:
+	text "SILVIA received"
 	line "@"
 	text_ram wStringBuffer3
 	text "!"
@@ -1229,6 +1313,21 @@ AideText_ExplainBalls:
 	cont "to get them."
 	done
 
+SilviaText_GoFirst:
+	text "You can pick"
+	line "yours first."
+	done
+
+SilviaPicksStarterText:
+	text "I'll go with…"
+	line "this one."
+	done
+
+SilviaText_Working:
+	text "I get to work"
+	line "with the PROF!"
+	done
+
 ElmsLabWindowText1:
 	text "The window's open."
 
@@ -1307,8 +1406,8 @@ ElmsLab_MapEvents:
 	warp_event  5, 11, NEW_BARK_TOWN, 1
 
 	def_coord_events
-	coord_event  4,  6, SCENE_ELMSLAB_CANT_LEAVE, LabTryToLeaveScript
-	coord_event  5,  6, SCENE_ELMSLAB_CANT_LEAVE, LabTryToLeaveScript
+	coord_event  4,  7, SCENE_ELMSLAB_CANT_LEAVE, LabTryToLeaveScript
+	coord_event  5,  7, SCENE_ELMSLAB_CANT_LEAVE, LabTryToLeaveScript
 	coord_event  4,  8, SCENE_ELMSLAB_AIDE_GIVES_POTION, AideScript_WalkPotion1
 	coord_event  5,  8, SCENE_ELMSLAB_AIDE_GIVES_POTION, AideScript_WalkPotion2
 	coord_event  4,  8, SCENE_ELMSLAB_AIDE_GIVES_POKE_BALLS, AideScript_WalkBalls1
@@ -1333,8 +1432,9 @@ ElmsLab_MapEvents:
 	bg_event  3,  5, BGEVENT_DOWN, ElmsLabPC
 
 	def_object_events
-	object_event  5,  2, SPRITE_ELM, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, ProfElmScript, -1
+	object_event  3,  4, SPRITE_ELM, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, ProfElmScript, -1
 	object_event  2,  9, SPRITE_SCIENTIST, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_SCRIPT, 0, ElmsAideScript, EVENT_ELMS_AIDE_IN_LAB
+	object_event  7,  9, SPRITE_COOLTRAINER_F, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, PAL_NPC_RED, OBJECTTYPE_SCRIPT, 0, ElmsLabSilviaScript, -1
 	object_event  6,  3, SPRITE_POKE_BALL, SPRITEMOVEDATA_STILL, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, CyndaquilPokeBallScript, EVENT_CYNDAQUIL_POKEBALL_IN_ELMS_LAB
 	object_event  7,  3, SPRITE_POKE_BALL, SPRITEMOVEDATA_STILL, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, TotodilePokeBallScript, EVENT_TOTODILE_POKEBALL_IN_ELMS_LAB
 	object_event  8,  3, SPRITE_POKE_BALL, SPRITEMOVEDATA_STILL, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, ChikoritaPokeBallScript, EVENT_CHIKORITA_POKEBALL_IN_ELMS_LAB
