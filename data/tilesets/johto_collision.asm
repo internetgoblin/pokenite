@@ -155,8 +155,8 @@
 	tilecoll HOP_DOWN, HOP_DOWN, WALL, WALL ; 9a
 	tilecoll FLOOR, FLOOR, FLOOR, FLOOR ; 9b
 	tilecoll TALL_GRASS, TALL_GRASS, TALL_GRASS, TALL_GRASS ; 9c
-	tilecoll WALL, WALL, WALL, WALL ; 9d
-	tilecoll WALL, WALL, WALL, WALL ; 9e
+	tilecoll FLOOR, FLOOR, WALL, WARP_CARPET_DOWN ; 9d
+	tilecoll FLOOR, FLOOR, WARP_CARPET_DOWN, WALL ; 9e
 	tilecoll WALL, WALL, WALL, WALL ; 9f
 	tilecoll WALL, WALL, WALL, WALL ; a0
 	tilecoll WALL, WALL, WALL, WALL ; a1

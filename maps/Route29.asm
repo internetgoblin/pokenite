@@ -339,11 +339,15 @@ Route29CooltrainerMText_WaitingForNight:
 	done
 
 Route29CooltrainerMText_WaitingForMorning:
-	text "I'm waiting for"
+	text "I'd wait for a"
 	line "#MON that"
 
-	para "appear only in the"
-	line "morning."
+	para "appears only in"
+	line "the morning,"
+
+	para "but I don't"
+	line "think any are on"
+	cont "this ROUTE."
 	done
 
 MeetTuscanyText:

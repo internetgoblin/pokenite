@@ -255,6 +255,7 @@ DidntChooseStarterScript:
 	end
 
 SilviaPicksTotodile:
+	applymovement ELMSLAB_SILVIA, SilviaPicksTotodileMovement
 	opentext
 	writetext SilviaPicksStarterText
 	waitbutton
@@ -271,10 +272,11 @@ SilviaPicksTotodile:
 	sjump ElmDirectionsScript
 
 SilviaPicksChikorita:
+	applymovement ELMSLAB_SILVIA, SilviaPicksChikoritaMovement
 	opentext
 	writetext SilviaPicksStarterText
 	waitbutton
-	disappear ELMSLAB_POKE_BALL2
+	disappear ELMSLAB_POKE_BALL3
 	writetext ChoseStarterText2
 	promptbutton
 	waitsfx
@@ -287,10 +289,11 @@ SilviaPicksChikorita:
 	sjump ElmDirectionsScript
 
 SilviaPicksCyndaquil:
+	applymovement ELMSLAB_SILVIA, SilviaPicksCyndaquilMovement
 	opentext
 	writetext SilviaPicksStarterText
 	waitbutton
-	disappear ELMSLAB_POKE_BALL2
+	disappear ELMSLAB_POKE_BALL1
 	writetext ChoseStarterText2
 	promptbutton
 	waitsfx
@@ -750,6 +753,30 @@ AfterChikoritaMovement:
 	step LEFT
 	step LEFT
 	step UP
+	turn_head UP
+	step_end
+
+SilviaPicksTotodileMovement:
+	step UP
+	step UP
+	step RIGHT
+	step RIGHT
+	turn_head UP
+	step_end
+
+SilviaPicksChikoritaMovement:
+	step UP
+	step UP
+	step RIGHT
+	step RIGHT
+	step RIGHT
+	turn_head UP
+	step_end
+
+SilviaPicksCyndaquilMovement:
+	step UP
+	step UP
+	step RIGHT
 	turn_head UP
 	step_end
 
