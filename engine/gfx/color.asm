@@ -1299,9 +1299,9 @@ LoadMapPals:
 	ld de, 4
 	jr z, .nite
 	jr c, .morn
-.day
-	add hl, de
 .nite
+	add hl, de
+.day
 	add hl, de
 .morn
 	ld de, wBGPals1 palette PAL_BG_ROOF color 1
