@@ -1295,9 +1295,9 @@ LoadMapPals:
 	add hl, de
 	ld a, [wTimeOfDayPal]
 	maskbits NUM_DAYTIMES
-	cp NITE_F
+	cp DAY_F
 	ld de, 4
-	jr z, .nite
+	jr z, .day
 	jr c, .morn
 .nite
 	add hl, de
