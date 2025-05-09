@@ -44,38 +44,36 @@ _TitleScreen:
 
 ; BG Map 0:
 
-; Apply logo gradient:
-
 ; lines 3-4
-	hlbgcoord 0, 3
+	hlbgcoord 0, 1
 	ld bc, 2 * BG_MAP_WIDTH
-	ld a, 2
+	ld a, 4
 	call ByteFill
 ; line 5
-	hlbgcoord 0, 5
+	hlbgcoord 0, 3
 	ld bc, BG_MAP_WIDTH
-	ld a, 3
+	ld a, 4
 	call ByteFill
 ; line 6
-	hlbgcoord 0, 6
+	hlbgcoord 0, 4
 	ld bc, BG_MAP_WIDTH
 	ld a, 4
 	call ByteFill
 ; line 7
-	hlbgcoord 0, 7
+	hlbgcoord 0, 5
 	ld bc, BG_MAP_WIDTH
-	ld a, 5
+	ld a, 4
 	call ByteFill
 ; lines 8-9
-	hlbgcoord 0, 8
+	hlbgcoord 0, 6
 	ld bc, 2 * BG_MAP_WIDTH
-	ld a, 6
+	ld a, 4
 	call ByteFill
 
 ; 'CRYSTAL VERSION'
-	hlbgcoord 5, 9
-	ld bc, 11 ; length of version text
-	ld a, 1
+	hlbgcoord 4, 7
+	ld bc, 9 ; length of version text
+	ld a, 4 ; temporary
 	call ByteFill
 
 ; Suicune gfx
@@ -93,11 +91,6 @@ _TitleScreen:
 	ld de, vTiles1
 	call Decompress
 
-; Decompress background crystal
-	ld hl, TitleCrystalGFX
-	ld de, vTiles0
-	call Decompress
-
 ; Clear screen tiles
 	hlbgcoord 0, 0
 	ld bc, 64 * BG_MAP_WIDTH
@@ -105,7 +98,7 @@ _TitleScreen:
 	call ByteFill
 
 ; Draw Pokemon logo
-	hlcoord 0, 3
+	hlcoord 0, 1
 	lb bc, 7, 20
 	ld d, $80
 	ld e, 20
@@ -121,9 +114,6 @@ _TitleScreen:
 ; Initialize running Suicune?
 	ld d, $0
 	call LoadSuicuneFrame
-
-; Initialize background crystal
-	call InitializeBackground
 
 ; Update palette colors
 	ldh a, [rSVBK]
@@ -366,9 +356,6 @@ INCBIN "gfx/title/suicune.2bpp.lz"
 
 TitleLogoGFX:
 INCBIN "gfx/title/logo.2bpp.lz"
-
-TitleCrystalGFX:
-INCBIN "gfx/title/crystal.2bpp.lz"
 
 TitleScreenPalettes:
 INCLUDE "gfx/title/title.pal"

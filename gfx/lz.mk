@@ -66,7 +66,6 @@ gfx/tilesets/players_room.2bpp.lz: LZFLAGS += --method 4 --align 4
 gfx/tilesets/ruins_of_alph.2bpp.lz: LZFLAGS = --compressor null --method 1 --align 1
 gfx/tilesets/tower.2bpp.lz: LZFLAGS += --method 2 --align 4
 
-gfx/title/crystal.2bpp.lz: LZFLAGS += --align 4
 gfx/title/logo.2bpp.lz: LZFLAGS = --compressor null --method 1 --align 1
 gfx/title/suicune.2bpp.lz: LZFLAGS += --align 4
 
