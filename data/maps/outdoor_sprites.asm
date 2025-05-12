@@ -331,6 +331,7 @@ NewBarkGroupSprites:
 	db SPRITE_COOLTRAINER_F
 	db SPRITE_POKE_BALL
 	db SPRITE_FRUIT_TREE
+	db SPRITE_EGG
 
 CherrygroveGroupSprites:
 	db SPRITE_SUICUNE

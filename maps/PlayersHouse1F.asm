@@ -4,6 +4,7 @@
 	const PLAYERSHOUSE1F_MOM3
 	const PLAYERSHOUSE1F_MOM4
 	const PLAYERSHOUSE1F_POKEFAN_F
+	const PLAYERSHOUSE1F_GIFT
 
 PlayersHouse1F_MapScripts:
 	def_scene_scripts
@@ -18,32 +19,39 @@ PlayersHouse1FNoop1Scene:
 PlayersHouse1FNoop2Scene:
 	end
 
-MeetMomLeftScript:
-	setevent EVENT_TEMPORARY_UNTIL_MAP_RELOAD_1
-
-MeetMomRightScript:
-	playmusic MUSIC_MOM
-	showemote EMOTE_SHOCK, PLAYERSHOUSE1F_MOM1, 15
-	turnobject PLAYER, LEFT
-	checkevent EVENT_TEMPORARY_UNTIL_MAP_RELOAD_1
-	iffalse .OnRight
-	applymovement PLAYERSHOUSE1F_MOM1, MomTurnsTowardPlayerMovement
-	sjump MeetMomScript
-
-.OnRight:
-	applymovement PLAYERSHOUSE1F_MOM1, MomWalksToPlayerMovement
 MeetMomScript:
+	playmusic MUSIC_MOM
+	applymovement PLAYERSHOUSE1F_MOM1, MomTurnsTowardPlayerMovement
+	showemote EMOTE_SHOCK, PLAYERSHOUSE1F_MOM1, 15
+	applymovement PLAYERSHOUSE1F_MOM1, MomToStairs
+	sjump RestOfMeetMomScript
+
+RestOfMeetMomScript:
 	opentext
 	writetext ElmsLookingForYouText
 	promptbutton
+	closetext
+	follow PLAYERSHOUSE1F_MOM1, PLAYER
+	applymovement PLAYERSHOUSE1F_MOM1, MomMoveToTable
+	stopfollow
+	applymovement PLAYER, PlayerGiftMovement
+	opentext
+	writetext MomHereYouGoText
+	waitbutton
 	getstring STRING_BUFFER_4, PokegearName
+	disappear PLAYERSHOUSE1F_GIFT
+	setevent EVENT_GIFTED_POKEGEAR
 	scall PlayersHouse1FReceiveItemStd
 	setflag ENGINE_POKEGEAR
 	setflag ENGINE_PHONE_CARD
 	addcellnum PHONE_MOM
+	closetext
+	applymovement PLAYER, PlayerAfterGiftMovement
+	turnobject PLAYERSHOUSE1F_MOM1, DOWN
 	setscene SCENE_PLAYERSHOUSE1F_NOOP
 	setevent EVENT_PLAYERS_HOUSE_MOM_1
 	clearevent EVENT_PLAYERS_HOUSE_MOM_2
+	opentext
 	writetext MomGivesPokegearText
 	promptbutton
 	special SetDayOfWeek
@@ -67,21 +75,6 @@ MeetMomScript:
 	writetext InstructionsNextText
 	waitbutton
 	closetext
-	checkevent EVENT_TEMPORARY_UNTIL_MAP_RELOAD_1
-	iftrue .FromRight
-	checkevent EVENT_TEMPORARY_UNTIL_MAP_RELOAD_2
-	iffalse .FromLeft
-	sjump .Finish
-
-.FromRight:
-	applymovement PLAYERSHOUSE1F_MOM1, MomTurnsBackMovement
-	sjump .Finish
-
-.FromLeft:
-	applymovement PLAYERSHOUSE1F_MOM1, MomWalksBackMovement
-	sjump .Finish
-
-.Finish:
 	special RestartMapMusic
 	turnobject PLAYERSHOUSE1F_MOM1, LEFT
 	end
@@ -114,6 +107,7 @@ MomScript:
 	writetext HurryUpElmIsWaitingText
 	waitbutton
 	closetext
+	applymovement PLAYERSHOUSE1F_MOM1, MomTurnsBackMovement
 	end
 
 .GotAPokemon:
@@ -181,8 +175,34 @@ PlayersHouse1FSinkScript:
 PlayersHouse1FFridgeScript:
 	jumptext PlayersHouse1FFridgeText
 
+MomToStairs:
+	step RIGHT
+	step RIGHT
+	step UP
+	step UP
+	step_end
+
+MomMoveToTable:
+	step DOWN
+	step DOWN
+	step LEFT
+	step LEFT
+	step_end
+
+PlayerGiftMovement:
+	step DOWN
+	step LEFT
+	step LEFT
+	turn_head UP
+	step_end
+
+PlayerAfterGiftMovement:
+	step RIGHT
+	turn_head UP
+	step_end
+
 MomTurnsTowardPlayerMovement:
-	turn_head RIGHT
+	turn_head UP
 	step_end
 
 MomWalksToPlayerMovement:
@@ -198,23 +218,26 @@ MomWalksBackMovement:
 	step_end
 
 ElmsLookingForYouText:
-	text_high
-	text " MOM "
-	next "Oh, <PLAYER>…! Our"
-	line "neighbor, PROF."
+	text "There you are!"
 
-	para "ELM, was looking"
-	line "for you."
+	para "PROF. ELM said he"
+	line "wanted you to do"
+	cont "something for him."
 
-	para "He said he wanted"
-	line "you to do some-"
-	cont "thing for him."
+	para "You and also your"
+	line "friend, SILVIA."
+
+	para "I'd make sure she"
+	line "knows that before"
+	cont "going to the lab."
 
 	para "Oh! I almost for-"
 	line "got! I got you"
 	cont "something special."
+	done
 
-	para "Here you go!"
+MomHereYouGoText:
+	text "Here you go!"
 	done
 
 MomGivesPokegearText:
@@ -365,8 +388,7 @@ PlayersHouse1F_MapEvents:
 	warp_event  9,  0, PLAYERS_HOUSE_2F, 1
 
 	def_coord_events
-	coord_event  8,  4, SCENE_PLAYERSHOUSE1F_MEET_MOM, MeetMomLeftScript
-	coord_event  9,  4, SCENE_PLAYERSHOUSE1F_MEET_MOM, MeetMomRightScript
+	coord_event  9,  1, SCENE_PLAYERSHOUSE1F_MEET_MOM, MeetMomScript
 
 	def_bg_events
 	bg_event  0,  1, BGEVENT_READ, PlayersHouse1FStoveScript
@@ -380,3 +402,4 @@ PlayersHouse1F_MapEvents:
 	object_event  7,  4, SPRITE_MOM, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, DAY, 0, OBJECTTYPE_SCRIPT, 0, MomScript, EVENT_PLAYERS_HOUSE_MOM_2
 	object_event  0,  2, SPRITE_MOM, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, NITE, 0, OBJECTTYPE_SCRIPT, 0, MomScript, EVENT_PLAYERS_HOUSE_MOM_2
 	object_event  4,  4, SPRITE_POKEFAN_F, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, PAL_NPC_RED, OBJECTTYPE_SCRIPT, 0, SilviasMomVisitScript, EVENT_PLAYERS_HOUSE_1F_SILVIASMOM
+	object_event  6,  4, SPRITE_POKE_BALL, SPRITEMOVEDATA_STILL, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, PlayersHouse1FReceiveItemStd, EVENT_GIFTED_POKEGEAR

@@ -335,3 +335,12 @@ INCBIN "data/tilesets/omanyte_word_room_metatiles.bin"
 
 TilesetAerodactylWordRoomMeta::
 INCBIN "data/tilesets/aerodactyl_word_room_metatiles.bin"
+
+TilesetJohtoSouthEastGFX::
+INCBIN "gfx/tilesets/johto_south_east.2bpp.lz"
+
+TilesetJohtoSouthEastMeta::
+INCBIN "data/tilesets/johto_south_east_metatiles.bin"
+
+TilesetJohtoSouthEastColl::
+INCLUDE "data/tilesets/johto_south_east_collision.asm"

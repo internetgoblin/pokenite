@@ -7,12 +7,18 @@
 
 PlayersHouse2F_MapScripts:
 	def_scene_scripts
+	scene_script PlayersHouse2FMomScene, SCENE_PLAYERSHOUSE2F_MOM_YELLS_UP
+	scene_script PlayersHouse2FNoopScene, SCENE_PLAYERSHOUSE2F_NOOP
 
 	def_callbacks
 	callback MAPCALLBACK_NEWMAP, PlayersHouse2FInitializeRoomCallback
 	callback MAPCALLBACK_TILES, PlayersHouse2FSetUpTileDecorationsCallback
 
-PlayersHouse2FNoopScene: ; unreferenced
+PlayersHouse2FMomScene:
+	sdefer PlayersHouse2FMomScript
+	end
+
+PlayersHouse2FNoopScene:
 	end
 
 PlayersHouse2FInitializeRoomCallback:
@@ -49,6 +55,14 @@ PlayersHousePosterScript:
 
 .Script:
 	describedecoration DECODESC_POSTER
+
+PlayersHouse2FMomScript:
+	opentext
+	writetext MomYellsUpText
+	promptbutton
+	closetext
+	setscene SCENE_PLAYERSHOUSE2F_NOOP
+	end
 
 PlayersHouseRadioScript:
 	checkevent EVENT_GOT_A_POKEMON_FROM_ELM
@@ -114,6 +128,14 @@ PlayersRadioText3:
 PlayersRadioText4:
 	text "#MON!"
 	line "#MON CHANNEL…"
+	done
+
+MomYellsUpText:
+	text "Oh, <PLAYER>…! Our"
+	line "neighbor, PROF."
+
+	para "ELM, was looking"
+	line "for you!"
 	done
 
 PlayersHouse2F_MapEvents:

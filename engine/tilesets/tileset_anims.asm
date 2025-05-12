@@ -92,6 +92,21 @@ TilesetJohtoAnim:
 	dw NULL,  StandingTileFrame8
 	dw NULL,  DoneTileAnimation
 
+TilesetJohtoSouthEastAnim:
+	dw vTiles2 tile $14, AnimateWaterTile
+	dw NULL,  WaitTileAnimation
+	dw NULL,  WaitTileAnimation
+	dw NULL,  AnimateWaterPalette
+	dw NULL,  WaitTileAnimation
+	dw NULL,  AnimateFlowerTile
+	dw WhirlpoolFrames1, AnimateWhirlpoolTile
+	dw WhirlpoolFrames2, AnimateWhirlpoolTile
+	dw WhirlpoolFrames3, AnimateWhirlpoolTile
+	dw WhirlpoolFrames4, AnimateWhirlpoolTile
+	dw NULL,  WaitTileAnimation
+	dw NULL,  StandingTileFrame8
+	dw NULL,  DoneTileAnimation
+
 UnusedTilesetAnim1: ; unreferenced
 ; Scrolls tile $03 like cave water, but also has the standard $03 flower tile.
 	dw vTiles2 tile $03, ReadTileToAnimBuffer

@@ -3129,6 +3129,7 @@ wRoute27SceneID::                                 db
 wNewBarkTownSceneID::                             db
 wElmsLabSceneID::                                 db
 wPlayersHouse1FSceneID::                          db
+wPlayersHouse2FSceneID::                          db ; new
 wRoute29SceneID::                                 db
 wCherrygroveCitySceneID::                         db
 wMrPokemonsHouseSceneID::                         db

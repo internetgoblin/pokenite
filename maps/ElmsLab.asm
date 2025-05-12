@@ -269,6 +269,7 @@ SilviaPicksTotodile:
 	waitsfx
 	promptbutton
 	closetext
+	setevent EVENT_CHIKORITA_POKEBALL_IN_ELMS_LAB
 	sjump ElmDirectionsScript
 
 SilviaPicksChikorita:
@@ -286,6 +287,7 @@ SilviaPicksChikorita:
 	waitsfx
 	promptbutton
 	closetext
+	setevent EVENT_CYNDAQUIL_POKEBALL_IN_ELMS_LAB
 	sjump ElmDirectionsScript
 
 SilviaPicksCyndaquil:
@@ -303,6 +305,7 @@ SilviaPicksCyndaquil:
 	waitsfx
 	promptbutton
 	closetext
+	setevent EVENT_TOTODILE_POKEBALL_IN_ELMS_LAB
 	sjump ElmDirectionsScript
 
 ElmDirectionsScript:
