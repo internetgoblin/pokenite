@@ -57,7 +57,25 @@ VioletCityEarlScript:
 	end
 
 VioletCityLassScript:
-	jumptextfaceplayer VioletCityLassText
+	faceplayer
+	opentext
+	writetext VioletCityLassText
+	waitbutton
+	closetext
+	loadmonindex 0, GASTLY
+	special MonCheck
+	iftrue .VioletCityLassFoundGhost
+	end
+
+.VioletCityLassFoundGhost:
+	playsound SFX_GLASS_TING 
+	showemote EMOTE_SHOCK, VIOLETCITY_LASS, 15
+	waitsfx
+	opentext
+	writetext VioletCityLassFoundGhostText
+	waitbutton
+	closetext
+	end
 
 VioletCitySuperNerdScript:
 	jumptextfaceplayer VioletCitySuperNerdText
@@ -212,6 +230,12 @@ VioletCityLassText:
 
 	para "had no effect on"
 	line "ghosts."
+	done
+
+VioletCityLassFoundGhostText:
+	text "You caught one?"
+	line "Guess it isn't"
+	cont "just a rumor."
 	done
 
 VioletCitySuperNerdText:

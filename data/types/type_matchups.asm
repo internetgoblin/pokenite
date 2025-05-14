@@ -50,6 +50,7 @@ TypeMatchups:
 	db FIGHTING,     DARK,         SUPER_EFFECTIVE
 	db FIGHTING,     STEEL,        SUPER_EFFECTIVE
 	db POISON,       GRASS,        SUPER_EFFECTIVE
+	db POISON,       BUG,          SUPER_EFFECTIVE ; Like in Gen 1
 	db POISON,       POISON,       NOT_VERY_EFFECTIVE
 	db POISON,       GROUND,       NOT_VERY_EFFECTIVE
 	db POISON,       ROCK,         NOT_VERY_EFFECTIVE
@@ -77,7 +78,7 @@ TypeMatchups:
 	db BUG,          FIRE,         NOT_VERY_EFFECTIVE
 	db BUG,          GRASS,        SUPER_EFFECTIVE
 	db BUG,          FIGHTING,     NOT_VERY_EFFECTIVE
-	db BUG,          POISON,       NOT_VERY_EFFECTIVE
+	db BUG,          POISON,       SUPER_EFFECTIVE ; Like in Gen 1
 	db BUG,          FLYING,       NOT_VERY_EFFECTIVE
 	db BUG,          PSYCHIC_TYPE, SUPER_EFFECTIVE
 	db BUG,          GHOST,        NOT_VERY_EFFECTIVE

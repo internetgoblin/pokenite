@@ -108,7 +108,7 @@ PlayersHousePCScript:
 	end
 
 PlayersHousePokeBall:
-	itemball TM_HEADBUTT
+	itemball SURF_MAIL
 
 PlayersRadioText1:
 	text "PROF.OAK'S #MON"
