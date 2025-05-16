@@ -35,6 +35,7 @@ RestOfMeetMomScript:
 	applymovement PLAYERSHOUSE1F_MOM1, MomMoveToTable
 	stopfollow
 	applymovement PLAYER, PlayerGiftMovement
+	appear PLAYERSHOUSE1F_GIFT ; Scene set in 2f to start object invisible
 	opentext
 	writetext MomHereYouGoText
 	waitbutton

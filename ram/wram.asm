@@ -2583,6 +2583,7 @@ wFieldMoveData::
 wFieldMoveJumptableIndex:: db
 wEscapeRopeOrDigType::
 wSurfingPlayerState::
+wItemPlayerState::
 wFishingRodUsed:: db
 wCutWhirlpoolOverworldBlockAddr:: dw
 wCutWhirlpoolReplacementBlock:: db
