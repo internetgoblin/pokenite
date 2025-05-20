@@ -89,6 +89,7 @@ PokegearName:
 
 PlayersHouse1FReceiveItemStd:
 	jumpstd ReceiveItemScript
+	disappear PLAYERSHOUSE1F_GIFT
 	end
 
 MomScript:
@@ -224,13 +225,6 @@ ElmsLookingForYouText:
 	para "PROF. ELM said he"
 	line "wanted you to do"
 	cont "something for him."
-
-	para "You and also your"
-	line "friend, SILVIA."
-
-	para "I'd make sure she"
-	line "knows that before"
-	cont "going to the lab."
 
 	para "Oh! I almost for-"
 	line "got! I got you"
@@ -403,4 +397,4 @@ PlayersHouse1F_MapEvents:
 	object_event  7,  4, SPRITE_MOM, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, DAY, 0, OBJECTTYPE_SCRIPT, 0, MomScript, EVENT_PLAYERS_HOUSE_MOM_2
 	object_event  0,  2, SPRITE_MOM, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, NITE, 0, OBJECTTYPE_SCRIPT, 0, MomScript, EVENT_PLAYERS_HOUSE_MOM_2
 	object_event  4,  4, SPRITE_POKEFAN_F, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, PAL_NPC_RED, OBJECTTYPE_SCRIPT, 0, SilviasMomVisitScript, EVENT_PLAYERS_HOUSE_1F_SILVIASMOM
-	object_event  6,  4, SPRITE_POKE_BALL, SPRITEMOVEDATA_STILL, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, PlayersHouse1FReceiveItemStd, EVENT_GIFTED_POKEGEAR
+	object_event  6,  4, SPRITE_POKE_GEAR, SPRITEMOVEDATA_STILL, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, PlayersHouse1FReceiveItemStd, EVENT_GIFTED_POKEGEAR

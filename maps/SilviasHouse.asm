@@ -8,13 +8,7 @@ SilviasHouse_MapScripts:
 	def_callbacks
 
 SilviaScript:
-	faceplayer
-	opentext
-	writetext SilviaText
-	waitbutton
-	closetext
-	applymovement PLAYERSSILVIASHOUSE_COOLTRAINER_F, SilviaMovement
-	disappear PLAYERSSILVIASHOUSE_COOLTRAINER_F
+	jumptextfaceplayer SilviaText
 	end
 
 SilviasMomScript:
@@ -52,9 +46,7 @@ SilviasHouseRadioScript:
 	end
 
 SilviaText:
-	text_high
-	text " SILVIA "
-	next "PIKACHU is an"
+	text "PIKACHU is an"
 	line "evolved #MON."
 
 	para "I was amazed by"
@@ -70,22 +62,6 @@ SilviaText:
 	para "I wish I could be"
 	line "a researcher like"
 	cont "him…"
-
-	para "Anyway, what are"
-	line "you up to?"
-
-	para "…"
-
-	para "PROF.ELM wants to"
-	line "see us both?"
-
-	para "That's exciting!"
-
-	para "Must be really"
-	line "important."
-
-	para "Let's go…"
-	line "Right now!"
 	done
 
 SilviaShocked:
@@ -125,15 +101,6 @@ SilviasRadioText4:
 	line "#MON CHANNEL…"
 	done
 
-SilviaMovement:
-	big_step LEFT
-	big_step DOWN
-	big_step DOWN
-	big_step DOWN
-	big_step RIGHT
-	big_step DOWN
-	step_end
-
 SilviasHouse_MapEvents:
 	db 0, 0 ; filler
 
@@ -149,5 +116,5 @@ SilviasHouse_MapEvents:
 	bg_event  7,  1, BGEVENT_READ, SilviasHouseRadioScript
 
 	def_object_events
-	object_event  2,  3, SPRITE_COOLTRAINER_F, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, PAL_NPC_RED, OBJECTTYPE_SCRIPT, 0, SilviaScript, EVENT_SILVIA_LEAVES
+	object_event  2,  3, SPRITE_COOLTRAINER_F, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, PAL_NPC_RED, OBJECTTYPE_SCRIPT, 0, SilviaScript, -1
 	object_event  5,  3, SPRITE_POKEFAN_F, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, PAL_NPC_RED, OBJECTTYPE_SCRIPT, 0, SilviasMomScript, EVENT_SILVIAS_HOUSE_SILVIA

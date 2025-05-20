@@ -76,6 +76,42 @@ _TitleScreen:
 	ld a, 4 ; temporary
 	call ByteFill
 
+
+	hlbgcoord 13, 1
+	ld bc, 7 ; length
+	ld a, 3 ; temporary
+	call ByteFill
+
+	hlbgcoord 13, 2
+	ld bc, 7 ; length
+	ld a, 3 ; temporary
+	call ByteFill
+
+	hlbgcoord 13, 3
+	ld bc, 7 ; length
+	ld a, 3 ; temporary
+	call ByteFill
+
+	hlbgcoord 15, 4
+	ld bc, 7 ; length
+	ld a, 3 ; temporary
+	call ByteFill
+
+	hlbgcoord 15, 5
+	ld bc, 7 ; length
+	ld a, 3 ; temporary
+	call ByteFill
+
+	hlbgcoord 15, 6
+	ld bc, 7 ; length
+	ld a, 3 ; temporary
+	call ByteFill
+
+	hlbgcoord 15, 7
+	ld bc, 7 ; length
+	ld a, 3 ; temporary
+	call ByteFill
+
 ; Suicune gfx
 	hlbgcoord 0, 12
 	ld bc, 6 * BG_MAP_WIDTH ; the rest of the screen

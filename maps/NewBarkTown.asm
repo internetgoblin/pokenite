@@ -68,19 +68,6 @@ NewBarkTown_TeacherStopsYouScene2:
 	special RestartMapMusic
 	end
 
-NewBarkTown_MeetSilviaFirstScene:
-	checkevent EVENT_SILVIA_LEAVES ; not checkflag
-	iffalse .NewBarkTown_PlayerAwayFromLab
-	end
-
-.NewBarkTown_PlayerAwayFromLab
-	applymovement PLAYER, NewBarkTown_PlayerAwayFromLabMovement
-	opentext
-	writetext MeetSilviaFirstText
-	waitbutton
-	closetext
-	end
-
 NewBarkTownTeacherScript:
 	faceplayer
 	opentext
@@ -161,10 +148,6 @@ NewBarkTown_TeacherBringsYouBackMovement2:
 	turn_head LEFT
 	step_end
 
-NewBarkTown_PlayerAwayFromLabMovement:
-	step DOWN
-	step_end
-
 Text_GearIsImpressive:
 	text "Wow, your #GEAR"
 	line "is impressive!"
@@ -217,11 +200,6 @@ Text_CallMomOnGear:
 	line "you're doing."
 	done
 
-MeetSilviaFirstText:
-	text "Not until I"
-	line "tell SILVIA."
-	done
-
 Text_ElmDiscoveredNewMon:
 	text "Yo, <PLAYER>!"
 
@@ -262,7 +240,6 @@ NewBarkTown_MapEvents:
 	def_coord_events
 	coord_event  1,  8, SCENE_NEWBARKTOWN_TEACHER_STOPS_YOU, NewBarkTown_TeacherStopsYouScene1
 	coord_event  1,  9, SCENE_NEWBARKTOWN_TEACHER_STOPS_YOU, NewBarkTown_TeacherStopsYouScene2
-	coord_event  6,  4, SCENE_NEWBARKTOWN_TEACHER_STOPS_YOU, NewBarkTown_MeetSilviaFirstScene
 
 	def_bg_events
 	bg_event  8,  8, BGEVENT_READ, NewBarkTownSign

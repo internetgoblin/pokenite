@@ -124,19 +124,6 @@ MrPokemonsHouse_OakScript:
 	clearevent EVENT_SILVIAS_HOUSE_SILVIA
 	setscene SCENE_MRPOKEMONSHOUSE_NOOP
 	clearevent EVENT_COP_IN_ELMS_LAB
-	checkevent EVENT_GOT_TOTODILE_FROM_ELM
-	iftrue .RivalTakesChikorita
-	checkevent EVENT_GOT_CHIKORITA_FROM_ELM
-	iftrue .RivalTakesCyndaquil
-	setevent EVENT_TOTODILE_POKEBALL_IN_ELMS_LAB
-	end
-
-.RivalTakesChikorita:
-	setevent EVENT_CHIKORITA_POKEBALL_IN_ELMS_LAB
-	end
-
-.RivalTakesCyndaquil:
-	setevent EVENT_CYNDAQUIL_POKEBALL_IN_ELMS_LAB
 	end
 
 MrPokemonsHouse_ForeignMagazines:

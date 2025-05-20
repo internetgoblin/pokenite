@@ -4,7 +4,6 @@ ChrisStateSprites:
 	db PLAYER_SURF,      SPRITE_SURF
 	db PLAYER_SURF_PIKA, SPRITE_SURFING_PIKACHU
     db PLAYER_RUN
-    db PLAYER_ITEM,      SPRITE_PLAYER_ITEM
 	db -1 ; end
 
 KrisStateSprites:
@@ -13,5 +12,4 @@ KrisStateSprites:
 	db PLAYER_SURF,      SPRITE_SURF
 	db PLAYER_SURF_PIKA, SPRITE_SURFING_PIKACHU
 	db PLAYER_RUN
-	db PLAYER_ITEM,      SPRITE_PLAYER_ITEM
 	db -1 ; end
