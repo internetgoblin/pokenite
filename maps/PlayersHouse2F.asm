@@ -132,11 +132,15 @@ PlayersRadioText4:
 	done
 
 MomYellsUpText:
-	text "Oh, <PLAYER>…! Our"
+	text "<PLAYER>…! Our"
 	line "neighbor, PROF."
 
 	para "ELM, was looking"
 	line "for you!"
+
+	para "He wants you"
+	line "to do something"
+	cont "for him."
 	done
 
 PlayersHouse2F_MapEvents:

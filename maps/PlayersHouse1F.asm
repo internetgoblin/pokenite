@@ -222,10 +222,6 @@ MomWalksBackMovement:
 ElmsLookingForYouText:
 	text "There you are!"
 
-	para "PROF. ELM said he"
-	line "wanted you to do"
-	cont "something for him."
-
 	para "Oh! I almost for-"
 	line "got! I got you"
 	cont "something special."

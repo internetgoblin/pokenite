@@ -3,7 +3,6 @@ FindItemInBallScript::
 	iffalse .no_room
 	disappear LAST_TALKED
 	applymovement PLAYER, FancySpinMovement
-	loademote EMOTE_NOITEM
 	callasm LoadItemGetGFX
 	opentext
 	writetext .FoundItemText
@@ -51,7 +50,7 @@ FindItemInBallScript::
 	ld [wScriptVar], a
 	ret
 
-LoadItemGetGFX:
+LoadItemGetGFX::
 	ldh a, [rVBK]
 	push af
 	ld a, $1
@@ -62,6 +61,10 @@ LoadItemGetGFX:
 	call .LoadGFX
 	ld hl, vTiles0 tile $02
 	call .LoadGFX
+	ld hl, vTiles0 tile $f8
+	call .LoadItemGFX
+	ld hl, vTiles0 tile $fa
+	call .LoadItemGFX
 
 	pop af
 	ldh [rVBK], a
@@ -69,6 +72,17 @@ LoadItemGetGFX:
 
 .LoadGFX:
 	lb bc, BANK(ItemGetGFX), 4
+	push de
+	call Get2bpp
+	pop de
+	ld hl, 2 tiles
+	add hl, de
+	ld d, h
+	ld e, l
+	ret
+
+.LoadItemGFX
+	lb bc, BANK(ItemIconGFX), 4
 	push de
 	call Get2bpp
 	pop de
@@ -101,3 +115,6 @@ Hideemoteitem:
 
 ItemGetGFX:
 INCBIN "gfx/overworld/player_item.2bpp"
+
+ItemIconGFX:
+INCBIN "gfx/overworld/noitem.2bpp"

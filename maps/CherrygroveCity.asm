@@ -254,9 +254,7 @@ GuideGentMovement6:
 	step_end
 
 GuideGentIntroText:
-	text_high
-	text " GUIDE GENT "
-	next "You're a rookie"
+	text "You're a rookie"
 	line "trainer, aren't"
 	cont "you? I can tell!"
 
@@ -270,16 +268,12 @@ GuideGentIntroText:
 	done
 
 GuideGentTourText1:
-	text_high
-	text " GUIDE GENT "
-	next "OK, then!"
+	text "OK, then!"
 	line "Follow me!"
 	done
 
 GuideGentPokecenterText:
-	text_high
-	text " GUIDE GENT "
-	next "This is a #MON"
+	text "This is a #MON"
 	line "CENTER. They heal"
 
 	para "your #MON in no"
@@ -293,9 +287,7 @@ GuideGentPokecenterText:
 	done
 
 GuideGentMartText:
-	text_high
-	text " GUIDE GENT "
-	next "This is a #MON"
+	text "This is a #MON"
 	line "MART."
 
 	para "They sell BALLS"
@@ -306,9 +298,7 @@ GuideGentMartText:
 	done
 
 GuideGentRoute30Text:
-	text_high
-	text " GUIDE GENT "
-	next "ROUTE 30 is out"
+	text "ROUTE 30 is out"
 	line "this way."
 
 	para "Trainers will be"
@@ -319,9 +309,7 @@ GuideGentRoute30Text:
 	done
 
 GuideGentSeaText:
-	text_high
-	text " GUIDE GENT "
-	next "This is the sea,"
+	text "This is the sea,"
 	line "as you can see."
 
 	para "Some #MON are"
@@ -330,9 +318,7 @@ GuideGentSeaText:
 	done
 
 GuideGentOldCherryText:
-	text_high
-	text " GUIDE GENT "
-	next "This here is"
+	text "This here is"
 	line "the OLD CHERRY."
 
 	para "It's a tree"
@@ -347,9 +333,7 @@ GuideGentOldCherryText:
 	done
 
 GuideGentGiftText:
-	text_high
-	text " GUIDE GENT "
-	next "Here…"
+	text "Here…"
 
 	para "It's my house!"
 	line "Thanks for your"
@@ -365,9 +349,7 @@ GotMapCardText:
 	done
 
 GuideGentPokegearText:
-	text_high
-	text " GUIDE GENT "
-	next "#GEAR becomes"
+	text "#GEAR becomes"
 	line "more useful as you"
 	cont "add CARDS."
 
@@ -376,9 +358,7 @@ GuideGentPokegearText:
 	done
 
 GuideGentNoText:
-	text_high
-	text " GUIDE GENT "
-	next "Oh… It's something"
+	text "Oh… It's something"
 	line "I enjoy doing…"
 
 	para "Fine. Come see me"

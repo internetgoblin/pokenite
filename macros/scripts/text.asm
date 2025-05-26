@@ -46,11 +46,6 @@ MACRO text_low
 	db TX_LOW
 ENDM
 
-	const TX_HIGH
-MACRO text_high
-	db TX_HIGH
-ENDM
-
 	const TX_PROMPT_BUTTON ; $06
 MACRO text_promptbutton
 	db TX_PROMPT_BUTTON
@@ -140,6 +135,11 @@ MACRO text_far
 	db TX_FAR
 	dw \1
 	db BANK(\1)
+ENDM
+
+	const TX_BUENA
+MACRO text_buena
+	db TX_BUENA
 ENDM
 
 DEF NUM_TEXT_CMDS EQU const_value

@@ -41,29 +41,6 @@ ElmsLabWalkUpToElmScript:
 	applymovement ELMSLAB_ELM, ElmsLab_ElmAwayFromComputer1
 	opentext
 	writetext ElmText_Intro
-.MustSayYes:
-	yesorno
-	iftrue .ElmGetsEmail
-	writetext ElmText_Refused
-	sjump .MustSayYes
-
-.ElmGetsEmail:
-	writetext ElmText_Accepted
-	promptbutton
-	writetext ElmText_ResearchAmbitions
-	waitbutton
-	closetext
-	playsound SFX_GLASS_TING
-	pause 30
-	showemote EMOTE_SHOCK, ELMSLAB_ELM, 10
-	turnobject ELMSLAB_ELM, RIGHT
-	applymovement ELMSLAB_ELM, ElmsLab_ElmBackToPC
-	opentext
-	writetext ElmText_GotAnEmail
-	waitbutton
-	closetext
-	opentext
-	writetext ElmText_MissionFromMrPokemon
 	waitbutton
 	closetext
 	applymovement ELMSLAB_ELM, ElmsLab_ElmToDefaultPositionMovement1
@@ -75,7 +52,6 @@ ElmsLabWalkUpToElmScript:
 	waitbutton
 	closetext
 	setscene SCENE_ELMSLAB_CANT_LEAVE
-	closetext
 	end
 
 ProfElmScript:
@@ -242,6 +218,35 @@ DidntChooseStarterScript:
 ElmDirectionsScript:
 	turnobject PLAYER, UP
 	opentext
+	writetext ElmText_ResearchAmbitions
+	waitbutton
+	closetext
+	; fallthrough
+
+ElmGetsEmail:
+	playsound SFX_GLASS_TING
+	pause 30
+	showemote EMOTE_SHOCK, ELMSLAB_ELM, 10
+	applymovement ELMSLAB_ELM, ElmsLab_ElmBackToPC
+	opentext
+	writetext ElmText_GotAnEmail
+	waitbutton
+	closetext
+	applymovement PLAYER, ElmsLab_PlayertoPC
+	opentext
+	writetext ElmText_ReadsEmail
+	waitbutton
+	closetext
+	turnobject ELMSLAB_ELM, RIGHT
+	opentext
+	writetext ElmText_MissionFromMrPokemon
+	waitbutton
+	closetext
+	; fallthrough
+
+ElmsDelayedRealization:
+	showemote EMOTE_SHOCK, ELMSLAB_ELM, 25
+	opentext
 	writetext ElmDirectionsText1
 	waitbutton
 	closetext
@@ -252,16 +257,12 @@ ElmDirectionsScript:
 	waitsfx
 	waitbutton
 	closetext
-	turnobject ELMSLAB_ELM, LEFT
+	turnobject ELMSLAB_ELM, UP
 	opentext
 	writetext ElmDirectionsText2
 	waitbutton
 	closetext
 	turnobject ELMSLAB_ELM, DOWN
-	opentext
-	writetext ElmDirectionsText3
-	waitbutton
-	closetext
 	setevent EVENT_GOT_A_POKEMON_FROM_ELM
 	setscene SCENE_ELMSLAB_AIDE_GIVES_POTION
 	setmapscene NEW_BARK_TOWN, SCENE_NEWBARKTOWN_NOOP
@@ -271,6 +272,7 @@ ElmDescribesMrPokemonScript:
 	writetext ElmDescribesMrPokemonText
 	waitbutton
 	closetext
+	turnobject ELMSLAB_ELM, DOWN
 	end
 
 LookAtElmPokeBallScript:
@@ -594,7 +596,15 @@ ElmsLab_ElmAwayFromComputer1:
 	step_end
 
 ElmsLab_ElmBackToPC:
-	turn_head DOWN
+	big_step LEFT
+	big_step LEFT
+	big_step DOWN
+	big_step DOWN
+	step_end
+
+ElmsLab_PlayertoPC:
+	step DOWN
+	step LEFT
 	step_end
 
 ElmsLab_CantLeaveMovement:
@@ -687,7 +697,7 @@ ElmText_Intro:
 	text "ELM: <PLAY_G>!"
 	line "There you are!"
 
-	para "I need to ask"
+	para "I needed to ask"
 	line "you a favor."
 
 	para "I'm conducting new"
@@ -696,8 +706,8 @@ ElmText_Intro:
 	para "right now. I was"
 	line "wondering if you"
 
-	para "could help me"
-	line "with it."
+	para "could help me with"
+	line "it, <PLAY_G>."
 
 	para "You see…"
 
@@ -713,26 +723,13 @@ ElmText_Intro:
 	para "quite understand"
 	line "yet."
 
-	para "So! I'd like each"
-	line "of you"
+	para "So!"
 
-	para "To raise a"
-	line "rare #MON"
+	para "I'd like you to"
+	line "raise a #MON"
 
 	para "that I recently"
 	line "caught."
-	done
-
-ElmText_Accepted:
-	text "Thanks, <PLAY_G>!"
-
-	para "You're a great"
-	line "help!"
-	done
-
-ElmText_Refused:
-	text "But… Please, I"
-	line "need your help!"
 	done
 
 ElmText_ResearchAmbitions:
@@ -752,8 +749,10 @@ ElmText_ResearchAmbitions:
 ElmText_GotAnEmail:
 	text "Oh, hey! I got an"
 	line "e-mail!"
+	done
 
-	para "<……><……><……>"
+ElmText_ReadsEmail:
+	text "<……><……><……>"
 	line "Hm… Uh-huh…"
 
 	para "Okay…"
@@ -783,13 +782,6 @@ ElmText_MissionFromMrPokemon:
 
 	para "with our #MON"
 	line "research…"
-
-	para "Wait!"
-
-	para "I know!"
-
-	para "<PLAY_G>, can you"
-	line "go in our place?"
 	done
 
 ElmText_ChooseAPokemon:
@@ -863,7 +855,14 @@ ReceivedStarterText:
 	done
 
 ElmDirectionsText1:
-	text "MR.#MON lives a"
+	text "Wait!"
+
+	para "I know!"
+
+	para "<PLAY_G>, can you"
+	line "go in our place?"
+
+	para "MR.#MON lives a"
 	line "little bit beyond"
 
 	para "CHERRYGROVE, the"

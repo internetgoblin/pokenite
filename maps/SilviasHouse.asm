@@ -64,10 +64,6 @@ SilviaText:
 	cont "him…"
 	done
 
-SilviaShocked:
-	text_high
-	done
-
 SilviasMomText:
 	text "My daughter is"
 	line "adamant about"

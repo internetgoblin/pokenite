@@ -697,7 +697,6 @@ TextCommands::
 	dw TextCommand_MOVE          ; TX_MOVE
 	dw TextCommand_BOX           ; TX_BOX
 	dw TextCommand_LOW           ; TX_LOW
-	dw TextCommand_HIGH
 	dw TextCommand_PROMPT_BUTTON ; TX_PROMPT_BUTTON
 	dw TextCommand_SCROLL        ; TX_SCROLL
 	dw TextCommand_START_ASM     ; TX_START_ASM
@@ -715,6 +714,7 @@ TextCommands::
 	dw TextCommand_STRINGBUFFER  ; TX_STRINGBUFFER
 	dw TextCommand_DAY           ; TX_DAY
 	dw TextCommand_FAR           ; TX_FAR
+	dw TextCommand_BUENA
 	assert_table_length NUM_TEXT_CMDS
 
 TextCommand_START::
@@ -1048,3 +1048,13 @@ TextCommand_DAY::
 .Fri:    db "FRI@"
 .Satur:  db "SATUR@"
 .Day:    db "DAY@"
+
+
+TextCommand_BUENA:: ; WIP
+	push hl
+	push bc
+	call BuenaPrintText
+	call PlaceString
+	pop bc
+	pop hl
+	ret

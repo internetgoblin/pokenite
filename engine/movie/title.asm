@@ -73,7 +73,7 @@ _TitleScreen:
 ; 'CRYSTAL VERSION'
 	hlbgcoord 4, 7
 	ld bc, 9 ; length of version text
-	ld a, 4 ; temporary
+	ld a, 3 ; temporary
 	call ByteFill
 
 
