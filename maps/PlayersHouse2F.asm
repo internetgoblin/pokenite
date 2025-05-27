@@ -58,7 +58,7 @@ PlayersHousePosterScript:
 
 PlayersHouse2FMomScript:
 	opentext
-	writetext MomYellsUpText
+	writenamedtext PlayerHouse2FMomNameText, MomYellsUpText
 	promptbutton
 	closetext
 	setscene SCENE_PLAYERSHOUSE2F_NOOP
@@ -142,6 +142,9 @@ MomYellsUpText:
 	line "to do something"
 	cont "for him."
 	done
+
+PlayerHouse2FMomNameText:
+	db "MOM@"
 
 PlayersHouse2F_MapEvents:
 	db 0, 0 ; filler

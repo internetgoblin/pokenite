@@ -141,6 +141,7 @@ ScriptCommandTable:
 	dw Script_writeunusedbyte            ; 4a
 	dw Script_farwritetext               ; 4b
 	dw Script_writetext                  ; 4c
+	dw Script_writenamedtext
 	dw Script_repeattext                 ; 4d
 	dw Script_yesorno                    ; 4e
 	dw Script_loadmenu                   ; 4f
@@ -327,6 +328,21 @@ Script_farjumptext:
 	ld b, BANK(JumpTextScript)
 	ld hl, JumpTextScript
 	jp ScriptJump
+
+Script_writenamedtext:
+	call SetupNameplate
+	hlcoord 1, 1
+	ld [hl], "💬"
+	inc hl
+	inc hl
+	call GetScriptByte
+	ld e, a
+	call GetScriptByte
+	ld d, a
+	hlcoord NAMEPLATE_INNERX, NAMEPLATE_INNERY
+	ld a, [wScriptBank]
+	call PlaceFarString
+;fallthrough
 
 Script_writetext:
 	call GetScriptByte

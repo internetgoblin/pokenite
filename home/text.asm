@@ -132,6 +132,12 @@ TextboxPalette::
 	jr nz, .col
 	ret
 
+SetupNameplate::
+	hlcoord NAMEPLATE_X, NAMEPLATE_Y
+	ld b, NAMEPLATE_INNERH
+	ld c, NAMEPLATE_INNERW
+	jp Textbox
+
 SpeechTextbox::
 ; Standard textbox.
 	hlcoord TEXTBOX_X, TEXTBOX_Y

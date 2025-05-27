@@ -509,6 +509,13 @@ MACRO writetext
 	dw \1 ; text_pointer
 ENDM
 
+	const writenamedtext_command
+MACRO writenamedtext
+	db writenamedtext_command
+	dw \1 ; name_pointer
+	dw \2 ; text_pointer
+ENDM
+
 	const repeattext_command ; $4d
 MACRO repeattext
 	db repeattext_command

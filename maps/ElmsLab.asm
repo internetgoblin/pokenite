@@ -40,7 +40,7 @@ ElmsLabWalkUpToElmScript:
 	showemote EMOTE_SHOCK, ELMSLAB_ELM, 15
 	applymovement ELMSLAB_ELM, ElmsLab_ElmAwayFromComputer1
 	opentext
-	writetext ElmText_Intro
+	writenamedtext ElmNameText, ElmText_Intro
 	waitbutton
 	closetext
 	applymovement ELMSLAB_ELM, ElmsLab_ElmToDefaultPositionMovement1
@@ -1304,6 +1304,9 @@ ElmsLabPCText:
 	para "…It says on the"
 	line "screen…"
 	done
+
+ElmNameText:
+	db "PROF.ELM@"
 
 ElmsLab_MapEvents:
 	db 0, 0 ; filler

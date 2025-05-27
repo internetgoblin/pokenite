@@ -28,7 +28,7 @@ MeetMomScript:
 
 RestOfMeetMomScript:
 	opentext
-	writetext ElmsLookingForYouText
+	writenamedtext PlayerHouse1FMomNameText, ElmsLookingForYouText
 	promptbutton
 	closetext
 	follow PLAYERSHOUSE1F_MOM1, PLAYER
@@ -37,8 +37,6 @@ RestOfMeetMomScript:
 	applymovement PLAYER, PlayerGiftMovement
 	appear PLAYERSHOUSE1F_GIFT ; Scene set in 2f to start object invisible
 	opentext
-	writetext MomHereYouGoText
-	waitbutton
 	getstring STRING_BUFFER_4, PokegearName
 	disappear PLAYERSHOUSE1F_GIFT
 	setevent EVENT_GIFTED_POKEGEAR
@@ -53,11 +51,11 @@ RestOfMeetMomScript:
 	setevent EVENT_PLAYERS_HOUSE_MOM_1
 	clearevent EVENT_PLAYERS_HOUSE_MOM_2
 	opentext
-	writetext MomGivesPokegearText
+	writenamedtext PlayerHouse1FMomNameText, MomGivesPokegearText
 	promptbutton
 	special SetDayOfWeek
 .SetDayOfWeek:
-	writetext IsItDSTText
+	writenamedtext PlayerHouse1FMomNameText, IsItDSTText
 	yesorno
 	iffalse .WrongDay
 	special InitialSetDSTFlag
@@ -70,10 +68,10 @@ RestOfMeetMomScript:
 	yesorno
 	iffalse .SetDayOfWeek
 .DayOfWeekDone:
-	writetext ComeHomeForDSTText
+	writenamedtext PlayerHouse1FMomNameText, ComeHomeForDSTText
 	waitbutton
 .FinishPhone:
-	writetext InstructionsNextText
+	writenamedtext PlayerHouse1FMomNameText, InstructionsNextText
 	waitbutton
 	closetext
 	special RestartMapMusic
@@ -106,20 +104,20 @@ MomScript:
 	iftrue .GaveMysteryEgg
 	checkevent EVENT_GOT_A_POKEMON_FROM_ELM
 	iftrue .GotAPokemon
-	writetext HurryUpElmIsWaitingText
+	writenamedtext PlayerHouse1FMomNameText, HurryUpElmIsWaitingText
 	waitbutton
 	closetext
 	applymovement PLAYERSHOUSE1F_MOM1, MomTurnsBackMovement
 	end
 
 .GotAPokemon:
-	writetext SoWhatWasProfElmsErrandText
+	writenamedtext PlayerHouse1FMomNameText, SoWhatWasProfElmsErrandText
 	waitbutton
 	closetext
 	end
 
 .FirstTimeBanking:
-	writetext ImBehindYouText
+	writenamedtext PlayerHouse1FMomNameText, ImBehindYouText
 	waitbutton
 	closetext
 	end
@@ -369,6 +367,9 @@ PlayersHouse1FTVText:
 	para "I'd better get"
 	line "rolling too!"
 	done
+
+PlayerHouse1FMomNameText:
+	db "MOM@"
 
 PlayersHouse1F_MapEvents:
 	db 0, 0 ; filler

@@ -160,5 +160,5 @@
 	tilecoll WALL, WALL, WALL, WALL ; 9f
 	tilecoll WALL, WALL, WALL, WALL ; a0
 	tilecoll WALL, WALL, WALL, WALL ; a1
-	tilecoll WALL, WALL, WALL, WALL ; a2
+	tilecoll HOP_DOWN, FLOOR, WALL, FLOOR ; a2
 	tilecoll WALL, WALL, WALL, WALL ; a3
