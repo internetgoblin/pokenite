@@ -20,43 +20,43 @@ CherrygroveCityFlypointCallback:
 CherrygroveCityGuideGent:
 	faceplayer
 	opentext
-	writetext GuideGentIntroText
+	writenamedtext GuideGentNameText, GuideGentIntroText
 	yesorno
 	iffalse .No
 	sjump .Yes
 .Yes:
-	writetext GuideGentTourText1
+	writenamedtext GuideGentNameText, GuideGentTourText1
 	waitbutton
 	closetext
 	playmusic MUSIC_SHOW_ME_AROUND
 	follow CHERRYGROVECITY_GRAMPS, PLAYER
 	applymovement CHERRYGROVECITY_GRAMPS, GuideGentMovement1
 	opentext
-	writetext GuideGentPokecenterText
+	writenamedtext GuideGentNameText, GuideGentPokecenterText
 	waitbutton
 	closetext
 	applymovement CHERRYGROVECITY_GRAMPS, GuideGentMovement2
 	turnobject PLAYER, UP
 	opentext
-	writetext GuideGentMartText
+	writenamedtext GuideGentNameText, GuideGentMartText
 	waitbutton
 	closetext
 	applymovement CHERRYGROVECITY_GRAMPS, GuideGentMovement3
 	turnobject PLAYER, UP
 	opentext
-	writetext GuideGentRoute30Text
+	writenamedtext GuideGentNameText, GuideGentRoute30Text
 	waitbutton
 	closetext
 	applymovement CHERRYGROVECITY_GRAMPS, GuideGentMovement4
 	turnobject PLAYER, LEFT
 	opentext
-	writetext GuideGentSeaText
+	writenamedtext GuideGentNameText, GuideGentSeaText
 	waitbutton
 	closetext
 	applymovement CHERRYGROVECITY_GRAMPS, GuideGentMovement4_2
 	turnobject PLAYER, UP
 	opentext
-	writetext GuideGentOldCherryText
+	writenamedtext GuideGentNameText, GuideGentOldCherryText
 	waitbutton
 	closetext
 	applymovement CHERRYGROVECITY_GRAMPS, GuideGentMovement5
@@ -65,14 +65,16 @@ CherrygroveCityGuideGent:
 	turnobject CHERRYGROVECITY_GRAMPS, RIGHT
 	turnobject PLAYER, LEFT
 	opentext
-	writetext GuideGentGiftText
+	writenamedtext GuideGentNameText, GuideGentGiftText
 	promptbutton
+	closetext
 	getstring STRING_BUFFER_4, .mapcardname
+	opentext
 	scall .JumpstdReceiveItem
 	setflag ENGINE_MAP_CARD
 	writetext GotMapCardText
 	promptbutton
-	writetext GuideGentPokegearText
+	writenamedtext GuideGentNameText, GuideGentPokegearText
 	waitbutton
 	closetext
 	stopfollow
@@ -97,6 +99,9 @@ CherrygroveCityGuideGent:
 	waitbutton
 	closetext
 	end
+
+GuideGentNameText:
+	db "GUIDE GENT@"
 
 CherrygroveTeacherScript:
 	faceplayer

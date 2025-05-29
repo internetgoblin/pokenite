@@ -37,9 +37,13 @@ RestOfMeetMomScript:
 	applymovement PLAYER, PlayerGiftMovement
 	appear PLAYERSHOUSE1F_GIFT ; Scene set in 2f to start object invisible
 	opentext
+	writenamedtext PlayerHouse1FMomNameText, MomHereYouGoText
+	waitbutton
+	closetext
 	getstring STRING_BUFFER_4, PokegearName
 	disappear PLAYERSHOUSE1F_GIFT
 	setevent EVENT_GIFTED_POKEGEAR
+	opentext
 	scall PlayersHouse1FReceiveItemStd
 	setflag ENGINE_POKEGEAR
 	setflag ENGINE_PHONE_CARD

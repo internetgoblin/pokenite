@@ -7,8 +7,16 @@ ElmsHouse_MapScripts:
 
 	def_callbacks
 
+ElmsWifeNameText:
+	db "MRS.ELM@"
+
 ElmsWife:
-	jumptextfaceplayer ElmsWifeText
+	faceplayer
+	opentext
+	writenamedtext ElmsWifeNameText, ElmsWifeText
+	waitbutton
+	closetext
+	end
 
 ElmsSon:
 	jumptextfaceplayer ElmsSonText

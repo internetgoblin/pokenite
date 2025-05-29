@@ -43,7 +43,6 @@ INCLUDE "engine/pokemon/knows_move.asm"
 
 SECTION "bank4", ROMX
 
-INCLUDE "engine/items/pack.asm"
 INCLUDE "engine/overworld/time.asm"
 INCLUDE "engine/items/tmhm2.asm"
 INCLUDE "engine/menus/naming_screen.asm"
@@ -665,7 +664,10 @@ INCLUDE "engine/gfx/vwf.asm"
 SECTION "Stadium 2 Checksums", ROMX
 
 INCLUDE "engine/events/find_item_in_ball.asm"
-
+INCLUDE "engine/items/place_item_icon.asm"
+INCLUDE "gfx/items.asm"
+INCLUDE "data/items/itemicon_pointers.asm"
+INCLUDE "engine/items/pack.asm" ; moved
 
 SECTION "16-bit ID stuff", ROMX
 

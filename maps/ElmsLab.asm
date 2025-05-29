@@ -48,7 +48,7 @@ ElmsLabWalkUpToElmScript:
 	applymovement ELMSLAB_ELM, ElmsLab_ElmToDefaultPositionMovement2
 	turnobject PLAYER, UP
 	opentext
-	writetext ElmText_ChooseAPokemon
+	writenamedtext ElmNameText, ElmText_ChooseAPokemon
 	waitbutton
 	closetext
 	setscene SCENE_ELMSLAB_CANT_LEAVE
@@ -117,7 +117,7 @@ ElmCheckGotEggAgain:
 LabTryToLeaveScript:
 	turnobject ELMSLAB_ELM, DOWN
 	opentext
-	writetext LabWhereGoingText
+	writenamedtext ElmNameText, LabWhereGoingText
 	waitbutton
 	closetext
 	applymovement PLAYER, ElmsLab_CantLeaveMovement
@@ -133,15 +133,17 @@ CyndaquilPokeBallScript:
 	waitbutton
 	closepokepic
 	opentext
-	writetext TakeCyndaquilText
+	writenamedtext ElmNameText, TakeCyndaquilText
 	yesorno
 	iffalse DidntChooseStarterScript
 	disappear ELMSLAB_POKE_BALL1
 	setevent EVENT_GOT_CYNDAQUIL_FROM_ELM
-	writetext ChoseStarterText
+	writenamedtext ElmNameText, ChoseStarterText
 	promptbutton
 	waitsfx
+	closetext
 	getmonname STRING_BUFFER_3, CYNDAQUIL
+	opentext
 	writetext ReceivedStarterText
 	playsound SFX_CAUGHT_MON
 	waitsfx
@@ -163,7 +165,7 @@ TotodilePokeBallScript:
 	waitbutton
 	closepokepic
 	opentext
-	writetext TakeTotodileText
+	writenamedtext ElmNameText, TakeTotodileText
 	yesorno
 	iffalse DidntChooseStarterScript
 	disappear ELMSLAB_POKE_BALL2
@@ -171,7 +173,9 @@ TotodilePokeBallScript:
 	writetext ChoseStarterText
 	promptbutton
 	waitsfx
+	closetext
 	getmonname STRING_BUFFER_3, TOTODILE
+	opentext
 	writetext ReceivedStarterText
 	playsound SFX_CAUGHT_MON
 	waitsfx
@@ -191,7 +195,7 @@ ChikoritaPokeBallScript:
 	waitbutton
 	closepokepic
 	opentext
-	writetext TakeChikoritaText
+	writenamedtext ElmNameText, TakeChikoritaText
 	yesorno
 	iffalse DidntChooseStarterScript
 	disappear ELMSLAB_POKE_BALL3
@@ -199,7 +203,9 @@ ChikoritaPokeBallScript:
 	writetext ChoseStarterText
 	promptbutton
 	waitsfx
+	closetext
 	getmonname STRING_BUFFER_3, CHIKORITA
+	opentext
 	writetext ReceivedStarterText
 	playsound SFX_CAUGHT_MON
 	waitsfx
@@ -210,7 +216,7 @@ ChikoritaPokeBallScript:
 	sjump ElmDirectionsScript
 
 DidntChooseStarterScript:
-	writetext DidntChooseStarterText
+	writenamedtext ElmNameText, DidntChooseStarterText
 	waitbutton
 	closetext
 	end
@@ -218,7 +224,7 @@ DidntChooseStarterScript:
 ElmDirectionsScript:
 	turnobject PLAYER, UP
 	opentext
-	writetext ElmText_ResearchAmbitions
+	writenamedtext ElmNameText, ElmText_ResearchAmbitions
 	waitbutton
 	closetext
 	; fallthrough
@@ -229,17 +235,17 @@ ElmGetsEmail:
 	showemote EMOTE_SHOCK, ELMSLAB_ELM, 10
 	applymovement ELMSLAB_ELM, ElmsLab_ElmBackToPC
 	opentext
-	writetext ElmText_GotAnEmail
+	writenamedtext ElmNameText, ElmText_GotAnEmail
 	waitbutton
 	closetext
 	applymovement PLAYER, ElmsLab_PlayertoPC
 	opentext
-	writetext ElmText_ReadsEmail
+	writenamedtext ElmNameText, ElmText_ReadsEmail
 	waitbutton
 	closetext
 	turnobject ELMSLAB_ELM, RIGHT
 	opentext
-	writetext ElmText_MissionFromMrPokemon
+	writenamedtext ElmNameText, ElmText_MissionFromMrPokemon
 	waitbutton
 	closetext
 	; fallthrough
@@ -247,7 +253,7 @@ ElmGetsEmail:
 ElmsDelayedRealization:
 	showemote EMOTE_SHOCK, ELMSLAB_ELM, 25
 	opentext
-	writetext ElmDirectionsText1
+	writenamedtext ElmNameText, ElmDirectionsText1
 	waitbutton
 	closetext
 	addcellnum PHONE_ELM
@@ -259,7 +265,7 @@ ElmsDelayedRealization:
 	closetext
 	turnobject ELMSLAB_ELM, UP
 	opentext
-	writetext ElmDirectionsText2
+	writenamedtext ElmNameText, ElmDirectionsText2
 	waitbutton
 	closetext
 	turnobject ELMSLAB_ELM, DOWN
@@ -269,7 +275,7 @@ ElmsDelayedRealization:
 	end
 
 ElmDescribesMrPokemonScript:
-	writetext ElmDescribesMrPokemonText
+	writenamedtext ElmNameText, ElmDescribesMrPokemonText
 	waitbutton
 	closetext
 	turnobject ELMSLAB_ELM, DOWN
@@ -315,7 +321,7 @@ ElmAfterTheftDoneScript:
 	end
 
 ElmAfterTheftScript:
-	writetext ElmAfterTheftText1
+	writenamedtext ElmNameText, ElmAfterTheftText1
 	checkitem MYSTERY_EGG
 	iffalse ElmAfterTheftDoneScript
 	promptbutton
@@ -342,7 +348,7 @@ ElmAfterTheftScript:
 	end
 
 ElmStudyingEggScript:
-	writetext ElmStudyingEggText
+	writenamedtext ElmNameText, ElmStudyingEggText
 	waitbutton
 	closetext
 	end
@@ -694,7 +700,7 @@ AfterChikoritaMovement:
 	step_end
 
 ElmText_Intro:
-	text "ELM: <PLAY_G>!"
+	text "<PLAY_G>!"
 	line "There you are!"
 
 	para "I needed to ask"
@@ -805,30 +811,30 @@ ElmText_LetYourMonBattleIt:
 	done
 
 LabWhereGoingText:
-	text "ELM: Wait! Where"
-	line "are you going?"
+	text "Wait! Where are"
+	line "you going?"
 	done
 
 TakeCyndaquilText:
-	text "ELM: You'll take"
+	text "You'll take"
 	line "CYNDAQUIL, the"
 	cont "fire #MON?"
 	done
 
 TakeTotodileText:
-	text "ELM: Do you want"
+	text "Do you want"
 	line "TOTODILE, the"
 	cont "water #MON?"
 	done
 
 TakeChikoritaText:
-	text "ELM: So, you like"
+	text "So, you like"
 	line "CHIKORITA, the"
 	cont "grass #MON?"
 	done
 
 DidntChooseStarterText:
-	text "ELM: Think it over"
+	text "Think it over"
 	line "carefully."
 
 	para "Your partner is"
@@ -836,15 +842,8 @@ DidntChooseStarterText:
 	done
 
 ChoseStarterText:
-	text "ELM: I think"
-	line "that's a great"
-	cont "#MON!"
-	done
-
-ChoseStarterText2:
-	text "ELM: I think"
-	line "that's a great"
-	cont "#MON too!"
+	text "I think that's"
+	line "a great #MON!"
 	done
 
 ReceivedStarterText:
@@ -929,7 +928,7 @@ ElmsLabHealingMachineText2:
 	done
 
 ElmAfterTheftText1:
-	text "ELM: Welcome back"
+	text "Welcome back"
 	line "<PLAY_G>!"
 
 	para "Oh, yes, what was"
@@ -944,7 +943,7 @@ ElmAfterTheftText2:
 	done
 
 ElmAfterTheftText3:
-	text "ELM: This?"
+	text "This?"
 	done
 
 ElmAfterTheftText4:
@@ -956,7 +955,7 @@ ElmAfterTheftText4:
 	done
 
 ElmAfterTheftText5:
-	text "ELM: What?!?"
+	text "What?!?"
 
 	para "PROF.OAK gave you"
 	line "a #DEX?"
@@ -1002,15 +1001,15 @@ ElmAfterTheftText6:
 	done
 
 ElmStudyingEggText:
-	text "ELM: Don't give"
-	line "up! I'll call if"
+	text "Don't give up!"
+	line "I'll call if"
 
 	para "I learn anything"
 	line "about that EGG!"
 	done
 
 ElmAideHasEggText:
-	text "ELM: <PLAY_G>?"
+	text "<PLAY_G>?"
 	line "Didn't you meet my"
 	cont "assistant?"
 
@@ -1026,8 +1025,8 @@ ElmAideHasEggText:
 	done
 
 ElmWaitingEggHatchText:
-	text "ELM: Hey, has that"
-	line "EGG changed any?"
+	text "Hey, has that EGG"
+	line " changed any?"
 	done
 
 ElmThoughtEggHatchedText:
@@ -1039,7 +1038,7 @@ ElmThoughtEggHatchedText:
 	done
 
 ShowElmTogepiText1:
-	text "ELM: <PLAY_G>, you"
+	text "<PLAY_G>, you"
 	line "look great!"
 	done
 
@@ -1093,7 +1092,7 @@ ElmGiveEverstoneText2:
 	done
 
 ElmText_CallYou:
-	text "ELM: <PLAY_G>, I'll"
+	text "<PLAY_G>, I'll"
 	line "call you if any-"
 	cont "thing comes up."
 	done
@@ -1113,7 +1112,7 @@ AideText_AfterTheft:
 	done
 
 ElmGiveMasterBallText1:
-	text "ELM: Hi, <PLAY_G>!"
+	text "Hi, <PLAY_G>!"
 	line "Thanks to you, my"
 
 	para "research is going"
@@ -1146,7 +1145,7 @@ ElmGiveMasterBallText2:
 	done
 
 ElmGiveTicketText1:
-	text "ELM: <PLAY_G>!"
+	text "<PLAY_G>!"
 	line "There you are!"
 
 	para "I called because I"

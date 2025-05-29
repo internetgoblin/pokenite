@@ -7,7 +7,15 @@ GuideGentsHouse_MapScripts:
 	def_callbacks
 
 GuideGentsHouseGuideGent:
-	jumptextfaceplayer GuideGentsHouseGuideGentText
+	faceplayer
+	opentext
+	writenamedtext GuideGentHomeNameText, GuideGentsHouseGuideGentText
+	waitbutton
+	closetext
+	end
+
+GuideGentHomeNameText:
+	db "GUIDE GENT@"
 
 GuideGentsHouseBookshelf:
 	jumpstd MagazineBookshelfScript

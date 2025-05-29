@@ -75,6 +75,7 @@ Pack:
 	ret
 
 .ItemsPocketMenu:
+	call Pack_Draw_Sprites
 	ld hl, ItemsPocketMenuHeader
 	call CopyMenuHeader
 	ld a, [wItemsPocketCursor]
@@ -103,6 +104,7 @@ Pack:
 	ret
 
 .KeyItemsPocketMenu:
+	call Pack_Draw_Sprites
 	ld hl, KeyItemsPocketMenuHeader
 	call CopyMenuHeader
 	ld a, [wKeyItemsPocketCursor]
@@ -225,6 +227,7 @@ Pack:
 	ret
 
 .BallsPocketMenu:
+	call Pack_Draw_Sprites
 	ld hl, BallsPocketMenuHeader
 	call CopyMenuHeader
 	ld a, [wBallsPocketCursor]
@@ -253,6 +256,7 @@ Pack:
 	ret
 
 .FruitPocketMenu:
+	call Pack_Draw_Sprites
 	ld hl, FruitPocketMenuHeader
 	call CopyMenuHeader
 	ld a, [wFruitPocketCursor]
@@ -1195,6 +1199,7 @@ TutorialPack:
 	db 5, 8 ; rows, columns
 	db SCROLLINGMENU_ITEMS_QUANTITY ; item format
 	dbw 0, wDudeNumItems
+	dba PlaceItemIcon
 	dba PlaceMenuItemName
 	dba PlaceMenuItemQuantity
 	dba UpdateItemDescription
@@ -1215,6 +1220,7 @@ TutorialPack:
 	db 5, 8 ; rows, columns
 	db SCROLLINGMENU_ITEMS_NORMAL ; item format
 	dbw 0, wDudeNumKeyItems
+	dba PlaceItemIcon
 	dba PlaceMenuItemName
 	dba PlaceMenuItemQuantity
 	dba UpdateItemDescription
@@ -1244,6 +1250,7 @@ TutorialPack:
 	db 5, 8 ; rows, columns
 	db SCROLLINGMENU_ITEMS_QUANTITY ; item format
 	dbw 0, wDudeNumBalls
+	dba PlaceItemIcon
 	dba PlaceMenuItemName
 	dba PlaceMenuItemQuantity
 	dba UpdateItemDescription
@@ -1264,6 +1271,7 @@ TutorialPack:
 	db 5, 8 ; rows, columns
 	db 2 ; horizontal spacing
 	dbw 0, wDudeNumFruit
+	dba PlaceItemIcon
 	dba PlaceMenuItemName
 	dba PlaceMenuItemQuantity
 	dba UpdateItemDescription 
@@ -1720,6 +1728,58 @@ PackEmptyText:
 YouCantUseItInABattleText: ; unreferenced
 	text_far _YouCantUseItInABattleText
 	text_end
+
+Pack_Draw_Sprites:
+	ld hl, .SpriteData
+	bcpixel 3, 6
+	; ld de, wShadowOAM
+	ld a, [hli]
+.loop
+	push af
+	ld a, [hli]
+	add b
+	ld [de], a
+	inc de
+	ld a, [hli]
+	add c
+	ld [de], a
+	inc de
+	ld a, [hli]
+	ld [de], a
+	inc de
+	ld a, [hli]
+	ld [de], a
+	inc de
+	pop af
+	dec a
+	jr nz, .loop
+	ret
+.SpriteData:
+	db 20
+	dbsprite 0, 4, 0, 0, $68, $0
+	dbsprite 0, 4, 1, 0, $69, $0
+	dbsprite 1, 4, 0, 0, $6a, $0
+	dbsprite 1, 4, 1, 0, $6b, $0
+	
+	dbsprite 2, 4, 0, 0, $6c, $1
+	dbsprite 2, 4, 1, 0, $6d, $1
+	dbsprite 3, 4, 0, 0, $6e, $1
+	dbsprite 3, 4, 1, 0, $6f, $1
+	
+	dbsprite 4, 4, 0, 0, $70, $2
+	dbsprite 4, 4, 1, 0, $71, $2
+	dbsprite 5, 4, 0, 0, $72, $2
+	dbsprite 5, 4, 1, 0, $73, $2
+	
+	dbsprite 6, 4, 0, 0, $74, $3
+	dbsprite 6, 4, 1, 0, $75, $3
+	dbsprite 7, 4, 0, 0, $76, $3
+	dbsprite 7, 4, 1, 0, $77, $3
+	
+	dbsprite 8, 4, 0, 0, $78, $4
+	dbsprite 8, 4, 1, 0, $79, $4
+	dbsprite 9, 4, 0, 0, $7a, $4
+	dbsprite 9, 4, 1, 0, $7b, $4
 
 PackMenuGFX:
 INCBIN "gfx/pack/pack_menu.2bpp"

@@ -2774,6 +2774,9 @@ wPutativeTMHMMove:: db
 wInitListType:: db
 wBattleHasJustStarted:: db
 
+wNamedObjectIndexBuffer::
+	ds 3
+
 wNamedObjectIndex::
 wTextDecimalByte::
 wTempByteValue::

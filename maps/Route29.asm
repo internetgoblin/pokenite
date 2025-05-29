@@ -22,6 +22,9 @@ Route29Noop1Scene:
 Route29Noop2Scene:
 	end
 
+DudeNameText:
+	db "DUDE@"
+
 Route29TuscanyCallback:
 	checkflag ENGINE_ZEPHYRBADGE
 	iftrue .DoesTuscanyAppear
@@ -43,7 +46,7 @@ Route29Tutorial1:
 	turnobject PLAYER, LEFT
 	setevent EVENT_DUDE_TALKED_TO_YOU
 	opentext
-	writetext CatchingTutorialIntroText
+	writenamedtext DudeNameText, CatchingTutorialIntroText
 	yesorno
 	iffalse Script_RefusedTutorial1
 	closetext
@@ -54,7 +57,7 @@ Route29Tutorial1:
 	catchtutorial BATTLETYPE_TUTORIAL
 	turnobject ROUTE29_COOLTRAINER_M1, UP
 	opentext
-	writetext CatchingTutorialDebriefText
+	writenamedtext DudeNameText, CatchingTutorialDebriefText
 	waitbutton
 	closetext
 	setscene SCENE_ROUTE29_NOOP
@@ -68,7 +71,7 @@ Route29Tutorial2:
 	turnobject PLAYER, LEFT
 	setevent EVENT_DUDE_TALKED_TO_YOU
 	opentext
-	writetext CatchingTutorialIntroText
+	writenamedtext DudeNameText, CatchingTutorialIntroText
 	yesorno
 	iffalse Script_RefusedTutorial2
 	closetext
@@ -79,7 +82,7 @@ Route29Tutorial2:
 	catchtutorial BATTLETYPE_TUTORIAL
 	turnobject ROUTE29_COOLTRAINER_M1, UP
 	opentext
-	writetext CatchingTutorialDebriefText
+	writenamedtext DudeNameText, CatchingTutorialDebriefText
 	waitbutton
 	closetext
 	setscene SCENE_ROUTE29_NOOP
@@ -87,7 +90,7 @@ Route29Tutorial2:
 	end
 
 Script_RefusedTutorial1:
-	writetext CatchingTutorialDeclinedText
+	writenamedtext DudeNameText, CatchingTutorialDeclinedText
 	waitbutton
 	closetext
 	applymovement ROUTE29_COOLTRAINER_M1, DudeMovementData1b
@@ -95,7 +98,7 @@ Script_RefusedTutorial1:
 	end
 
 Script_RefusedTutorial2:
-	writetext CatchingTutorialDeclinedText
+	writenamedtext DudeNameText, CatchingTutorialDeclinedText
 	waitbutton
 	closetext
 	applymovement ROUTE29_COOLTRAINER_M1, DudeMovementData2b
@@ -111,27 +114,27 @@ CatchingTutorialDudeScript:
 	iftrue .BoxFull
 	checkevent EVENT_GAVE_MYSTERY_EGG_TO_ELM
 	iffalse .BoxFull
-	writetext CatchingTutorialRepeatText
+	writenamedtext DudeNameText, CatchingTutorialRepeatText
 	yesorno
 	iffalse .Declined
 	closetext
 	loadwildmon RATTATA, 5
 	catchtutorial BATTLETYPE_TUTORIAL
 	opentext
-	writetext CatchingTutorialDebriefText
+	writenamedtext DudeNameText, CatchingTutorialDebriefText
 	waitbutton
 	closetext
 	setevent EVENT_LEARNED_TO_CATCH_POKEMON
 	end
 
 .BoxFull:
-	writetext CatchingTutorialBoxFullText
+	writenamedtext DudeNameText, CatchingTutorialBoxFullText
 	waitbutton
 	closetext
 	end
 
 .Declined:
-	writetext CatchingTutorialDeclinedText
+	writenamedtext DudeNameText, CatchingTutorialDeclinedText
 	waitbutton
 	closetext
 	end
