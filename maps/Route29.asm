@@ -108,12 +108,12 @@ Script_RefusedTutorial2:
 CatchingTutorialDudeScript:
 	faceplayer
 	opentext
-	readvar VAR_BOXSPACE
-	ifequal 0, .BoxFull
 	checkevent EVENT_LEARNED_TO_CATCH_POKEMON
 	iftrue .BoxFull
 	checkevent EVENT_GAVE_MYSTERY_EGG_TO_ELM
 	iffalse .BoxFull
+	readvar VAR_BOXSPACE
+	ifequal 0, .BoxFull
 	writenamedtext DudeNameText, CatchingTutorialRepeatText
 	yesorno
 	iffalse .Declined
