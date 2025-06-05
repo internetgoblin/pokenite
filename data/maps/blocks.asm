@@ -316,9 +316,6 @@ SECTION "Map Blocks 2", ROMX
 Route14_Blocks:
 	INCBIN "maps/Route14.blk"
 
-BetaSproutTower8_Blocks: ; unreferenced
-	INCBIN "maps/unused/BetaSproutTower8.blk"
-
 OlivineMart_Blocks:
 EcruteakMart_Blocks:
 BlackthornMart_Blocks:
@@ -336,9 +333,6 @@ CherrygroveMart_Blocks:
 
 Route10North_Blocks:
 	INCBIN "maps/Route10North.blk"
-
-BetaLakeOfRage_Blocks: ; unreferenced
-	INCBIN "maps/unused/BetaLakeOfRage.blk"
 
 OlivinePokecenter1F_Blocks:
 MahoganyPokecenter1F_Blocks:
