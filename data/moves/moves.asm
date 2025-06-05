@@ -158,7 +158,7 @@ Moves1:
 	move EFFECT_DREAM_EATER,       100, PSYCHIC_TYPE,  100, 15,   0      ;DREAM_EATER
 	move EFFECT_POISON,              0, POISON,         55, 40,   0      ;POISON_GAS
 	move EFFECT_MULTI_HIT,          15, NORMAL,         85, 20,   0      ;BARRAGE
-	move EFFECT_LEECH_HIT,          20, BUG,           100, 15,   0      ;LEECH_LIFE
+	move EFFECT_LEECH_HIT,          50, BUG,           100, 25,   0      ;LEECH_LIFE
 	move EFFECT_SLEEP,               0, NORMAL,         75, 10,   0      ;LOVELY_KISS
 	move EFFECT_SKY_ATTACK,        140, FLYING,         90,  5,   0      ;SKY_ATTACK
 	move EFFECT_TRANSFORM,           0, NORMAL,        100, 10,   0      ;TRANSFORM
@@ -189,7 +189,7 @@ Moves1:
 	move EFFECT_MEAN_LOOK,           0, BUG,           100, 10,   0      ;SPIDER_WEB
 	move EFFECT_LOCK_ON,             0, NORMAL,        100,  5,   0      ;MIND_READER
 	move EFFECT_NIGHTMARE,           0, GHOST,         100, 15,   0      ;NIGHTMARE
-	move EFFECT_FLAME_WHEEL,        60, FIRE,          100, 25,  10      ;FLAME_WHEEL
+	move EFFECT_ROLLOUT,        	30, FIRE,          	90, 20,  10      ;FLAME_WHEEL
 	move EFFECT_SNORE,              40, NORMAL,        100, 15,  30      ;SNORE
 	move EFFECT_CURSE,               0, CURSE_TYPE,    100, 10,   0      ;CURSE
 	move EFFECT_REVERSAL,            1, NORMAL,        100, 15,   0      ;FLAIL

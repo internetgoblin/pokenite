@@ -101,7 +101,7 @@ ENDM
 	connection west, Route29, ROUTE_29, -1
 	connection east, Route27, ROUTE_27, 0
 
-	map_attributes CherrygroveCity, CHERRYGROVE_CITY, $35, NORTH | EAST
+	map_attributes CherrygroveCity, CHERRYGROVE_CITY, $9f, NORTH | EAST
 	connection north, Route30, ROUTE_30, 5
 	connection east, Route29, ROUTE_29, -1
 
@@ -110,7 +110,7 @@ ENDM
 	connection west, Route36, ROUTE_36, 0
 	connection east, Route31, ROUTE_31, 9
 
-	map_attributes AzaleaTown, AZALEA_TOWN, $05, WEST | EAST
+	map_attributes AzaleaTown, AZALEA_TOWN, $9f, WEST | EAST
 	connection west, Route34, ROUTE_34, -18
 	connection east, Route33, ROUTE_33, 0
 
@@ -172,7 +172,7 @@ ENDM
 	connection north, VioletCity, VIOLET_CITY, 0
 	connection south, Route33, ROUTE_33, 0
 
-	map_attributes Route33, ROUTE_33, $05, NORTH | WEST
+	map_attributes Route33, ROUTE_33, $9f, NORTH | WEST
 	connection north, Route32, ROUTE_32, 0
 	connection west, AzaleaTown, AZALEA_TOWN, 0
 

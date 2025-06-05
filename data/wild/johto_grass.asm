@@ -424,6 +424,7 @@ JohtoGrassWildMons:
 
 	def_grass_wildmons UNION_CAVE_1F
 	db 6 percent, 6 percent, 6 percent ; encounter rates: morn/day/nite
+	; IF DEF(_NITE)
 	; morn
 	dbw 6, GEODUDE
 	dbw 6, SANDSHREW
@@ -443,39 +444,92 @@ JohtoGrassWildMons:
 	; nite
 	dbw 6, GEODUDE
 	dbw 6, RATTATA
-	dbw 5, WOOPER
+	dbw 5, ZUBAT
 	dbw 4, RATTATA
 	dbw 7, ZUBAT
 	dbw 6, ONIX
 	dbw 6, ONIX
+/* ELIF DEF(_DAY)
+	; morn
+	dbw 6, GEODUDE
+	dbw 6, RATTATA
+	dbw 5, ZUBAT
+	dbw 4, RATTATA
+	dbw 7, ZUBAT
+	dbw 6, ONIX
+	dbw 6, ONIX
+	; day
+	dbw 6, GEODUDE
+	dbw 6, RATTATA
+	dbw 5, ZUBAT
+	dbw 4, RATTATA
+	dbw 7, ZUBAT
+	dbw 6, ONIX
+	dbw 6, ONIX
+	; nite
+	dbw 6, GEODUDE
+	dbw 6, RATTATA
+	dbw 5, ZUBAT
+	dbw 4, RATTATA
+	dbw 7, ZUBAT
+	dbw 6, ONIX
+	dbw 6, ONIX
+	ENDC */
 	end_grass_wildmons
 
 	def_grass_wildmons UNION_CAVE_B1F
 	db 6 percent, 6 percent, 6 percent ; encounter rates: morn/day/nite
+; IF DEF(_NITE)
 	; morn
 	dbw 8, GEODUDE
-	dbw 6, ZUBAT
-	dbw 8, ZUBAT
+	dbw 8, SANDSHREW
+	dbw 7, ZUBAT
 	dbw 8, ONIX
+	dbw 9, ZUBAT
 	dbw 6, RATTATA
-	dbw 8, RATTATA
-	dbw 8, RATTATA
+	dbw 6, RATTATA
 	; day
 	dbw 8, GEODUDE
-	dbw 6, ZUBAT
-	dbw 8, ZUBAT
+	dbw 8, SANDSHREW
+	dbw 7, ZUBAT
 	dbw 8, ONIX
+	dbw 9, ZUBAT
 	dbw 6, RATTATA
-	dbw 8, RATTATA
-	dbw 8, RATTATA
+	dbw 6, RATTATA
 	; nite
 	dbw 8, GEODUDE
-	dbw 6, ZUBAT
-	dbw 8, WOOPER
+	dbw 8, SANDSHREW
+	dbw 7, ZUBAT
 	dbw 8, ONIX
+	dbw 9, ZUBAT
 	dbw 6, RATTATA
+	dbw 6, RATTATA
+/* ELIF DEF(_DAY)
+	; morn
+	dbw 8, GEODUDE
 	dbw 8, RATTATA
+	dbw 7, ZUBAT
+	dbw 8, ONIX
+	dbw 9, ZUBAT
+	dbw 6, RATTATA
+	dbw 6, RATTATA
+	; day
+	dbw 8, GEODUDE
 	dbw 8, RATTATA
+	dbw 7, ZUBAT
+	dbw 8, ONIX
+	dbw 9, ZUBAT
+	dbw 6, RATTATA
+	dbw 6, RATTATA
+	; nite
+	dbw 8, GEODUDE
+	dbw 8, RATTATA
+	dbw 7, ZUBAT
+	dbw 8, ONIX
+	dbw 9, ZUBAT
+	dbw 6, RATTATA
+	dbw 6, RATTATA
+	ENDC */
 	end_grass_wildmons
 
 	def_grass_wildmons UNION_CAVE_B2F
@@ -564,28 +618,48 @@ JohtoGrassWildMons:
 
 	def_grass_wildmons ILEX_FOREST
 	db 4 percent, 4 percent, 4 percent ; encounter rates: morn/day/nite
+	; IF DEF(_NITE)
 	; morn
 	dbw 5, CATERPIE
-	dbw 5, WEEDLE
-	dbw 7, METAPOD
-	dbw 7, KAKUNA
-	dbw 7, PIDGEY
+	dbw 6, METAPOD
+	dbw 6, CATERPIE
+	dbw 5, PARAS
+	dbw 5, ZUBAT
 	dbw 6, PARAS
 	dbw 6, PARAS
 	; day
 	dbw 5, CATERPIE
+	dbw 6, CATERPIE
+	dbw 5, METAPOD
+	dbw 6, METAPOD
+	dbw 5, ZUBAT
+	dbw 6, PARAS
+	dbw 6, PARAS
+	/* IF DEF(_DAY)
+	; morn
 	dbw 5, WEEDLE
-	dbw 7, METAPOD
-	dbw 7, KAKUNA
-	dbw 7, PIDGEY
+	dbw 6, KAKUNA
+	dbw 6, WEEDLE
+	dbw 5, PARAS
+	dbw 5, ZUBAT
 	dbw 6, PARAS
 	dbw 6, PARAS
+	; day
+	dbw 5, WEEDLE
+	dbw 6, WEEDLE
+	dbw 5, KAKUNA
+	dbw 6, KAKUNA
+	dbw 5, ZUBAT
+	dbw 6, PARAS
+	dbw 6, PARAS
+	ENDC */
+
 	; nite
 	dbw 5, ODDISH
-	dbw 5, VENONAT
-	dbw 7, ODDISH
-	dbw 7, PSYDUCK
-	dbw 7, HOOTHOOT
+	dbw 6, ODDISH
+	dbw 6, VENONAT ; ZUBAT IN GS
+	dbw 5, PARAS
+	dbw 5, ZUBAT
 	dbw 6, PARAS
 	dbw 6, PARAS
 	end_grass_wildmons
@@ -1320,58 +1394,112 @@ JohtoGrassWildMons:
 
 	def_grass_wildmons ROUTE_32
 	db 10 percent, 10 percent, 10 percent ; encounter rates: morn/day/nite
+	; IF DEF(_NITE)
 	; morn
-	dbw 4, EKANS
-	dbw 5, RATTATA
-	dbw 7, BELLSPROUT
+	dbw 6, BELLSPROUT
+	dbw 4, RATTATA
+	dbw 6, MAREEP
 	dbw 6, HOPPIP
-	dbw 7, PIDGEY
-	dbw 7, HOPPIP
-	dbw 7, HOPPIP
-	; day
-	dbw 4, EKANS
-	dbw 5, RATTATA
-	dbw 7, BELLSPROUT
-	dbw 6, HOPPIP
-	dbw 7, PIDGEY
-	dbw 7, HOPPIP
-	dbw 7, HOPPIP
-	; nite
+	dbw 6, RATTATA
 	dbw 4, WOOPER
-	dbw 5, RATTATA
-	dbw 7, BELLSPROUT
-	dbw 6, ZUBAT
-	dbw 7, HOOTHOOT
-	dbw 7, GASTLY
-	dbw 7, GASTLY
+	dbw 4, ZUBAT
+	; day
+	dbw 6, BELLSPROUT
+	dbw 4, RATTATA
+	dbw 6, MAREEP
+	dbw 6, HOPPIP
+	dbw 6, RATTATA
+	dbw 8, RATTATA
+	dbw 8, RATTATA
+	; nite
+	dbw 6, WOOPER
+	dbw 4, RATTATA
+	dbw 6, BELLSPROUT
+	dbw 6, MAREEP
+	dbw 8, WOOPER
+	dbw 8, ZUBAT
+	dbw 8, ZUBAT
+	/* ELIF DEF(_DAY)
+	; morn
+	dbw 6, BELLSPROUT
+	dbw 4, EKANS
+	dbw 6, MAREEP
+	dbw 6, HOPPIP
+	dbw 6, RATTATA
+	dbw 4, WOOPER
+	dbw 4, ZUBAT
+	; day
+	dbw 6, BELLSPROUT
+	dbw 4, EKANS
+	dbw 6, MAREEP
+	dbw 6, HOPPIP
+	dbw 6, RATTATA
+	dbw 8, RATTATA
+	dbw 8, RATTATA
+	; nite
+	dbw 6, WOOPER
+	dbw 4, EKANS
+	dbw 6, BELLSPROUT
+	dbw 6, MAREEP
+	dbw 8, WOOPER
+	dbw 8, ZUBAT
+	dbw 8, ZUBAT
+	ENDC */
 	end_grass_wildmons
 
 	def_grass_wildmons ROUTE_33
 	db 10 percent, 10 percent, 10 percent ; encounter rates: morn/day/nite
+	; IF DEF(_NITE)
 	; morn
-	dbw 6, RATTATA
-	dbw 6, SPEAROW
-	dbw 6, GEODUDE
 	dbw 6, HOPPIP
-	dbw 7, EKANS
-	dbw 7, HOPPIP
-	dbw 7, HOPPIP
+	dbw 7, RATTATA
+	dbw 6, SPEAROW
+	dbw 6, RATTATA
+	dbw 8, HOPPIP
+	dbw 4, ZUBAT
+	dbw 4, ZUBAT
 	; day
-	dbw 6, RATTATA
+	dbw 6, HOPPIP
+	dbw 7, RATTATA
 	dbw 6, SPEAROW
-	dbw 6, GEODUDE
+	dbw 6, RATTATA
+	dbw 8, HOPPIP
+	dbw 8, RATTATA
+	dbw 8, RATTATA
+	; nite
+	dbw 6, ZUBAT
+	dbw 7, RATTATA
+	dbw 6, RATTATA
+	dbw 6, RATTATA
+	dbw 8, ZUBAT
+	dbw 8, ZUBAT
+	dbw 8, ZUBAT
+	/* ELIF DEF(_DAY)
+	; morn
 	dbw 6, HOPPIP
 	dbw 7, EKANS
-	dbw 7, HOPPIP
-	dbw 7, HOPPIP
-	; nite
+	dbw 6, SPEAROW
 	dbw 6, RATTATA
+	dbw 8, HOPPIP
+	dbw 4, ZUBAT
+	dbw 4, ZUBAT
+	; day
+	dbw 6, HOPPIP
+	dbw 7, EKANS
+	dbw 6, SPEAROW
+	dbw 6, RATTATA
+	dbw 8, HOPPIP
+	dbw 8, RATTATA
+	dbw 8, RATTATA
+	; nite
 	dbw 6, ZUBAT
-	dbw 6, GEODUDE
-	dbw 6, ZUBAT
-	dbw 7, RATTATA
-	dbw 7, RATTATA
-	dbw 7, RATTATA
+	dbw 7, EKANS
+	dbw 6, RATTATA
+	dbw 6, RATTATA
+	dbw 8, ZUBAT
+	dbw 8, ZUBAT
+	dbw 8, ZUBAT
+	ENDC */
 	end_grass_wildmons
 
 	def_grass_wildmons ROUTE_34

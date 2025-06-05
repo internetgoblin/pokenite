@@ -2,16 +2,16 @@ FindItemInBallScript::
 	callasm .TryReceiveItem
 	iffalse .no_room
 	disappear LAST_TALKED
-	applymovement PLAYER, FancySpinMovement
-	callasm LoadItemGetGFX
+	; applymovement PLAYER, FancySpinMovement
+	; callasm LoadItemGetGFX
 	opentext
 	writetext .FoundItemText
 	playsound SFX_ITEM
 	pause 60
 	itemnotify
-	applymovement PLAYER, Hideemoteitem
+	; applymovement PLAYER, Hideemoteitem
 	closetext
-	scall BackToNormal
+	; scall BackToNormal
 	end
 
 .no_room

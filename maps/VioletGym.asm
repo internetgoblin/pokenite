@@ -9,12 +9,15 @@ VioletGym_MapScripts:
 
 	def_callbacks
 
+FalknerNameText:
+	db "FALKNER@"
+
 VioletGymFalknerScript:
 	faceplayer
 	opentext
 	checkevent EVENT_BEAT_FALKNER
 	iftrue .FightDone
-	writetext FalknerIntroText
+	writenamedtext FalknerNameText, FalknerIntroText
 	waitbutton
 	closetext
 	winlosstext FalknerWinLossText, 0
@@ -36,18 +39,20 @@ VioletGymFalknerScript:
 	setevent EVENT_BEAT_BIRD_KEEPER_ABE
 	setmapscene ELMS_LAB, SCENE_ELMSLAB_NOOP
 	specialphonecall SPECIALCALL_ASSISTANT
-	writetext FalknerZephyrBadgeText
+	writenamedtext FalknerNameText, FalknerZephyrBadgeText
 	promptbutton
+	closetext
+	opentext
 	verbosegiveitem TM_MUD_SLAP
 	iffalse .NoRoomForMudSlap
 	setevent EVENT_GOT_TM31_MUD_SLAP
-	writetext FalknerTMMudSlapText
+	writenamedtext FalknerNameText, FalknerTMMudSlapText
 	waitbutton
 	closetext
 	end
 
 .SpeechAfterTM:
-	writetext FalknerFightDoneText
+	writenamedtext FalknerNameText, FalknerFightDoneText
 	waitbutton
 .NoRoomForMudSlap:
 	closetext
