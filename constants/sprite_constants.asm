@@ -140,7 +140,7 @@ DEF SPRITE_POKEMON EQU const_value
 	const SPRITE_VOLTORB ; 9b
 	const SPRITE_LAPRAS ; 9c
 	const SPRITE_RHYDON ; 9d
-	const SPRITE_MOLTRES ; 9e
+	const SPRITE_FARFETCH_D ; 9e
 	const SPRITE_SNORLAX ; 9f
 	const SPRITE_GYARADOS ; a0
 	const SPRITE_LUGIA ; a1

@@ -111,7 +111,7 @@ ENDM
 	connection east, Route31, ROUTE_31, 9
 
 	map_attributes AzaleaTown, AZALEA_TOWN, $80, WEST | EAST
-	connection west, Route34, ROUTE_34, -18
+	connection west, Route34, ROUTE_34, -17
 	connection east, Route33, ROUTE_33, 1
 
 	map_attributes CianwoodCity, CIANWOOD_CITY, $35, EAST

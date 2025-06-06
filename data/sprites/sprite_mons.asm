@@ -31,7 +31,7 @@ SpriteMons:
 	dw VOLTORB
 	dw LAPRAS
 	dw RHYDON
-	dw MOLTRES
+	dw FARFETCH_D
 	dw SNORLAX
 	dw GYARADOS
 	dw LUGIA
