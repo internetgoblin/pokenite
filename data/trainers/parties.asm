@@ -135,11 +135,11 @@ ClairGroup:
 	end_list_items
 
 Rival1Group:
-	next_list_item ; RIVAL1 (1)
+	next_list_item ; SHILOH1 (1)
 	db "SHILOH@", TRAINERTYPE_ITEM_MOVES
 	db 3
 	dw EEVEE
-	db BERRY
+	db NO_ITEM
 	dw TACKLE, TAIL_WHIP, NO_MOVE, NO_MOVE
 	db 3
 	dw VENONAT
@@ -147,34 +147,20 @@ Rival1Group:
 	dw TACKLE, FORESIGHT, NO_MOVE, NO_MOVE ; Level Up, minus DISABLE
 	db -1 ; end
 
-	next_list_item ; RIVAL1 (4)
-	db "?@", TRAINERTYPE_NORMAL
+	next_list_item ; SHILOH1_2 (4)
+	db "SHILOH@", TRAINERTYPE_ITEM_MOVES ; WIP Team
 	db 12
-	dw GASTLY
+	dw EEVEE
+	db BERRY
+	dw TACKLE, TAIL_WHIP, SAND_ATTACK, NO_MOVE
+	db 10
+	dw DUNSPARCE
+	db PRZCUREBERRY
+	dw DEFENSE_CURL, GLARE, SWIFT, NO_MOVE
 	db 14
-	dw ZUBAT
-	db 16
-	dw BAYLEEF
-	db -1 ; end
-
-	next_list_item ; RIVAL1 (5)
-	db "?@", TRAINERTYPE_NORMAL
-	db 12
-	dw GASTLY
-	db 14
-	dw ZUBAT
-	db 16
-	dw QUILAVA
-	db -1 ; end
-
-	next_list_item ; RIVAL1 (6)
-	db "?@", TRAINERTYPE_NORMAL
-	db 12
-	dw GASTLY
-	db 14
-	dw ZUBAT
-	db 16
-	dw CROCONAW
+	dw VENONAT
+	db BERRY
+	dw TACKLE, FORESIGHT, SUPERSONIC, NO_MOVE
 	db -1 ; end
 
 	next_list_item ; RIVAL1 (7)

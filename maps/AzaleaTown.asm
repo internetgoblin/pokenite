@@ -35,23 +35,13 @@ AzaleaTownFlypointCallback:
 	endcallback
 
 AzaleaTownRivalBattleScene1:
-	moveobject AZALEATOWN_RIVAL, 11, 11
-	turnobject PLAYER, RIGHT
-	showemote EMOTE_SHOCK, PLAYER, 15
+	moveobject AZALEATOWN_RIVAL, 9, 7
 	special FadeOutMusic
+	applymovement PLAYER, AzaleaTownRivalBattleBegin
 	pause 15
+	playsound SFX_EXIT_BUILDING
 	appear AZALEATOWN_RIVAL
 	applymovement AZALEATOWN_RIVAL, AzaleaTownRivalBattleApproachMovement1
-	turnobject PLAYER, DOWN
-	sjump AzaleaTownRivalBattleScript
-
-AzaleaTownRivalBattleScene2:
-	turnobject PLAYER, RIGHT
-	showemote EMOTE_SHOCK, PLAYER, 15
-	special FadeOutMusic
-	pause 15
-	appear AZALEATOWN_RIVAL
-	applymovement AZALEATOWN_RIVAL, AzaleaTownRivalBattleApproachMovement2
 	turnobject PLAYER, UP
 AzaleaTownRivalBattleScript:
 	playmusic MUSIC_RIVAL_ENCOUNTER
@@ -59,32 +49,13 @@ AzaleaTownRivalBattleScript:
 	writetext AzaleaTownRivalBeforeText
 	waitbutton
 	closetext
+	applymovement PLAYER, AzaleaTownRivalBattlePlayerToPlace
+	applymovement AZALEATOWN_RIVAL, AzaleaTownRivalBattleRivalToPlace
 	setevent EVENT_RIVAL_AZALEA_TOWN
-	checkevent EVENT_GOT_TOTODILE_FROM_ELM
-	iftrue .Totodile
-	checkevent EVENT_GOT_CHIKORITA_FROM_ELM
-	iftrue .Chikorita
 	winlosstext AzaleaTownRivalWinText, AzaleaTownRivalLossText
 	setlasttalked AZALEATOWN_RIVAL
-	loadtrainer RIVAL1, RIVAL1_2_TOTODILE
-	startbattle
-	dontrestartmapmusic
-	reloadmapafterbattle
-	sjump .AfterBattle
-
-.Totodile:
-	winlosstext AzaleaTownRivalWinText, AzaleaTownRivalLossText
-	setlasttalked AZALEATOWN_RIVAL
-	loadtrainer RIVAL1, RIVAL1_2_CHIKORITA
-	startbattle
-	dontrestartmapmusic
-	reloadmapafterbattle
-	sjump .AfterBattle
-
-.Chikorita:
-	winlosstext AzaleaTownRivalWinText, AzaleaTownRivalLossText
-	setlasttalked AZALEATOWN_RIVAL
-	loadtrainer RIVAL1, RIVAL1_2_CYNDAQUIL
+	blackoutmod KURTS_HOUSE
+	loadtrainer RIVAL1, SHILOH1_2
 	startbattle
 	dontrestartmapmusic
 	reloadmapafterbattle
@@ -96,12 +67,12 @@ AzaleaTownRivalBattleScript:
 	writetext AzaleaTownRivalAfterText
 	waitbutton
 	closetext
-	turnobject PLAYER, LEFT
 	applymovement AZALEATOWN_RIVAL, AzaleaTownRivalBattleExitMovement
 	playsound SFX_EXIT_BUILDING
 	disappear AZALEATOWN_RIVAL
 	setscene SCENE_AZALEATOWN_NOOP
 	waitsfx
+	blackoutmod AZALEA_TOWN
 	playmapmusic
 	end
 
@@ -210,30 +181,38 @@ WhiteApricornTree:
 AzaleaTownHiddenFullHeal:
 	hiddenitem FULL_HEAL, EVENT_AZALEA_TOWN_HIDDEN_FULL_HEAL
 
-AzaleaTownRivalBattleApproachMovement1:
-	step LEFT
-	step LEFT
-	step LEFT
-	step LEFT
-	step LEFT
-	step LEFT
-	turn_head UP
+AzaleaTownRivalBattleBegin:
+	step DOWN
 	step_end
 
-AzaleaTownRivalBattleApproachMovement2:
-	step LEFT
-	step LEFT
-	step LEFT
-	step LEFT
-	step LEFT
-	step LEFT
-	turn_head DOWN
+AzaleaTownRivalBattleApproachMovement1:
+	step DOWN
+	step_end
+
+AzaleaTownRivalBattlePlayerToPlace:
+	step DOWN
+	step DOWN
+	step DOWN
+	step RIGHT
+	turn_head LEFT
+	step_end
+
+AzaleaTownRivalBattleRivalToPlace:
+	big_step DOWN
+	big_step DOWN
+	big_step DOWN
+	big_step DOWN
+	turn_head RIGHT
 	step_end
 
 AzaleaTownRivalBattleExitMovement:
-	step LEFT
-	step LEFT
-	step LEFT
+	big_step LEFT
+	big_step LEFT
+	big_step LEFT
+	big_step LEFT
+	big_step LEFT
+	big_step LEFT
+	big_step LEFT
 	step_end
 
 AzaleaTownPlayerLeavesKurtsHouseMovement:
@@ -466,8 +445,7 @@ AzaleaTown_MapEvents:
 	warp_event  2, 13, ILEX_FOREST_AZALEA_GATE, 4
 
 	def_coord_events
-	coord_event  5, 12, SCENE_AZALEATOWN_RIVAL_BATTLE, AzaleaTownRivalBattleScene1
-	coord_event  5, 13, SCENE_AZALEATOWN_RIVAL_BATTLE, AzaleaTownRivalBattleScene2
+	coord_event  9,  8, SCENE_AZALEATOWN_RIVAL_BATTLE, AzaleaTownRivalBattleScene1
 	coord_event  9,  8, SCENE_AZALEATOWN_KURT_RETURNS_GS_BALL, AzaleaTownCelebiScene
 
 	def_bg_events
