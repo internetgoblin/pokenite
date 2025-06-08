@@ -54,6 +54,7 @@ NewPokedexOrder:
 	dw EKANS
 	dw ARBOK
 	dw DUNSPARCE
+	dw INTELIVAST
 	dw MAREEP
 	dw FLAAFFY
 	dw AMPHAROS

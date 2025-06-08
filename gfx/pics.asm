@@ -715,3 +715,5 @@ SECTION "Pics 19", ROMX
 
 BloomfreeFrontpic:   INCBIN "gfx/pokemon/Bloomfree/front.animated.2bpp.lz"
 BloomfreeBackpic:    INCBIN "gfx/pokemon/bloomfree/back.2bpp.lz"
+IntelivastFrontpic:   INCBIN "gfx/pokemon/Intelivast/front.animated.2bpp.lz"
+IntelivastBackpic:    INCBIN "gfx/pokemon/Intelivast/back.2bpp.lz"

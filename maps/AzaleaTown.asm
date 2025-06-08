@@ -71,6 +71,7 @@ AzaleaTownRivalBattleScript:
 	playsound SFX_EXIT_BUILDING
 	disappear AZALEATOWN_RIVAL
 	setscene SCENE_AZALEATOWN_NOOP
+	setevent EVENT_RIVAL_KURTS_HOUSE
 	waitsfx
 	blackoutmod AZALEA_TOWN
 	playmapmusic

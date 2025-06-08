@@ -102,6 +102,7 @@ EvosAttacksPointers2::
 	dw HoOhEvosAttacks
 	dw CelebiEvosAttacks
 	dw BloomfreeEvosAttacks
+	dw IntelivastEvosAttacks
 .IndirectEnd::
 
 ChikoritaEvosAttacks:
@@ -808,6 +809,7 @@ ForretressEvosAttacks:
 	db 0 ; no more level-up moves
 
 DunsparceEvosAttacks:
+	dbbw EVOLVE_HAPPINESS, TR_ANYTIME, INTELIVAST ; WIP
 	db 0 ; no more evolutions
 	dbw 1, RAGE
 	dbw 5, DEFENSE_CURL
@@ -1405,11 +1407,22 @@ CelebiEvosAttacks:
 	dbw 50, PERISH_SONG
 	db 0 ; no more level-up moves
 
-BloomfreeEvosAttacks:
+BloomfreeEvosAttacks: ; WIP
 	db 0 ; no more evolutions
 	dbw 1, VINE_WHIP
 	dbw 1, SLEEP_POWDER
 	dbw 1, SWEET_SCENT
 	dbw 1, RAZOR_LEAF
 	dbw 34, HEAL_BELL
+	db 0 ; no more level-up moves
+
+IntelivastEvosAttacks: ; WIP
+	db 0 ; no more evolutions
+	dbw 1, RAGE
+	dbw 5, DEFENSE_CURL
+	dbw 13, GLARE
+	dbw 18, SPITE
+	dbw 26, PURSUIT
+	dbw 30, SCREECH
+	dbw 38, TAKE_DOWN
 	db 0 ; no more level-up moves

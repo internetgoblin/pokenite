@@ -272,6 +272,7 @@ DEF JOHTO_POKEMON EQU const_value
 	const HO_OH      ; fa
 	const CELEBI     ; fb
 	const BLOOMFREE  ; fc
+	const INTELIVAST ; fd
 DEF NUM_POKEMON EQU const_value + -1
 
 DEF EGG EQU -3

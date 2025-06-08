@@ -520,4 +520,6 @@ PokemonPicPointers::
 	dba CelebiBackpic
 	dba BloomfreeFrontpic
 	dba BloomfreeBackpic
+	dba IntelivastFrontpic
+	dba IntelivastBackpic
 	assert_table_length NUM_POKEMON + 1

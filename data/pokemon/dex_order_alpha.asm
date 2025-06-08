@@ -95,6 +95,7 @@ AlphabeticalPokedexOrder:
 	dw HOUNDOUR
 	dw HYPNO
 	dw IGGLYBUFF
+	dw INTELIVAST
 	dw IVYSAUR
 	dw JIGGLYPUFF
 	dw JOLTEON

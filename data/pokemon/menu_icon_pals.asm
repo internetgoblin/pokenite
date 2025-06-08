@@ -261,5 +261,6 @@ MonMenuIconPals:
 	icon_pals BLUE,   TEAL   ; LUGIA
 	icon_pals RED,    BROWN  ; HO_OH
 	icon_pals GREEN,  PINK   ; CELEBI
-	icon_pals RED,    RED  ; BLOOMFREE
+	icon_pals RED,    RED    ; BLOOMFREE
+	icon_pals BLUE,   PURPLE ; INTELIVAST
 	assert_table_length NUM_POKEMON

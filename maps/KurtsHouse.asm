@@ -4,6 +4,7 @@
 	const KURTSHOUSE_SLOWPOKE
 	const KURTSHOUSE_KURT2
 	const KURTSHOUSE_TWIN2
+	const KURTSHOUSE_SHILOH
 
 KurtsHouse_MapScripts:
 	def_scene_scripts
@@ -425,6 +426,9 @@ KurtsHouseOakPhoto:
 KurtsHouseCelebiStatue:
 	jumptext KurtsHouseCelebiStatueText
 
+KurtsHouseShiloh:
+	jumptextfaceplayer ShilohAfterWellText
+
 KurtsHouseBookshelf:
 	jumpstd DifficultBookshelfScript
 
@@ -674,6 +678,10 @@ KurtsHouseCelebiStatueText:
 	cont "tector."
 	done
 
+ShilohAfterWellText:
+	text "Wow!"
+	done
+
 KurtsHouse_MapEvents:
 	db 0, 0 ; filler
 
@@ -698,3 +706,4 @@ KurtsHouse_MapEvents:
 	object_event  6,  3, SPRITE_SLOWPOKE, SPRITEMOVEDATA_STILL, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, KurtsHouseSlowpoke, EVENT_KURTS_HOUSE_SLOWPOKE
 	object_event 14,  3, SPRITE_KURT, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, Kurt2, EVENT_KURTS_HOUSE_KURT_2
 	object_event 11,  4, SPRITE_TWIN, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, KurtsGranddaughter2, EVENT_KURTS_HOUSE_GRANDDAUGHTER_2
+	object_event  1,  3, SPRITE_AZALEA_ROCKET, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, KurtsHouseShiloh, EVENT_RIVAL_KURTS_HOUSE

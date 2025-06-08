@@ -257,3 +257,4 @@ IconPointers:
 	dw HoOhIcon
 	dw CelebiIcon
 	dw BloomfreeIcon
+	dw IntelivastIcon
