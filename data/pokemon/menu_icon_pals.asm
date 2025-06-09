@@ -176,7 +176,7 @@ MonMenuIconPals:
 	icon_pals BROWN,  GREEN  ; NOCTOWL
 	icon_pals RED,    PINK   ; LEDYBA
 	icon_pals RED,    PINK   ; LEDIAN
-	icon_pals GREEN,  PURPLE ; SPINARAK
+	icon_pals BLUE,   PURPLE ; SPINARAK
 	icon_pals RED,    PURPLE ; ARIADOS
 	icon_pals PURPLE, PINK   ; CROBAT
 	icon_pals BLUE,   GRAY   ; CHINCHOU

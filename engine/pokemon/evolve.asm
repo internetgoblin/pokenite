@@ -126,6 +126,8 @@ EvolveAfterBattle_MasterLoop:
 	jr z, .proceed
 	cp TR_MORNDAY
 	jr z, .happiness_daylight
+	; cp TR_NICKNAMED
+	; jr z, .happiness_nicknamed
 
 ; TR_NITE
 	ld a, [wTimeOfDay]
@@ -139,6 +141,8 @@ EvolveAfterBattle_MasterLoop:
 	jp z, .skip_evolution_species
 	jr .proceed
 
+; .happiness_nicknamed [WIP]
+	
 .trade
 	ld a, [wLinkMode]
 	and a
