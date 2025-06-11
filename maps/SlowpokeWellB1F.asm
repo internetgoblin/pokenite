@@ -8,6 +8,7 @@
 	const SLOWPOKEWELLB1F_KURT
 	const SLOWPOKEWELLB1F_BOULDER
 	const SLOWPOKEWELLB1F_POKE_BALL
+	const SLOWPOKEWELLB1F_RIVAL
 
 SlowpokeWellB1F_MapScripts:
 	def_scene_scripts
@@ -45,14 +46,33 @@ TrainerGruntM1:
 	pause 15
 	special FadeInFromBlack
 	disappear SLOWPOKEWELLB1F_KURT
-	moveobject SLOWPOKEWELLB1F_KURT, 11, 6
+	moveobject SLOWPOKEWELLB1F_KURT, 11, 5
+	appear SLOWPOKEWELLB1F_RIVAL
 	appear SLOWPOKEWELLB1F_KURT
-	applymovement SLOWPOKEWELLB1F_KURT, KurtSlowpokeWellVictoryMovementData
-	turnobject PLAYER, RIGHT
+	follow SLOWPOKEWELLB1F_RIVAL, SLOWPOKEWELLB1F_KURT
 	opentext
-	writetext KurtLeaveSlowpokeWellText
+	writenamedtext MysterySpeakerNameText, ShilohWorriedSlowpokeWellText
 	waitbutton
 	closetext
+	applymovement SLOWPOKEWELLB1F_RIVAL, KurtSlowpokeWellVictoryMovementData1
+	stopfollow
+	applymovement SLOWPOKEWELLB1F_RIVAL, KurtSlowpokeWellVictoryMovementData2
+	applymovement SLOWPOKEWELLB1F_KURT, KurtSlowpokeWellVictoryMovementData3
+	turnobject PLAYER, DOWN
+	turnobject SLOWPOKEWELLB1F_RIVAL, LEFT
+	opentext
+	writenamedtext KurtSlowpokeWellNameText, KurtGoodJobSlowpokeWellText
+	waitbutton
+	closetext
+	turnobject PLAYER, RIGHT
+	opentext
+	writenamedtext ShilohSlowpokeWellNameText, ShilohMeetingSlowpokeWellText
+	waitbutton
+	closetext
+	opentext
+	writenamedtext KurtSlowpokeWellNameText, KurtLeaveSlowpokeWellText
+	waitbutton
+	closetext	
 	setevent EVENT_CLEARED_SLOWPOKE_WELL
 	variablesprite SPRITE_AZALEA_ROCKET, SPRITE_RIVAL
 	setmapscene AZALEA_TOWN, SCENE_AZALEATOWN_RIVAL_BATTLE
@@ -71,6 +91,15 @@ TrainerGruntM1:
 	pause 15
 	warp KURTS_HOUSE, 3, 3
 	end
+
+KurtSlowpokeWellNameText:
+	db "KURT@"
+
+MysterySpeakerNameText:
+	db "???@"
+
+ShilohSlowpokeWellNameText:
+	db "SHILOH@"
 
 TrainerGruntM2:
 	trainer GRUNTM, GRUNTM_2, EVENT_BEAT_ROCKET_GRUNTM_2, GruntM2SeenText, GruntM2BeatenText, 0, .Script
@@ -125,22 +154,24 @@ SlowpokeWellB1FBoulder:
 SlowpokeWellB1FSuperPotion:
 	itemball SUPER_POTION
 
-KurtSlowpokeWellVictoryMovementData:
+KurtSlowpokeWellVictoryMovementData1:
 	step LEFT
 	step LEFT
 	step LEFT
 	step LEFT
 	step UP
-	step_sleep 8
-	step_sleep 8
-	step_sleep 8
+	step LEFT
+	step_end
+
+KurtSlowpokeWellVictoryMovementData2:
+	step UP
+	step UP
+	step_end
+
+KurtSlowpokeWellVictoryMovementData3:
+	step LEFT
 	step LEFT
 	step UP
-	step UP
-	step_sleep 8
-	step_sleep 8
-	step_sleep 8
-	turn_head LEFT
 	step_end
 
 SlowpokeWellB1FKurtText:
@@ -173,16 +204,44 @@ SlowpokeWellB1FKurtText:
 	cont "in my place!"
 	done
 
-KurtLeaveSlowpokeWellText:
-	text "KURT: Way to go,"
+KurtGoodJobSlowpokeWellText:
+	text "Way to go,"
 	line "<PLAYER>!"
 
-	para "TEAM ROCKET has"
-	line "taken off."
+	para "You ran off TEAM"
+	line "ROCKET!"
 
-	para "My back's better"
-	line "too. Let's get out"
-	cont "of here."
+	para "This here is my"
+	line "apprentice."
+
+	para "Managed to get"
+	line "me back on my"
+	cont "feet while you"
+
+	para "took out those"
+	line "criminals."
+	done
+
+ShilohMeetingSlowpokeWellText:
+	text "We've met."
+	line "Not surprised"
+	cont "with what the"
+
+	para "newbie managed"
+	line "here."
+	done
+
+ShilohWorriedSlowpokeWellText:
+	text "You're lucky"
+	line "I don't have"
+	cont "to carry you"
+
+	para "around, gramps."
+	done
+
+KurtLeaveSlowpokeWellText:
+	text "We should leave"
+	line "this dank WELL."
 	done
 
 GruntM29SeenText:
@@ -340,3 +399,4 @@ SlowpokeWellB1F_MapEvents:
 	object_event 16, 14, SPRITE_KURT, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, SlowpokeWellB1FKurtScript, EVENT_SLOWPOKE_WELL_KURT
 	object_event  3,  2, SPRITE_BOULDER, SPRITEMOVEDATA_STRENGTH_BOULDER, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, SlowpokeWellB1FBoulder, -1
 	object_event 10,  3, SPRITE_POKE_BALL, SPRITEMOVEDATA_STILL, 0, 0, -1, -1, 0, OBJECTTYPE_ITEMBALL, 0, SlowpokeWellB1FSuperPotion, EVENT_SLOWPOKE_WELL_B1F_SUPER_POTION
+	object_event 11,  6, SPRITE_RIVAL, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, SlowpokeWellB1FKurtScript, EVENT_RIVAL_IN_SLOWPOKE_WELL

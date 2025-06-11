@@ -215,14 +215,6 @@ Route29FruitTree:
 Route29Potion:
 	itemball POTION
 
-Route29FindFruitTree:
-	setevent EVENT_FIND_FRUITTREE_ROUTE_29
-	opentext
-	writetext TestingNewEvent29Text
-	waitbutton
-	closetext
-	end
-
 DudeMovementData1a:
 	step UP
 	step UP
@@ -427,10 +419,6 @@ Route29Sign2Text:
 	line "NEW BARK TOWN"
 	done
 
-TestingNewEvent29Text:
-	text "You found a tree!"
-	done
-
 Route29_MapEvents:
 	db 0, 0 ; filler
 
@@ -440,7 +428,6 @@ Route29_MapEvents:
 	def_coord_events
 	coord_event 53, 10, SCENE_ROUTE29_CATCH_TUTORIAL, Route29Tutorial1
 	coord_event 53, 11, SCENE_ROUTE29_CATCH_TUTORIAL, Route29Tutorial2
-	coord_event 12,  5, SCENE_ROUTE29_NOOP, Route29FindFruitTree
 
 	def_bg_events
 	bg_event 51,  9, BGEVENT_READ, Route29Sign1
