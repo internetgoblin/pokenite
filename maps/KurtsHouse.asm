@@ -8,9 +8,18 @@
 
 KurtsHouse_MapScripts:
 	def_scene_scripts
+	scene_script KurtsHouseNoop1Scene, SCENE_KURTSHOUSE_NOOP
+	scene_script KurtsHouseNoop2Scene, SCENE_AFTER_SLOWPOKEWELL
 
 	def_callbacks
 	callback MAPCALLBACK_OBJECTS, KurtsHouseKurtCallback
+
+KurtsHouseNoop1Scene:
+	end
+
+KurtsHouseNoop2Scene:
+	sdefer ClearedSlowpokeWell
+	end
 
 KurtsHouseKurtCallback:
 	checkevent EVENT_CLEARED_SLOWPOKE_WELL
@@ -38,8 +47,6 @@ Kurt1:
 	opentext
 	checkevent EVENT_KURT_GAVE_YOU_LURE_BALL
 	iftrue .GotLureBall
-	checkevent EVENT_CLEARED_SLOWPOKE_WELL
-	iftrue .ClearedSlowpokeWell
 	writetext KurtsHouseKurtMakingBallsMustWaitText
 	waitbutton
 	closetext
@@ -67,12 +74,6 @@ Kurt1:
 	special RestartMapMusic
 	end
 
-.ClearedSlowpokeWell:
-	writetext KurtsHouseKurtHonoredToMakeBallsText
-	promptbutton
-	verbosegiveitem LURE_BALL
-	iffalse .NoRoomForBall
-	setevent EVENT_KURT_GAVE_YOU_LURE_BALL
 .GotLureBall:
 	checkevent EVENT_TEMPORARY_UNTIL_MAP_RELOAD_1
 	iftrue .WaitForApricorns
@@ -421,6 +422,21 @@ KurtsHouseSlowpoke:
 	closetext
 	end
 
+ClearedSlowpokeWell:
+	turnobject PLAYER, UP
+	opentext
+	writetext KurtsHouseKurtHonoredToMakeBallsText
+	promptbutton
+	verbosegiveitem LURE_BALL
+	iffalse .NoRoomForBall
+	setevent EVENT_KURT_GAVE_YOU_LURE_BALL
+	setscene SCENE_KURTSHOUSE_NOOP
+	ret
+
+.NoRoomForBall:
+	closetext
+	end
+
 KurtsHouseOakPhoto:
 	jumptext KurtsHouseOakPhotoText
 
@@ -495,9 +511,7 @@ KurtsHouseKurtMakingBallsMustWaitText:
 	done
 
 KurtsHouseKurtHonoredToMakeBallsText:
-	text "KURT: Hi, <PLAYER>!"
-
-	para "You handled your-"
+	text "You handled your-"
 	line "self like a real"
 	cont "hero at the WELL."
 
@@ -707,4 +721,4 @@ KurtsHouse_MapEvents:
 	object_event  6,  3, SPRITE_SLOWPOKE, SPRITEMOVEDATA_STILL, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, KurtsHouseSlowpoke, EVENT_KURTS_HOUSE_SLOWPOKE
 	object_event 14,  3, SPRITE_KURT, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, Kurt2, EVENT_KURTS_HOUSE_KURT_2
 	object_event 11,  4, SPRITE_TWIN, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, KurtsGranddaughter2, EVENT_KURTS_HOUSE_GRANDDAUGHTER_2
-	object_event  1,  3, SPRITE_AZALEA_ROCKET, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, KurtsHouseShiloh, EVENT_RIVAL_KURTS_HOUSE
+	object_event  1,  3, SPRITE_AZALEA_ROCKET, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, KurtsHouseShiloh, EVENT_RIVAL_KURTS_HOUSE

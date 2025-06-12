@@ -11,6 +11,7 @@
 	const AZALEATOWN_RIVAL
 	const AZALEATOWN_AZALEA_ROCKET3
 	const AZALEATOWN_KURT_OUTSIDE
+	const AZALEATOWN_CELCADA_KID
 
 AzaleaTown_MapScripts:
 	def_scene_scripts
@@ -102,8 +103,8 @@ AzaleaTownGrampsScript:
 AzaleaTownTeacherScript:
 	jumptextfaceplayer AzaleaTownTeacherText
 
-AzaleaTownYoungsterScript:
-	jumptextfaceplayer AzaleaTownYoungsterText
+AzaleaTownCelcadaKidScript:
+	jumptextfaceplayer AzaleaTownCelcadaKidText
 
 AzaleaTownSlowpokeScript:
 	opentext
@@ -169,6 +170,12 @@ CharcoalKilnSign:
 
 AzaleaTownIlextForestSign:
 	jumptext AzaleaTownIlexForestSignText
+
+AzaleaShilohsHouseSign:
+	jumptext AzaleaShilohsHouseSignText
+
+AzaleaTownYoungsterScript:
+	jumptextfaceplayer AzaleaTownYoungsterText
 
 AzaleaTownPokecenterSign:
 	jumpstd PokecenterSignScript
@@ -421,6 +428,16 @@ SlowpokeWellSignText:
 	line "400 years ago."
 	done
 
+AzaleaTownCelcadaKidText:
+	text "The CELCADA are"
+	line "so loud this time"
+	cont "of year."
+
+	para "Every tree in"
+	line "town must be"
+	cont "swarming with em'."
+	done
+
 CharcoalKilnSignText:
 	text "CHARCOAL KILN"
 	done
@@ -430,6 +447,10 @@ AzaleaTownIlexForestSignText:
 
 	para "Enter through the"
 	line "gate."
+	done
+
+AzaleaShilohsHouseSignText:
+	text "SHILOH'S HOUSE"
 	done
 
 AzaleaTown_MapEvents:
@@ -444,6 +465,7 @@ AzaleaTown_MapEvents:
 	warp_event 31,  9, SLOWPOKE_WELL_B1F, 1
 	warp_event  2, 12, ILEX_FOREST_AZALEA_GATE, 3
 	warp_event  2, 13, ILEX_FOREST_AZALEA_GATE, 4
+	warp_event 37, 13, SHILOHS_HOUSE, 1
 
 	def_coord_events
 	coord_event  9,  8, SCENE_AZALEATOWN_RIVAL_BATTLE, AzaleaTownRivalBattleScene1
@@ -459,6 +481,7 @@ AzaleaTown_MapEvents:
 	bg_event 22,  7, BGEVENT_READ, AzaleaTownMartSign
 	bg_event  3, 11, BGEVENT_READ, AzaleaTownIlextForestSign
 	bg_event 31,  8, BGEVENT_ITEM, AzaleaTownHiddenFullHeal
+	bg_event 35, 14, BGEVENT_READ, AzaleaShilohsHouseSign
 
 	def_object_events
 	object_event 31, 11, SPRITE_AZALEA_ROCKET, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, AzaleaTownRocket1Script, EVENT_AZALEA_TOWN_SLOWPOKETAIL_ROCKET
@@ -473,3 +496,4 @@ AzaleaTown_MapEvents:
 	object_event 11, 12, SPRITE_AZALEA_ROCKET, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, ObjectEvent, EVENT_RIVAL_AZALEA_TOWN
 	object_event 10, 18, SPRITE_AZALEA_ROCKET, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, AzaleaTownRocket2Script, EVENT_SLOWPOKE_WELL_ROCKETS
 	object_event  6,  7, SPRITE_KURT_OUTSIDE, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, AzaleaTownKurtScript, EVENT_AZALEA_TOWN_KURT
+	object_event 18, 18, SPRITE_YOUNGSTER, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, AzaleaTownCelcadaKidScript, -1
