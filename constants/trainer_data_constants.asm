@@ -36,6 +36,7 @@ DEF NO_AI EQU 0
 	const_def
 	const TRAINERTYPE_MOVES_F
 	const TRAINERTYPE_ITEM_F
+	const TRAINERTYPE_NICKNAME_F
 
 ; Trainer party types (see data/trainers/parties.asm)
 DEF TRAINERTYPE_NORMAL     EQU 0

@@ -325,14 +325,16 @@ ElmAfterTheftScript:
 	checkitem MYSTERY_EGG
 	iffalse ElmAfterTheftDoneScript
 	promptbutton
+	closetext
+	opentext
 	writetext ElmAfterTheftText2
 	waitbutton
 	takeitem MYSTERY_EGG
 	scall ElmJumpBackScript1
-	writetext ElmAfterTheftText3
+	writenamedtext ElmNameText, ElmAfterTheftText3
 	waitbutton
 	scall ElmJumpBackScript2
-	writetext ElmAfterTheftText4
+	writenamedtext ElmNameText, ElmAfterTheftText4
 	promptbutton
 	writetext ElmAfterTheftText5
 	promptbutton
@@ -341,6 +343,7 @@ ElmAfterTheftScript:
 	setmapscene ROUTE_29, SCENE_ROUTE29_CATCH_TUTORIAL
 	clearevent EVENT_ROUTE_30_YOUNGSTER_JOEY
 	setevent EVENT_ROUTE_30_BATTLE
+	clearevent EVENT_ELMS_LAB_EGG
 	writetext ElmAfterTheftText6
 	waitbutton
 	closetext
@@ -579,6 +582,9 @@ ElmsLabTrashcan:
 
 ElmsLabPC:
 	jumptext ElmsLabPCText
+
+ElmsLabMonEgg:
+	jumptext ElmsLabMonEggText
 
 ElmsLabTrashcan2: ; unreferenced
 	jumpstd TrashCanScript
@@ -1174,7 +1180,7 @@ ElmGiveTicketText2:
 	line "PROF.OAK in KANTO!"
 	done
 
-ElmsLabMonEggText: ; unreferenced
+ElmsLabMonEggText: ; unreferenced...until now :)
 	text "It's the #MON"
 	line "EGG being studied"
 	cont "by PROF.ELM."
@@ -1346,3 +1352,4 @@ ElmsLab_MapEvents:
 	object_event  6,  3, SPRITE_POKE_BALL, SPRITEMOVEDATA_STILL, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, CyndaquilPokeBallScript, EVENT_GOT_A_POKEMON_FROM_ELM
 	object_event  7,  3, SPRITE_POKE_BALL, SPRITEMOVEDATA_STILL, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, TotodilePokeBallScript, EVENT_GOT_A_POKEMON_FROM_ELM
 	object_event  8,  3, SPRITE_POKE_BALL, SPRITEMOVEDATA_STILL, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, ChikoritaPokeBallScript, EVENT_GOT_A_POKEMON_FROM_ELM
+	object_event  7,  3, SPRITE_EGG,	   SPRITEMOVEDATA_POKEMON, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, ElmsLabMonEgg, EVENT_ELMS_LAB_EGG

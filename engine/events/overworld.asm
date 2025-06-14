@@ -1270,9 +1270,10 @@ HeadbuttFromMenuScript:
 HeadbuttScript:
 	callasm GetPartyNickname
 	writetext UseHeadbuttText
-
-	refreshmap
-	callasm ShakeHeadbuttTree
+	closetext
+	special WaitSFX
+	playsound SFX_STOMP
+	earthquake 24
 
 	callasm TreeMonEncounter
 	iffalse .no_battle
@@ -1283,6 +1284,7 @@ HeadbuttScript:
 	end
 
 .no_battle
+	opentext
 	writetext HeadbuttNothingText
 	waitbutton
 	closetext

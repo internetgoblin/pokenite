@@ -37,4 +37,5 @@ SpriteMons:
 	dw LUGIA
 	dw HO_OH
 	dw EGG
+	dw PIDGEY
 	assert_table_length NUM_POKEMON_SPRITES

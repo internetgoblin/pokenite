@@ -17,6 +17,7 @@ FruitTreeScript::
 	readmem wCurFruit
 	giveitem ITEM_FROM_MEM
 	iffalse .packisfull
+	; disappear LAST_TALKED
 	promptbutton
 	writetext ObtainedFruitText
 	callasm PickedFruitTree

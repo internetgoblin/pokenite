@@ -53,6 +53,7 @@ RestOfMeetMomScript:
 	turnobject PLAYERSHOUSE1F_MOM1, DOWN
 	setscene SCENE_PLAYERSHOUSE1F_NOOP
 	setevent EVENT_PLAYERS_HOUSE_MOM_1
+	setevent EVENT_ELMS_LAB_EGG
 	clearevent EVENT_PLAYERS_HOUSE_MOM_2
 	opentext
 	writenamedtext PlayerHouse1FMomNameText, MomGivesPokegearText

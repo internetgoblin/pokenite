@@ -110,7 +110,7 @@ ENDM
 	connection west, Route36, ROUTE_36, 0
 	connection east, Route31, ROUTE_31, 9
 
-	map_attributes AzaleaTown, AZALEA_TOWN, $80, WEST | EAST
+	map_attributes AzaleaTown, AZALEA_TOWN, $9f, WEST | EAST
 	connection west, Route34, ROUTE_34, -17
 	connection east, Route33, ROUTE_33, 1
 
@@ -172,7 +172,7 @@ ENDM
 	connection north, VioletCity, VIOLET_CITY, 0
 	connection south, Route33, ROUTE_33, 0
 
-	map_attributes Route33, ROUTE_33, $80, NORTH | WEST
+	map_attributes Route33, ROUTE_33, $9f, NORTH | WEST
 	connection north, Route32, ROUTE_32, 0
 	connection west, AzaleaTown, AZALEA_TOWN, -1
 

@@ -16,26 +16,34 @@ MrPokemonsHouseMeetMrPokemonScene:
 MrPokemonsHouseNoopScene:
 	end
 
+MrPokemonsHouseNameText:
+	db "MR.#MON@"
+
+MrPokemonsHouseOakNameText:
+	db "PROF.OAK@"
+
 MrPokemonsHouseMrPokemonEventScript:
 	showemote EMOTE_SHOCK, MRPOKEMONSHOUSE_GENTLEMAN, 15
 	turnobject MRPOKEMONSHOUSE_GENTLEMAN, DOWN
 	opentext
-	writetext MrPokemonIntroText1
+	writenamedtext MrPokemonsHouseNameText, MrPokemonIntroText1
 	waitbutton
 	closetext
 	applymovement PLAYER, MrPokemonsHouse_PlayerWalksToMrPokemon
 	opentext
-	writetext MrPokemonIntroText2
+	writenamedtext MrPokemonsHouseNameText, MrPokemonIntroText2
 	promptbutton
+	closetext
 	waitsfx
 	giveitem MYSTERY_EGG
+	opentext
 	writetext MrPokemonsHouse_GotEggText
 	playsound SFX_KEY_ITEM
 	waitsfx
 	itemnotify
 	setevent EVENT_GOT_MYSTERY_EGG_FROM_MR_POKEMON
 	blackoutmod CHERRYGROVE_CITY
-	writetext MrPokemonIntroText3
+	writenamedtext MrPokemonsHouseNameText, MrPokemonIntroText3
 	promptbutton
 	turnobject MRPOKEMONSHOUSE_GENTLEMAN, RIGHT
 	writetext MrPokemonIntroText4
@@ -54,13 +62,13 @@ MrPokemonsHouse_MrPokemonScript:
 	iftrue .RedScale
 	checkevent EVENT_GAVE_MYSTERY_EGG_TO_ELM
 	iftrue .AlwaysNewDiscoveries
-	writetext MrPokemonText_ImDependingOnYou
+	writenamedtext MrPokemonsHouseNameText, MrPokemonText_ImDependingOnYou
 	waitbutton
 	closetext
 	end
 
 .AlwaysNewDiscoveries:
-	writetext MrPokemonText_AlwaysNewDiscoveries
+	writenamedtext MrPokemonsHouseNameText, MrPokemonText_AlwaysNewDiscoveries
 	waitbutton
 	closetext
 	end
@@ -86,14 +94,16 @@ MrPokemonsHouse_OakScript:
 	applymovement MRPOKEMONSHOUSE_OAK, MrPokemonsHouse_OakWalksToPlayer
 	turnobject PLAYER, RIGHT
 	opentext
-	writetext MrPokemonsHouse_OakText1
+	writenamedtext MrPokemonsHouseOakNameText, MrPokemonsHouse_OakText1
 	promptbutton
 	waitsfx
+	closetext
+	opentext
 	writetext MrPokemonsHouse_GetDexText
 	playsound SFX_ITEM
 	waitsfx
 	setflag ENGINE_POKEDEX
-	writetext MrPokemonsHouse_OakText2
+	writenamedtext MrPokemonsHouseOakNameText, MrPokemonsHouse_OakText2
 	waitbutton
 	closetext
 	turnobject PLAYER, DOWN
@@ -105,7 +115,7 @@ MrPokemonsHouse_OakScript:
 	pause 15
 	turnobject PLAYER, UP
 	opentext
-	writetext MrPokemonsHouse_MrPokemonHealText
+	writenamedtext MrPokemonsHouseNameText, MrPokemonsHouse_MrPokemonHealText
 	waitbutton
 	closetext
 	special FadeOutToBlack
@@ -117,7 +127,7 @@ MrPokemonsHouse_OakScript:
 	special FadeInFromBlack
 	special RestartMapMusic
 	opentext
-	writetext MrPokemonText_ImDependingOnYou
+	writenamedtext MrPokemonsHouseNameText, MrPokemonText_ImDependingOnYou
 	waitbutton
 	closetext
 	setevent EVENT_PLAYERS_HOUSE_1F_SILVIASMOM
@@ -223,8 +233,8 @@ MrPokemonText_AlwaysNewDiscoveries:
 	done
 
 MrPokemonsHouse_OakText1:
-	text "OAK: Aha! So"
-	line "you're <PLAY_G>!"
+	text "Aha! So you're"
+	line "<PLAY_G>!"
 
 	para "I'm OAK! A #MON"
 	line "researcher."
