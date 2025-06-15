@@ -16,7 +16,11 @@ SlowpokeWellB1F_MapScripts:
 	def_callbacks
 
 SlowpokeWellB1FKurtScript:
-	jumptextfaceplayer SlowpokeWellB1FKurtText
+	opentext
+	writenamedtext KurtSlowpokeWellNameText, SlowpokeWellB1FKurtText
+	waitbutton
+	closetext
+	end
 
 TrainerGruntM29:
 	trainer GRUNTM, GRUNTM_29, EVENT_BEAT_ROCKET_GRUNTM_29, GruntM29SeenText, GruntM29BeatenText, 0, .Script
@@ -175,7 +179,7 @@ KurtSlowpokeWellVictoryMovementData3:
 	step_end
 
 SlowpokeWellB1FKurtText:
-	text "KURT: Hey there,"
+	text "Hey there,"
 	line "<PLAYER>!"
 
 	para "The guard up top"

@@ -11,11 +11,14 @@ EarlsPokemonAcademy_MapScripts:
 
 	def_callbacks
 
+AcademyEarlNameText:
+	db "MR.DERVISH@"
+
 AcademyEarl:
 	applymovement EARLSPOKEMONACADEMY_EARL, AcademyEarlSpinMovement
 	faceplayer
 	opentext
-	writetext AcademyEarlIntroText
+	writenamedtext AcademyEarlNameText, AcademyEarlIntroText
 	yesorno
 	iffalse .Part1
 	writetext AcademyEarlTeachHowToWinText

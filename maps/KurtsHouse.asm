@@ -42,12 +42,15 @@ KurtsHouseKurtCallback:
 .Done:
 	endcallback
 
+HouseKurtNameText:
+	db "KURT@"
+
 Kurt1:
 	faceplayer
 	opentext
 	checkevent EVENT_KURT_GAVE_YOU_LURE_BALL
 	iftrue .GotLureBall
-	writetext KurtsHouseKurtMakingBallsMustWaitText
+	writenamedtext HouseKurtNameText, KurtsHouseKurtMakingBallsMustWaitText
 	waitbutton
 	closetext
 	special FadeOutMusic
@@ -98,7 +101,7 @@ Kurt1:
 	iftrue .CheckApricorns
 	checkevent EVENT_TEMPORARY_UNTIL_MAP_RELOAD_3
 	iftrue .CheckApricorns
-	writetext KurtsHouseKurtBallsFromApricornsText
+	writenamedtext HouseKurtNameText, KurtsHouseKurtBallsFromApricornsText
 	waitbutton
 .CheckApricorns:
 	checkitem RED_APRICORN
@@ -123,13 +126,13 @@ Kurt1:
 	end
 
 .IMakeBallsFromApricorns:
-	writetext KurtsHouseKurtBallsFromApricornsText
+	writenamedtext HouseKurtNameText, KurtsHouseKurtBallsFromApricornsText
 	waitbutton
 	closetext
 	end
 
 .AskApricorn:
-	writetext KurtsHouseKurtAskYouHaveAnApricornText
+	writenamedtext HouseKurtNameText, KurtsHouseKurtAskYouHaveAnApricornText
 	promptbutton
 	setevent EVENT_TEMPORARY_UNTIL_MAP_RELOAD_3
 	special SelectApricornForKurt
@@ -186,7 +189,7 @@ Kurt1:
 ._ThatTurnedOutGreat:
 	setevent EVENT_TEMPORARY_UNTIL_MAP_RELOAD_2
 .ThatTurnedOutGreat:
-	writetext KurtsHouseKurtTurnedOutGreatText
+	writenamedtext HouseKurtNameText, KurtsHouseKurtTurnedOutGreatText
 	waitbutton
 .NoRoomForBall:
 	closetext
@@ -195,7 +198,7 @@ Kurt1:
 .GiveLevelBall:
 	checkflag ENGINE_KURT_MAKING_BALLS
 	iftrue KurtMakingBallsScript
-	writetext KurtsHouseKurtJustFinishedYourBallText
+	writenamedtext HouseKurtNameText, KurtsHouseKurtJustFinishedYourBallText
 	promptbutton
 	verbosegiveitemvar LEVEL_BALL, VAR_KURT_APRICORNS
 	iffalse .NoRoomForBall
@@ -205,7 +208,7 @@ Kurt1:
 .GiveLureBall:
 	checkflag ENGINE_KURT_MAKING_BALLS
 	iftrue KurtMakingBallsScript
-	writetext KurtsHouseKurtJustFinishedYourBallText
+	writenamedtext HouseKurtNameText, KurtsHouseKurtJustFinishedYourBallText
 	promptbutton
 	verbosegiveitemvar LURE_BALL, VAR_KURT_APRICORNS
 	iffalse .NoRoomForBall
@@ -215,7 +218,7 @@ Kurt1:
 .GiveMoonBall:
 	checkflag ENGINE_KURT_MAKING_BALLS
 	iftrue KurtMakingBallsScript
-	writetext KurtsHouseKurtJustFinishedYourBallText
+	writenamedtext HouseKurtNameText, KurtsHouseKurtJustFinishedYourBallText
 	promptbutton
 	verbosegiveitemvar MOON_BALL, VAR_KURT_APRICORNS
 	iffalse .NoRoomForBall
@@ -225,7 +228,7 @@ Kurt1:
 .GiveFriendBall:
 	checkflag ENGINE_KURT_MAKING_BALLS
 	iftrue KurtMakingBallsScript
-	writetext KurtsHouseKurtJustFinishedYourBallText
+	writenamedtext HouseKurtNameText, KurtsHouseKurtJustFinishedYourBallText
 	promptbutton
 	verbosegiveitemvar FRIEND_BALL, VAR_KURT_APRICORNS
 	iffalse .NoRoomForBall
@@ -235,7 +238,7 @@ Kurt1:
 .GiveFastBall:
 	checkflag ENGINE_KURT_MAKING_BALLS
 	iftrue KurtMakingBallsScript
-	writetext KurtsHouseKurtJustFinishedYourBallText
+	writenamedtext HouseKurtNameText, KurtsHouseKurtJustFinishedYourBallText
 	promptbutton
 	verbosegiveitemvar FAST_BALL, VAR_KURT_APRICORNS
 	iffalse .NoRoomForBall
@@ -245,7 +248,7 @@ Kurt1:
 .GiveHeavyBall:
 	checkflag ENGINE_KURT_MAKING_BALLS
 	iftrue KurtMakingBallsScript
-	writetext KurtsHouseKurtJustFinishedYourBallText
+	writenamedtext HouseKurtNameText, KurtsHouseKurtJustFinishedYourBallText
 	promptbutton
 	verbosegiveitemvar HEAVY_BALL, VAR_KURT_APRICORNS
 	iffalse .NoRoomForBall
@@ -255,7 +258,7 @@ Kurt1:
 .GiveLoveBall:
 	checkflag ENGINE_KURT_MAKING_BALLS
 	iftrue KurtMakingBallsScript
-	writetext KurtsHouseKurtJustFinishedYourBallText
+	writenamedtext HouseKurtNameText, KurtsHouseKurtJustFinishedYourBallText
 	promptbutton
 	verbosegiveitemvar LOVE_BALL, VAR_KURT_APRICORNS
 	iffalse .NoRoomForBall
@@ -267,7 +270,7 @@ Kurt1:
 	iftrue .GaveGSBallToKurt
 	checkitem GS_BALL
 	iffalse .NoGSBall
-	writetext KurtsHouseKurtWhatIsThatText
+	writenamedtext HouseKurtNameText, KurtsHouseKurtWhatIsThatText
 	waitbutton
 	closetext
 	setevent EVENT_GAVE_GS_BALL_TO_KURT
@@ -278,7 +281,7 @@ Kurt1:
 .GaveGSBallToKurt:
 	checkflag ENGINE_KURT_MAKING_BALLS
 	iffalse .NotMakingBalls
-	writetext KurtsHouseKurtImCheckingItNowText
+	writenamedtext HouseKurtNameText, KurtsHouseKurtImCheckingItNowText
 	waitbutton
 	writetext KurtsHouseKurtAhHaISeeText
 	waitbutton
@@ -286,7 +289,7 @@ Kurt1:
 	end
 
 .NotMakingBalls:
-	writetext KurtsHouseKurtThisBallStartedToShakeText
+	writenamedtext HouseKurtNameText, KurtsHouseKurtThisBallStartedToShakeText
 	waitbutton
 	closetext
 	setevent EVENT_FOREST_IS_RESTLESS
@@ -323,14 +326,14 @@ Kurt2:
 KurtMakingBallsScript:
 	checkevent EVENT_BUGGING_KURT_TOO_MUCH
 	iffalse Script_FirstTimeBuggingKurt
-	writetext KurtsHouseKurtDontBotherMeText
+	writenamedtext HouseKurtNameText, KurtsHouseKurtDontBotherMeText
 	waitbutton
 	closetext
 	turnobject KURTSHOUSE_KURT2, UP
 	end
 
 Script_FirstTimeBuggingKurt:
-	writetext KurtsHouseKurtGranddaughterHelpingWorkFasterText
+	writenamedtext HouseKurtNameText, KurtsHouseKurtGranddaughterHelpingWorkFasterText
 	waitbutton
 	closetext
 	turnobject KURTSHOUSE_KURT2, UP
@@ -338,10 +341,10 @@ Script_FirstTimeBuggingKurt:
 	end
 
 KurtScript_ImCheckingItNow:
-	writetext KurtsHouseKurtImCheckingItNowText
+	writenamedtext HouseKurtNameText, KurtsHouseKurtImCheckingItNowText
 	waitbutton
 	turnobject KURTSHOUSE_KURT2, UP
-	writetext KurtsHouseKurtAhHaISeeText
+	writenamedtext HouseKurtNameText, KurtsHouseKurtAhHaISeeText
 	waitbutton
 	closetext
 	end
@@ -361,21 +364,21 @@ KurtsGranddaughter1:
 	checkevent EVENT_AZALEA_TOWN_SLOWPOKETAIL_ROCKET
 	iftrue .Lonely
 	opentext
-	writetext KurtsGranddaughterSlowpokeGoneText
+	writenamedtext KurtsHouseGrandaughterNameText, KurtsGranddaughterSlowpokeGoneText
 	waitbutton
 	closetext
 	end
 
 .SlowpokeBack:
 	opentext
-	writetext KurtsGranddaughterSlowpokeBackText
+	writenamedtext KurtsHouseGrandaughterNameText, KurtsGranddaughterSlowpokeBackText
 	waitbutton
 	closetext
 	end
 
 .Lonely:
 	opentext
-	writetext KurtsGranddaughterLonelyText
+	writenamedtext KurtsHouseGrandaughterNameText, KurtsGranddaughterLonelyText
 	waitbutton
 	closetext
 	end
@@ -387,20 +390,23 @@ KurtsGranddaughter1:
 	closetext
 	end
 
+KurtsHouseGrandaughterNameText:
+	db "MAIZIE@"
+
 KurtsGranddaughter2:
 	faceplayer
 KurtsGranddaughter2Subscript:
 	opentext
 	checkevent EVENT_GAVE_GS_BALL_TO_KURT
 	iftrue .GSBall
-	writetext KurtsGranddaughterHelpText
+	writenamedtext KurtsHouseGrandaughterNameText, KurtsGranddaughterHelpText
 	waitbutton
 	closetext
 	turnobject KURTSHOUSE_TWIN2, RIGHT
 	end
 
 .GSBall:
-	writetext KurtsGranddaughterGSBallText
+	writenamedtext KurtsHouseGrandaughterNameText, KurtsGranddaughterGSBallText
 	waitbutton
 	closetext
 	turnobject KURTSHOUSE_TWIN2, RIGHT
@@ -408,7 +414,7 @@ KurtsGranddaughter2Subscript:
 
 KurtsGranddaughterFunScript:
 	opentext
-	writetext KurtsGranddaughterFunText
+	writenamedtext KurtsHouseGrandaughterNameText, KurtsGranddaughterFunText
 	waitbutton
 	closetext
 	end
@@ -694,7 +700,7 @@ KurtsHouseCelebiStatueText:
 	done
 
 ShilohAfterWellText:
-	text "Wow!"
+	text "Wow!" ; placeholder!
 	done
 
 KurtsHouse_MapEvents:

@@ -675,7 +675,7 @@ Script_swarm:
 	farcall StoreSwarmMapIndices
 	ret
 
-Script_trainertext:
+Script_trainertext: ; TODO - add nameplates
 	call GetScriptByte
 	ld c, a
 	ld b, 0

@@ -10,12 +10,15 @@ SproutTower3F_MapScripts:
 	def_scene_scripts
 	def_callbacks
 
+TowerSageLiNameText:
+	db "ELDER LI@"
+
 SageLiScript:
 	faceplayer
 	opentext
 	checkevent EVENT_GOT_HM05_FLASH
 	iftrue .GotFlash
-	writetext SageLiSeenText
+	writenamedtext TowerSageLiNameText, SageLiSeenText
 	waitbutton
 	closetext
 	winlosstext SageLiBeatenText, 0
@@ -23,18 +26,20 @@ SageLiScript:
 	startbattle
 	reloadmapafterbattle
 	opentext
-	writetext SageLiTakeThisFlashText
+	writenamedtext TowerSageLiNameText, SageLiTakeThisFlashText
 	promptbutton
+	closetext
+	opentext
 	verbosegiveitem HM_FLASH
 	setevent EVENT_GOT_HM05_FLASH
 	setevent EVENT_BEAT_SAGE_LI
-	writetext SageLiFlashExplanationText
+	writenamedtext TowerSageLiNameText, SageLiFlashExplanationText
 	waitbutton
 	closetext
 	end
 
 .GotFlash:
-	writetext SageLiAfterBattleText
+	writenamedtext TowerSageLiNameText, SageLiAfterBattleText
 	waitbutton
 	closetext
 	end

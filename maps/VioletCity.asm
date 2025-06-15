@@ -22,19 +22,19 @@ VioletCityEarlScript:
 	applymovement VIOLETCITY_EARL, VioletCitySpinningEarl_MovementData
 	faceplayer
 	opentext
-	writetext Text_EarlAsksIfYouBeatFalkner
+	writenamedtext VioletCityEarlNameText, Text_EarlAsksIfYouBeatFalkner
 	yesorno
 	iffalse .FollowEarl
 	sjump .PointlessJump
 
 .PointlessJump:
-	writetext Text_VeryNiceIndeed
+	writenamedtext VioletCityEarlNameText, Text_VeryNiceIndeed
 	waitbutton
 	closetext
 	end
 
 .FollowEarl:
-	writetext Text_FollowEarl
+	writenamedtext VioletCityEarlNameText, Text_FollowEarl
 	waitbutton
 	closetext
 	playmusic MUSIC_SHOW_ME_AROUND
@@ -45,7 +45,7 @@ VioletCityEarlScript:
 	stopfollow
 	special RestartMapMusic
 	opentext
-	writetext Text_HereTeacherIAm
+	writenamedtext VioletCityEarlNameText, Text_HereTeacherIAm
 	waitbutton
 	closetext
 	applymovement VIOLETCITY_EARL, VioletCitySpinningEarl_MovementData
@@ -56,6 +56,9 @@ VioletCityEarlScript:
 	waitsfx
 	end
 
+VioletCityEarlNameText:
+	db "MR.DERVISH@"
+
 VioletCityLassScript:
 	faceplayer
 	opentext
@@ -63,7 +66,7 @@ VioletCityLassScript:
 	waitbutton
 	closetext
 	loadmonindex 0, GASTLY
-	special MonCheck
+	special FindPartyMonThatSpecies ; Make standard for these events
 	iftrue .VioletCityLassFoundGhost
 	end
 
@@ -296,8 +299,8 @@ SproutTowerSignText:
 	done
 
 EarlsPokemonAcademySignText:
-	text "EARL'S #MON"
-	line "ACADEMY"
+	text "EARL DERVISH'S"
+	line "#MON ACADEMY"
 	done
 
 VioletCity_MapEvents:

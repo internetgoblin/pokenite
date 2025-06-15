@@ -274,12 +274,15 @@ Route31Potion:
 Route31PokeBall:
 	itemball POKE_BALL
 
+Route31ShilohNameText:
+	db "SHILOH@"
+
 Route31RivalScene:
 	applymovement PLAYER, Route31_Walkup
 	appear ROUTE31_RIVAL
 	applymovement ROUTE31_RIVAL, Route31_RivalWalksToYou
 	opentext
-	writetext Route31RivalText_Appear
+	writenamedtext Route31ShilohNameText, Route31RivalText_Appear
 	waitbutton
 	closetext
 	special FadeOutMusic
@@ -287,13 +290,13 @@ Route31RivalScene:
 	applymovement ROUTE31_RIVAL, Route31_PlayerBumpsIntoRivalMovement
 	playmusic MUSIC_RIVAL_ENCOUNTER
 	opentext
-	writetext Route31RivalText_Surprised
+	writenamedtext Route31ShilohNameText, Route31RivalText_Surprised
 	waitbutton
 	closetext
 	pause 5
 	applymovement ROUTE31_RIVAL, Route31_RivalDown
 	opentext
-	writetext Route31RivalText_Seen
+	writenamedtext Route31ShilohNameText, Route31RivalText_Seen
 	waitbutton
 	closetext
 	winlosstext RivalRoute31WinText, 0
@@ -307,7 +310,7 @@ Route31RivalScene:
 .AfterVictorious:
 	playmusic MUSIC_RIVAL_AFTER
 	opentext
-	writetext Route31RivalText_YouWon
+	writenamedtext Route31ShilohNameText, Route31RivalText_YouWon
 	waitbutton
 	closetext
 	sjump .FinishRival
