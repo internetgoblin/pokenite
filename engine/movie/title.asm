@@ -45,69 +45,69 @@ _TitleScreen:
 ; BG Map 0:
 
 ; lines 3-4
-	hlbgcoord 0, 1
+	hlbgcoord 0, 4
 	ld bc, 2 * BG_MAP_WIDTH
 	ld a, 4
 	call ByteFill
 ; line 5
-	hlbgcoord 0, 3
+	hlbgcoord 0, 6
 	ld bc, BG_MAP_WIDTH
 	ld a, 4
 	call ByteFill
 ; line 6
-	hlbgcoord 0, 4
+	hlbgcoord 0, 7
 	ld bc, BG_MAP_WIDTH
 	ld a, 4
 	call ByteFill
 ; line 7
-	hlbgcoord 0, 5
+	hlbgcoord 0, 8
 	ld bc, BG_MAP_WIDTH
 	ld a, 4
 	call ByteFill
 ; lines 8-9
-	hlbgcoord 0, 6
+	hlbgcoord 0, 9
 	ld bc, 2 * BG_MAP_WIDTH
 	ld a, 4
 	call ByteFill
 
 ; 'CRYSTAL VERSION'
-	hlbgcoord 4, 7
+	hlbgcoord 4, 10
 	ld bc, 9 ; length of version text
 	ld a, 3 ; temporary
 	call ByteFill
 
 
-	hlbgcoord 13, 1
+	hlbgcoord 13, 4
 	ld bc, 7 ; length
 	ld a, 3 ; temporary
 	call ByteFill
 
-	hlbgcoord 13, 2
+	hlbgcoord 13, 6
 	ld bc, 7 ; length
 	ld a, 3 ; temporary
 	call ByteFill
 
-	hlbgcoord 13, 3
+	hlbgcoord 13, 7
 	ld bc, 7 ; length
 	ld a, 3 ; temporary
 	call ByteFill
 
-	hlbgcoord 15, 4
+	hlbgcoord 15, 8
 	ld bc, 7 ; length
 	ld a, 3 ; temporary
 	call ByteFill
 
-	hlbgcoord 15, 5
+	hlbgcoord 15, 9
 	ld bc, 7 ; length
 	ld a, 3 ; temporary
 	call ByteFill
 
-	hlbgcoord 15, 6
+	hlbgcoord 15, 10
 	ld bc, 7 ; length
 	ld a, 3 ; temporary
 	call ByteFill
 
-	hlbgcoord 15, 7
+	hlbgcoord 15, 11
 	ld bc, 7 ; length
 	ld a, 3 ; temporary
 	call ByteFill
@@ -134,7 +134,7 @@ _TitleScreen:
 	call ByteFill
 
 ; Draw Pokemon logo
-	hlcoord 0, 1
+	hlcoord 0, 4
 	lb bc, 7, 20
 	ld d, $80
 	ld e, 20

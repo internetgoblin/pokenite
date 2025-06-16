@@ -1,4 +1,5 @@
 ; Used by CheckSleepingTreeMon
+; A mechanic added to Crystal
 
 AsleepTreeMonsNite:
 	dw CATERPIE
