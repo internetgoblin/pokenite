@@ -700,7 +700,13 @@ KurtsHouseCelebiStatueText:
 	done
 
 ShilohAfterWellText:
-	text "Wow!" ; placeholder!
+	text "Don't treat a"
+	line "gift like that"
+	cont "lightly."
+
+	para "You can't find"
+	line "balls like that"
+	cont "anywhere else."
 	done
 
 KurtsHouse_MapEvents:

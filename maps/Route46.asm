@@ -258,6 +258,14 @@ Route46LassProblemText:
 	cont "reason."
 	done
 
+Route46LassRealizationText:
+	text "Oh! JIGGLYPUFF"
+	line "appear here?"
+
+	para "It's song must"
+	line "have been made"
+	cont "me drowsy."
+
 Route46SignText:
 	text "ROUTE 46"
 	line "MOUNTAIN RD. AHEAD"

@@ -81,7 +81,7 @@ NamingScreen:
 	dw .Box
 	dw .Tomodachi
 	dw .Pokemon
-	dw .Pokemon
+	dw .input
 
 .Pokemon:
 	ld a, [wCurPartySpecies]
@@ -205,6 +205,19 @@ NamingScreen:
 
 .oTomodachi_no_namae_sutoringu
 	db "おともだち　の　なまえは？@"
+
+.input
+	ld de, PokeBallSpriteGFX
+	ld b, BANK(PokeBallSpriteGFX)
+	call .LoadSprite
+	hlcoord 5, 2
+	ld de, .InputNameString
+	call PlaceString
+	call .StoreSpriteIconParams
+	ret
+
+.InputNameString:
+	db "@"
 
 .LoadSprite:
 	push de

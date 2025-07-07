@@ -263,12 +263,12 @@ ElmsDelayedRealization:
 	waitsfx
 	waitbutton
 	closetext
-	turnobject ELMSLAB_ELM, UP
+	turnobject PLAYER, UP
 	opentext
 	writenamedtext ElmNameText, ElmDirectionsText2
 	waitbutton
 	closetext
-	turnobject ELMSLAB_ELM, DOWN
+	turnobject PLAYER, DOWN
 	setevent EVENT_GOT_A_POKEMON_FROM_ELM
 	setscene SCENE_ELMSLAB_AIDE_GIVES_POTION
 	setmapscene NEW_BARK_TOWN, SCENE_NEWBARKTOWN_NOOP

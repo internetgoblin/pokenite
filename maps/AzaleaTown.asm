@@ -53,7 +53,7 @@ AzaleaTownRivalBattleScript:
 	applymovement PLAYER, AzaleaTownRivalBattlePlayerToPlace
 	applymovement AZALEATOWN_RIVAL, AzaleaTownRivalBattleRivalToPlace
 	setevent EVENT_RIVAL_AZALEA_TOWN
-	winlosstext AzaleaTownRivalWinText, AzaleaTownRivalLossText
+	winlosstext AzaleaTownRivalWinText, 0
 	setlasttalked AZALEATOWN_RIVAL
 	blackoutmod KURTS_HOUSE
 	loadtrainer RIVAL1, SHILOH1_2
@@ -234,61 +234,20 @@ AzaleaTownPlayerLeavesKurtsHouseMovement:
 	step_end
 
 AzaleaTownRivalBeforeText:
-	text "…Tell me some-"
-	line "thing."
+	text "Hey <PLAYER>!"
 
-	para "Is it true that"
-	line "TEAM ROCKET has"
-	cont "returned?"
+	para "bop" ; placeholder
 
-	para "What? You beat"
-	line "them? Hah! Quit"
-	cont "lying."
-
-	para "You're not joking?"
-	line "Then let's see how"
-	cont "good you are."
+	para "Let's get this"
+	line "show on the road!"
 	done
 
 AzaleaTownRivalWinText:
-	text "… Humph! Useless"
-	line "#MON!"
-
-	para "Listen, you. You"
-	line "only won because"
-
-	para "my #MON were"
-	line "weak."
+	text "bop" ; placeholder
 	done
 
 AzaleaTownRivalAfterText:
-	text "I hate the weak."
-
-	para "#MON, trainers."
-	line "It doesn't matter"
-	cont "who or what."
-
-	para "I'm going to be"
-	line "strong and wipe"
-	cont "out the weak."
-
-	para "That goes for TEAM"
-	line "ROCKET too."
-
-	para "They act big and"
-	line "tough in a group."
-
-	para "But get them"
-	line "alone, and they're"
-	cont "weak."
-
-	para "I hate them all."
-
-	para "You stay out of my"
-	line "way. A weakling"
-
-	para "like you is only a"
-	line "distraction."
+	text "bop" ; placeholder
 	done
 
 AzaleaTownRivalLossText:

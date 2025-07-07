@@ -1,6 +1,7 @@
 	object_const_def
 	const CHERRYGROVECITY_GRAMPS
 	const CHERRYGROVECITY_TEACHER
+	const CHERRYGROVECITY_MON
 	const CHERRYGROVECITY_YOUNGSTER
 	const CHERRYGROVECITY_FISHER
 
@@ -103,6 +104,9 @@ CherrygroveCityGuideGent:
 GuideGentNameText:
 	db "GUIDE GENT@"
 
+CherrygroveMonNameText:
+	db "PIDGEY@"
+
 CherrygroveTeacherScript:
 	faceplayer
 	opentext
@@ -115,6 +119,14 @@ CherrygroveTeacherScript:
 
 .HaveMapCard:
 	writetext CherrygroveTeacherText_HaveMapCard
+	waitbutton
+	closetext
+	end
+
+CherrygroveMonScript:
+	opentext
+	writenamedtext CherrygroveMonNameText, CherrygroveMonText
+	cry PIDGEY
 	waitbutton
 	closetext
 	end
@@ -386,6 +398,10 @@ CherrygroveTeacherText_HaveMapCard:
 	cont "anywhere is fun."
 	done
 
+CherrygroveMonText:
+	text "Pijji!"
+	done
+
 CherrygroveYoungsterText_NoPokedex:
 	text "MR.#MON's house"
 	line "is still farther"
@@ -461,5 +477,6 @@ CherrygroveCity_MapEvents:
 	def_object_events
 	object_event 32,  6, SPRITE_GRAMPS, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, CherrygroveCityGuideGent, EVENT_GUIDE_GENT_IN_HIS_HOUSE
 	object_event 19, 15, SPRITE_TEACHER, SPRITEMOVEDATA_STANDING_DOWN, 1, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_SCRIPT, 0, CherrygroveTeacherScript, -1
+	object_event 20, 15, SPRITE_PIDGEY, SPRITEMOVEDATA_POKEMON, 0, 0, -1, -1, PAL_NPC_BROWN, OBJECTTYPE_SCRIPT, 0, CherrygroveMonScript, -1
 	object_event 23,  7, SPRITE_YOUNGSTER, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 1, 0, -1, -1, PAL_NPC_RED, OBJECTTYPE_SCRIPT, 0, CherrygroveYoungsterScript, -1
 	object_event  7, 12, SPRITE_FISHER, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, PAL_NPC_GREEN, OBJECTTYPE_SCRIPT, 0, MysticWaterGuy, -1

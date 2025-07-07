@@ -62,6 +62,9 @@ NewGame:
 	xor a
 	ld [wDebugFlags], a
 	call ResetWRAM
+	ld a, [wPlayerGender]
+	inc a
+	ld [wPlayerGender], a
 	call NewGame_ClearTilemapEtc ; call PlayerProfileSetup removed
 	call OakSpeech
 	call InitializeWorld
