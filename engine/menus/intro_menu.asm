@@ -69,7 +69,7 @@ NewGame:
 	call OakSpeech
 	call InitializeWorld
 
-	ld a, LANDMARK_NEW_BARK_TOWN
+	ld a, LANDMARK_GOLDENROD_CITY
 	ld [wPrevLandmark], a
 
 	ld a, SPAWN_HOME
@@ -263,6 +263,10 @@ InitializeNPCNames:
 	ld hl, .Green
 	ld de, wGreensName
 
+	ld hl, .Player
+	ld de, wPlayerName
+	call .Copy
+
 .Copy:
 	ld bc, NAME_LENGTH
 	call CopyBytes
@@ -272,11 +276,14 @@ InitializeNPCNames:
 .Red:    db "RED@"
 .Green:  db "GREEN@"
 .Mom:    db "MOM@"
+.Player  db "BLANKA@"
 
 InitializeWorld:
-	call ShrinkPlayer
+	; call ShrinkPlayer
 	farcall SpawnPlayer
 	farcall _InitializeStartDay
+	call RotateThreePalettesRight
+	call ClearTilemap
 	ret
 
 LoadOrRegenerateLuckyIDNumber:
@@ -609,7 +616,7 @@ OakSpeech:
 	call RotateFourPalettesLeft
 	call ClearTilemap
 
-	ld de, MUSIC_ROUTE_30
+	/* ld de, MUSIC_ROUTE_30
 	call PlayMusic
 
 	call RotateFourPalettesRight
@@ -680,7 +687,7 @@ OakSpeech:
 	call PrintText
 	call NamePlayer
 	ld hl, OakText7
-	call PrintText
+	call PrintText */
 	ret
 
 OakText1:
@@ -760,7 +767,7 @@ NamePlayer:
 .Chris:
 	db "GOLD@@@@@@@"
 .Kris:
-	db "KRIS@@@@@@@"
+	db "BLANKA@@@@@"
 
 GSShowPlayerNamingChoices: ; unreferenced
 	call LoadMenuHeader
