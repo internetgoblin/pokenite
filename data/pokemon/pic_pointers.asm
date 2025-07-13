@@ -522,4 +522,6 @@ PokemonPicPointers::
 	dba BloomfreeBackpic
 	dba IntelivastFrontpic
 	dba IntelivastBackpic
+	dba KotoraFrontpic
+	dba KotoraBackpic
 	assert_table_length NUM_POKEMON + 1

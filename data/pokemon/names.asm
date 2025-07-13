@@ -257,4 +257,5 @@ PokemonNames::
 	db "CELEBI@@@@"
 	db "BLOOMFREE@"
 	db "INTELIVAST"
+	db "KOTORA@@@@"
 	assert_table_length NUM_POKEMON

@@ -87,4 +87,5 @@ MapScenes::
 	scene_var MOBILE_TRADE_ROOM,                           wMobileTradeRoomSceneID
 	scene_var MOBILE_BATTLE_ROOM,                          wMobileBattleRoomSceneID
 	scene_var KURTS_HOUSE,								   wKurtsHouseSceneID
+	scene_var TAKE_HOUSE_2F,							   wTakeHouse2FSceneID
 	db -1 ; end

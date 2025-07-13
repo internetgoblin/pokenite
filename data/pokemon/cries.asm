@@ -259,4 +259,5 @@ PokemonCries::
 	mon_cry CRY_ENTEI,       330,  273 ; CELEBI
 	mon_cry CRY_CHIKORITA,   128,  566 ; BLOOMFREE
 	mon_cry CRY_DUNSPARCE,   452,  256 ; INTELIVAST (WIP)
+	mon_cry CRY_BULBASAUR,   238,  129 ; KOTORA (WIP)
 	assert_table_length NUM_POKEMON

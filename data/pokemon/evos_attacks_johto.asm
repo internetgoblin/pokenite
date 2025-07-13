@@ -103,6 +103,7 @@ EvosAttacksPointers2::
 	dw CelebiEvosAttacks
 	dw BloomfreeEvosAttacks
 	dw IntelivastEvosAttacks
+	dw KotoraEvosAttacks
 .IndirectEnd::
 
 ChikoritaEvosAttacks:
@@ -1425,4 +1426,19 @@ IntelivastEvosAttacks: ; WIP
 	dbw 26, PURSUIT
 	dbw 30, SCREECH
 	dbw 38, TAKE_DOWN
+	db 0 ; no more level-up moves
+
+KotoraEvosAttacks: ; Copied from Pikachu. NOT FINAL!!!
+	db 0 ; no more evolutions
+	dbw 1, THUNDERSHOCK
+	dbw 1, GROWL
+	dbw 6, TAIL_WHIP
+	dbw 8, THUNDER_WAVE
+	dbw 11, QUICK_ATTACK
+	dbw 15, DOUBLE_TEAM
+	dbw 20, SLAM
+	dbw 26, THUNDERBOLT
+	dbw 33, AGILITY
+	dbw 41, THUNDER
+	dbw 50, LIGHT_SCREEN
 	db 0 ; no more level-up moves

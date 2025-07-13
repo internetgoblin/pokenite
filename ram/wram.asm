@@ -3189,8 +3189,9 @@ wMountMoonSquareSceneID::                         db
 wMobileTradeRoomSceneID::                         db
 wMobileBattleRoomSceneID::                        db
 wKurtsHouseSceneID::							  db
+wTakeHouse2FSceneID::							  db
 
-	ds 48
+	ds 47
 
 ; fight counts
 wJackFightCount::    db

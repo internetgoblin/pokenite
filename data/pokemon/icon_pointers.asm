@@ -258,3 +258,4 @@ IconPointers:
 	dw CelebiIcon
 	dw BloomfreeIcon
 	dw IntelivastIcon
+	dw KotoraIcon

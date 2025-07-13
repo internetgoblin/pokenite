@@ -254,4 +254,5 @@ FirstEvoStages::
 	dw CELEBI
 	dw BELLSPROUT
 	dw DUNSPARCE
+	dw KOTORA
 	assert_table_length NUM_POKEMON

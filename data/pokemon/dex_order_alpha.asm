@@ -109,6 +109,7 @@ AlphabeticalPokedexOrder:
 	dw KINGDRA
 	dw KINGLER
 	dw KOFFING
+	dw KOTORA
 	dw KRABBY
 	dw LANTURN
 	dw LAPRAS

@@ -263,4 +263,5 @@ MonMenuIconPals:
 	icon_pals GREEN,  PINK   ; CELEBI
 	icon_pals RED,    RED    ; BLOOMFREE
 	icon_pals BLUE,   PURPLE ; INTELIVAST
+	icon_pals RED,    RED ; KOTORA
 	assert_table_length NUM_POKEMON

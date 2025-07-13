@@ -2,6 +2,7 @@
 
 NewPokedexOrder:
 	table_width 2
+	dw KOTORA
 	dw CHIKORITA
 	dw BAYLEEF
 	dw MEGANIUM
