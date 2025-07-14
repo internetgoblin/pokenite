@@ -6,7 +6,14 @@ TakeHouse1F_MapScripts:
 	def_callbacks
 
 TakeHouseMrsTake1:
-	jumptextfaceplayer TakeHouseMrsTake1Text
+	faceplayer
+	opentext
+	writenamedtext TakeHouseMrsName, TakeHouseMrsTake1Text
+	promptbutton
+	closetext
+
+TakeHouseMrsName:
+	db "Mrs.Take@"
 
 TakeHouseMrsTake1Text:
 	text "Hey kiddo!" ; placeholder

@@ -71,11 +71,11 @@ TakeHouse2F_MapEvents:
 	db 0, 0 ; filler
 
 	def_warp_events
-	warp_event  7,  0, TAKE_HOUSE_1F, 1
+	warp_event  5,  0, TAKE_HOUSE_1F, 1
 
 	def_coord_events
 
 	def_bg_events
 
 	def_object_events
-	object_event  3,  2, SPRITE_KOTORA, SPRITEMOVEDATA_POKEMON, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, TakeHouseKotora, EVENT_KOTORA_JOINS_BLANKA
+	object_event  2,  2, SPRITE_KOTORA, SPRITEMOVEDATA_POKEMON, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, TakeHouseKotora, EVENT_KOTORA_JOINS_BLANKA
