@@ -116,13 +116,12 @@ PokeComNursePokerusText:
 
 DifficultBookshelfText:
 	text "It's full of"
-	line "difficult books."
+	line "books."
 	done
 
 PictureBookshelfText:
 	text "A whole collection"
-	line "of #MON picture"
-	cont "books!"
+	line "of comic books!"
 	done
 
 MagazineBookshelfText:
@@ -165,7 +164,7 @@ LookTownMapText:
 
 WindowText:
 	text "My reflection!"
-	line "Lookin' good!"
+	line "Lookin' cute!"
 	done
 
 TVText:

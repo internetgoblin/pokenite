@@ -30,7 +30,7 @@ DayCareManScript_Inside:
 	closetext
 	readvar VAR_PARTYCOUNT
 	ifequal PARTY_LENGTH, .PartyFull
-	special GiveOddEgg
+	givepoke CLEFFA, 5, NO_ITEM, AdoptedBabyName, AdoptedBabyOT
 	opentext
 	writetext DayCareText_GotOddEgg
 	playsound SFX_KEY_ITEM
@@ -53,6 +53,12 @@ DayCareManScript_Inside:
 	waitbutton
 	closetext
 	end
+
+AdoptedBabyName:
+	db "CLEFFA@"
+
+AdoptedBabyOT:
+	db "KAREN@"
 
 DayCareLadyScript:
 	faceplayer

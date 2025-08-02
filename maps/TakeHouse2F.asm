@@ -39,6 +39,7 @@ TakeHouseKotora:
 	opentext
 	writenamedtext BlankaName, BlankaWakeUpKotora
 	promptbutton
+	cry KOTORA
 	closetext
 	disappear TAKEHOUSE2F_KOTORA
 	setevent EVENT_KOTORA_JOINS_BLANKA
@@ -61,10 +62,60 @@ BlankaWakeUpKotora:
 	done
 
 PickupKotoraText:
-	text "<PLAYER> received"
+	text "I received"
 	line "@"
 	text_ram wStringBuffer3
 	text "!"
+	done
+
+TakeHouse2FBookScript:
+	opentext
+	writenamedtext BlankaName, TakeHouse2FBookText
+	promptbutton
+	closetext
+	end
+
+TakeHouse2FRadioScript:
+	jumpstd Radio1Script
+
+TakeHouse2FDresserScript:
+	opentext
+	writenamedtext BlankaName, TakeHouse2FDresserText
+	promptbutton
+	closetext
+	end
+
+TakeHouse2FN64Script:
+	opentext
+	writenamedtext BlankaName, TakeHouse2FN64Text
+	promptbutton
+	closetext
+	end
+
+TakeHouse2FBookshelfScript:
+	opentext
+	writenamedtext BlankaName, TakeHouse2FBookshelfText
+	promptbutton
+	closetext
+	end
+
+TakeHouse2FBookText:
+	text "A book I left" ; placeholder
+	line "open."
+	done
+
+TakeHouse2FBookshelfText:
+	text "My bookshelf." ; placeholder
+	done
+
+TakeHouse2FDresserText:
+	text "All my clothes," ; placeholder
+	line "neatly organized"
+	cont "in my dresser."
+	done
+
+TakeHouse2FN64Text:
+	text "My N64." ; placeholder
 	done
 
 TakeHouse2F_MapEvents:
@@ -76,6 +127,11 @@ TakeHouse2F_MapEvents:
 	def_coord_events
 
 	def_bg_events
+	bg_event  0,  1, BGEVENT_READ, TakeHouse2FBookScript
+	bg_event  1,  1, BGEVENT_READ, TakeHouse2FRadioScript
+	bg_event  2,  1, BGEVENT_READ, TakeHouse2FDresserScript
+	bg_event  3,  2, BGEVENT_READ, TakeHouse2FN64Script
+	bg_event  4,  1, BGEVENT_READ, TakeHouse2FBookshelfScript
 
 	def_object_events
 	object_event  2,  2, SPRITE_KOTORA, SPRITEMOVEDATA_POKEMON, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, TakeHouseKotora, EVENT_KOTORA_JOINS_BLANKA

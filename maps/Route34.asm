@@ -1,23 +1,26 @@
 	object_const_def
-	const ROUTE34_YOUNGSTER1
-	const ROUTE34_YOUNGSTER2
-	const ROUTE34_YOUNGSTER3
-	const ROUTE34_LASS
-	const ROUTE34_OFFICER
-	const ROUTE34_POKEFAN_M
 	const ROUTE34_GRAMPS
 	const ROUTE34_DAY_CARE_MON_1
 	const ROUTE34_DAY_CARE_MON_2
 	const ROUTE34_COOLTRAINER_F1
 	const ROUTE34_COOLTRAINER_F2
 	const ROUTE34_COOLTRAINER_F3
+	const ROUTE34_RIVAL
 	const ROUTE34_POKE_BALL
 
 Route34_MapScripts:
 	def_scene_scripts
+	scene_script Route34NoopScene1, SCENE_ROUTE34_RIVAL_MEET
+	scene_script Route34NoopScene2, SCENE_ROUTE34_NOOP
 
 	def_callbacks
 	callback MAPCALLBACK_OBJECTS, Route34EggCheckCallback
+
+Route34NoopScene1:
+	end
+
+Route34NoopScene2:
+	end
 
 Route34EggCheckCallback:
 	checkflag ENGINE_DAY_CARE_MAN_HAS_EGG
@@ -50,6 +53,136 @@ Route34EggCheckCallback:
 .HideMon2:
 	setevent EVENT_DAY_CARE_MON_2
 	endcallback
+
+Route34RivalMeetSceneleft:
+	showemote EMOTE_SHOCK, PLAYER, 15
+	applymovement PLAYER, Route34RivalMeetSceneleftMove
+	sjump Route34RivalMeetScene
+
+Route34RivalMeetSceneright:
+	showemote EMOTE_SHOCK, PLAYER, 15
+	applymovement PLAYER, Route34RivalMeetScenerightMove
+
+Route34RivalMeetScene:
+	appear ROUTE34_RIVAL
+	applymovement ROUTE34_RIVAL, Route34RivalMeetSceneWalkIn
+	opentext
+	writenamedtext Route34RivalName, Route34RivalMeetShilohText1
+	promptbutton
+	writenamedtext Route34BlankaName, Route34RivalMeetBlankaText1
+	promptbutton
+	writenamedtext Route34RivalName, Route34RivalMeetShilohText2
+	promptbutton
+	writenamedtext Route34BlankaName, Route34RivalMeetBlankaText2
+	promptbutton
+	writenamedtext Route34RivalName, Route34RivalMeetShilohText3
+	promptbutton
+	writenamedtext Route34BlankaName, Route34RivalMeetBlankaText3
+	promptbutton
+	closetext
+	pause 15
+	opentext
+	writenamedtext Route34ShilohName, Route34RivalMeetShilohText4
+	promptbutton
+	writenamedtext Route34BlankaName, Route34RivalMeetShilohText4
+	promptbutton
+	writenamedtext Route34ShilohName, Route34RivalMeetShilohText5
+	promptbutton
+	writenamedtext Route34BlankaName, Route34RivalMeetBlankaText5
+	promptbutton
+	writenamedtext Route34ShilohName, Route34RivalMeetShilohText6
+	pause 5
+	writenamedtext Route34BlankaName, Route34RivalMeetBlankaText6
+	promptbutton
+	closetext
+	pause 15
+	opentext
+	writenamedtext Route34ShilohName, Route34RivalMeetShilohText4
+	promptbutton
+	writenamedtext Route34BlankaName, Route34RivalMeetShilohText4
+	promptbutton
+	turnobject PLAYER, UP
+	writetext Route34RivalMeetBlankaText7
+	promptbutton
+	turnobject PLAYER, RIGHT
+	writenamedtext Route34ShilohName, Route34RivalMeetShilohText7
+	promptbutton
+	closetext
+	applymovement ROUTE34_RIVAL, Route34RivalMeetSceneTryWalk
+	applymovement PLAYER, Route34RivalMeetSceneStopped
+	opentext
+	writenamedtext Route34BlankaName, Route34RivalMeetBlankaText8
+	promptbutton
+	writenamedtext Route34ShilohName, Route34RivalMeetShilohText8
+	pause 5
+	writenamedtext Route34BlankaName, Route34RivalMeetBlankaText9
+	promptbutton
+	closetext
+	winlosstext RivalRoute34WinText, 0
+	setlasttalked ROUTE31_RIVAL
+	loadtrainer RIVAL1, SHILOH1
+	startbattle
+	reloadmap
+	; AFTER BATTLE TEXT STARTS HERE
+	opentext
+	writenamedtext Route34ShilohName, Route34RShilohAfterBattle1
+	promptbutton
+	writenamedtext Route34BlankaName, Route34RBlankaAfterBattle1
+	promptbutton
+	writenamedtext Route34ShilohName, Route34RShilohAfterBattle2
+	promptbutton
+	writenamedtext Route34BlankaName, Route34RBlankaAfterBattle2
+	promptbutton
+	writenamedtext Route34ShilohName, Route34RShilohAfterBattle3
+	promptbutton
+	writenamedtext Route34BlankaName, Route34RBlankaAfterBattle3
+	promptbutton
+	writenamedtext Route34ShilohName, Route34RShilohAfterBattle4
+	promptbutton
+	writenamedtext Route34BlankaName, Route34RBlankaAfterBattle4
+	promptbutton
+	closetext
+	pause 5
+	opentext
+	writenamedtext Route34ShilohName, Route34RShilohAfterBattle5
+	promptbutton
+	writenamedtext Route34BlankaName, Route34RBlankaAfterBattle5
+	promptbutton
+	writenamedtext Route34ShilohName, Route34RShilohAfterBattle6
+	promptbutton
+	writenamedtext Route34BlankaName, Route34RBlankaAfterBattle6
+	promptbutton
+	writenamedtext Route34ShilohName, Route34RShilohAfterBattle7
+	promptbutton
+	writenamedtext Route34BlankaName, Route34RBlankaAfterBattle7
+	promptbutton
+	closetext
+	applymovement ROUTE34_RIVAL, Route34RivalMeetSceneWalkOff
+	turnobject PLAYER, UP
+	opentext
+	writenamedtext Route34BlankaName, Route34RBlankaAfterBattle8
+	promptbutton
+	closetext
+	pause 15
+	opentext
+	writenamedtext Route34ShilohName, Route34RShilohAfterBattle8
+	promptbutton
+	closetext
+	applymovement ROUTE34_RIVAL, Route34RivalMeetSceneEndStep
+	disappear ROUTE34_RIVAL
+	setscene SCENE_ROUTE34_NOOP
+	setevent EVENT_RIVAL_ROUTE31
+	end
+
+Route34BlankaName:
+	db "BLANKA@"
+
+Route34RivalName:
+	db "???@"
+
+Route34ShilohName:
+	db "SHILOH@"
+
 
 DayCareManScript_Outside:
 	faceplayer
@@ -505,6 +638,45 @@ Route34MovementData_DayCareManWalksBackInside_WalkAroundPlayer:
 	slow_step UP
 	step_end
 
+Route34RivalMeetSceneleftMove:
+	turn_head RIGHT
+	step_end
+
+Route34RivalMeetScenerightMove:
+	big_step LEFT
+	turn_head RIGHT
+	step_end
+
+Route34RivalMeetSceneWalkIn:
+	big_step UP
+	big_step UP
+	big_step UP
+	turn_head LEFT
+	step_end
+
+Route34RivalMeetSceneTryWalk:
+	step UP
+	step_end
+
+Route34RivalMeetSceneStopped:
+	big_step UP
+	big_step UP
+	big_step RIGHT
+	turn_head DOWN
+	step_end
+
+Route34RivalMeetSceneWalkOff:
+	big_step LEFT
+	big_step UP
+	big_step UP
+	big_step UP
+	step_end
+
+Route34RivalMeetSceneEndStep:
+	big_step UP
+	big_step UP
+	step_end
+
 YoungsterSamuelSeenText:
 	text "This is where I do"
 	line "my training!"
@@ -758,6 +930,207 @@ DayCareSignText:
 	line "#MON FOR YOU!"
 	done
 
+Route34RivalMeetShilohText1:
+	text "Hey, uh…"
+	line "Do you know where"
+	cont "GOLD ACADEMY is?"
+	done
+
+Route34RivalMeetBlankaText1:
+	text "Wouldn't you like"
+	line "to know?"
+	done
+
+Route34RivalMeetShilohText2:
+	text "Y-yes…?"
+
+	para "I'm looking for"
+	line "directions."
+	done
+
+Route34RivalMeetBlankaText2:
+	text "You must be new"
+	line "around here."
+
+	para "<……><……><……><……><……><……>"
+
+	para "What's your"
+	line "name?"
+	done
+
+Route34RivalMeetShilohText3:
+	text "SHILOH…"
+	done
+
+Route34RivalMeetBlankaText3:
+	text "SHILOH."
+	done
+
+Route34RivalMeetShilohText4:
+	text "<……><……><……><……><……><……>"
+	done
+
+Route34RivalMeetShilohText5:
+	text "So, are you"
+	line "gonna point me"
+
+	para "in the right"
+	line "direction or"
+	cont "not?"
+	done
+
+Route34RivalMeetBlankaText5:
+	text "I could…"
+	done
+
+Route34RivalMeetShilohText6:
+	text "OK. So…"
+	done
+
+Route34RivalMeetBlankaText6:
+	text "BUT!!!"
+	done
+
+Route34RivalMeetBlankaText7:
+	text "Just west of the"
+	line "CAFE, right by"
+
+	para "the MAGNET TRAIN"
+	line "line."
+	done
+
+Route34RivalMeetShilohText7:
+	text "Thanks…"
+	done
+
+Route34RivalMeetBlankaText8:
+	text "WAIT!!!"
+
+	para "<……><……><……><……><……><……>"
+
+	para "Are you a"
+	line "#MON TRAINER?"
+	done
+
+Route34RivalMeetShilohText8:
+	text "Yes…"
+	done
+
+Route34RivalMeetBlankaText9:
+	text "Then let's battle!"
+
+	para "It's not like we"
+	line "haven't locked"
+	cont "eyes."
+	done
+
+RivalRoute34WinText:
+	text "<……><……><……><……><……><……>"
+	done
+
+Route34RShilohAfterBattle1:
+	text "Where'd you get"
+	line "that #MON"
+	cont "of yours?"
+
+	para "It's nothing like"
+	line "any I've seen or"
+	cont "heard of."
+	done
+
+Route34RBlankaAfterBattle1:
+	text "What's it to you?"
+	done
+
+Route34RShilohAfterBattle2:
+	text "Well… I thought"
+	line "I could put that"
+	cont "info in my…"
+
+	para "#DEX."
+	done
+
+Route34RBlankaAfterBattle2:
+	text "HOLD ON!!!"
+
+	para "How did you"
+	line "manage to get"
+	cont "a #DEX?"
+	done
+
+Route34RShilohAfterBattle3:
+	text "My mentor is"
+	line "old friends with"
+	cont "PROF. OAK, so he"
+
+	para "was able to gift"
+	line "me one of his"
+	cont "new #DEXES."
+	done
+
+Route34RBlankaAfterBattle3:
+	text "YOU HAVE A NEW"
+	line "MODEL #DEX?!?!"
+	done
+
+Route34RShilohAfterBattle4:
+	text "Yep."
+	done
+
+Route34RBlankaAfterBattle4:
+	text "How much to"
+	line "borrow it?"
+	done
+
+Route34RShilohAfterBattle5:
+	text "Excuse me?"
+	done
+
+Route34RBlankaAfterBattle5:
+	text "How much?"
+	done
+
+Route34RShilohAfterBattle6:
+	text "Why in the"
+	line "world would I"
+	cont "let you borrow"
+
+	para "my #DEX?"
+	done
+
+Route34RBlankaAfterBattle6:
+	text "Because I'm"
+	line "willing to pay."
+	done
+
+Route34RShilohAfterBattle7:
+	text "We've just met"
+	line "and you've done"
+	cont "nothing but"
+
+	para "mess with me."
+
+	para "What makes you"
+	line "think I'd trust"
+	cont "you?"
+	done
+
+Route34RBlankaAfterBattle7:
+	text "Ehh, I don't"
+	line "see the issue"
+	cont "here."
+	done
+
+Route34RBlankaAfterBattle8:
+	text "I found KOTORA"
+	line "as a stray here"
+	cont "in GOLDENROD!"
+	done
+
+Route34RShilohAfterBattle8:
+	text "Alright…"
+	done
+
 Route34_MapEvents:
 	db 0, 0 ; filler
 
@@ -769,6 +1142,8 @@ Route34_MapEvents:
 	warp_event 13, 15, DAY_CARE, 3
 
 	def_coord_events
+	coord_event  9,  3, SCENE_ROUTE34_RIVAL_MEET, Route34RivalMeetSceneleft
+	coord_event 10,  3, SCENE_ROUTE34_RIVAL_MEET, Route34RivalMeetSceneright
 
 	def_bg_events
 	bg_event 12,  6, BGEVENT_READ, Route34Sign
@@ -778,16 +1153,11 @@ Route34_MapEvents:
 	bg_event 17, 19, BGEVENT_ITEM, Route34HiddenSuperPotion
 
 	def_object_events
-	object_event 13,  7, SPRITE_YOUNGSTER, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, PAL_NPC_GREEN, OBJECTTYPE_TRAINER, 5, TrainerCamperTodd1, -1
-	object_event 15, 32, SPRITE_YOUNGSTER, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_TRAINER, 3, TrainerYoungsterSamuel, -1
-	object_event 11, 20, SPRITE_YOUNGSTER, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_TRAINER, 3, TrainerYoungsterIan, -1
-	object_event 10, 26, SPRITE_LASS, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, PAL_NPC_GREEN, OBJECTTYPE_TRAINER, 3, TrainerPicnickerGina1, -1
-	object_event  9, 11, SPRITE_OFFICER, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_SCRIPT, 0, OfficerKeithScript, -1
-	object_event 18, 28, SPRITE_POKEFAN_M, SPRITEMOVEDATA_SPINCOUNTERCLOCKWISE, 0, 0, -1, -1, PAL_NPC_RED, OBJECTTYPE_TRAINER, 3, TrainerPokefanmBrandon, -1
 	object_event 15, 16, SPRITE_GRAMPS, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, DayCareManScript_Outside, EVENT_DAY_CARE_MAN_ON_ROUTE_34
 	object_event 14, 18, SPRITE_DAY_CARE_MON_1, SPRITEMOVEDATA_POKEMON, 2, 2, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, DayCareMon1Script, EVENT_DAY_CARE_MON_1
 	object_event 17, 19, SPRITE_DAY_CARE_MON_2, SPRITEMOVEDATA_POKEMON, 2, 2, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, DayCareMon2Script, EVENT_DAY_CARE_MON_2
 	object_event 11, 48, SPRITE_COOLTRAINER_F, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, PAL_NPC_RED, OBJECTTYPE_TRAINER, 5, TrainerCooltrainerfIrene, -1
 	object_event  3, 48, SPRITE_COOLTRAINER_F, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, PAL_NPC_RED, OBJECTTYPE_TRAINER, 3, TrainerCooltrainerfJenn, -1
 	object_event  6, 51, SPRITE_COOLTRAINER_F, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, PAL_NPC_RED, OBJECTTYPE_TRAINER, 2, TrainerCooltrainerfKate, -1
+	object_event 10,  6, SPRITE_RIVAL, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, PAL_NPC_PURPLE, OBJECTTYPE_SCRIPT, 0, Route34RivalMeetScene, EVENT_RIVAL_ROUTE31
 	object_event  7, 30, SPRITE_POKE_BALL, SPRITEMOVEDATA_STILL, 0, 0, -1, -1, 0, OBJECTTYPE_ITEMBALL, 0, Route34Nugget, EVENT_ROUTE_34_NUGGET

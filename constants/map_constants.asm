@@ -272,7 +272,8 @@ ENDM
 	map_const ROUTE_34_ILEX_FOREST_GATE,                    5,  4 ; 23
 	map_const DAY_CARE,                                     5,  4 ; 24
 	map_const TAKE_HOUSE_1F,                                5,  4
-	map_const TAKE_HOUSE_2F,                                3,  3							
+	map_const TAKE_HOUSE_2F,                                3,  3
+	map_const GOLDENROD_CAFE,								4,  4						
 	endgroup
 
 	newgroup VERMILION                                            ; 12

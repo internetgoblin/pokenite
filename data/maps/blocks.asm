@@ -695,6 +695,7 @@ OlivinePort_Blocks:
 VermilionPort_Blocks:
 	INCBIN "maps/VermilionPort.blk"
 
+GoldenrodCafe_Blocks:
 OlivineCafe_Blocks:
 SafariZoneMainOffice_Blocks:
 	INCBIN "maps/OlivineCafe.blk"

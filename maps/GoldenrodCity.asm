@@ -3,9 +3,7 @@
 	const GOLDENRODCITY_YOUNGSTER1
 	const GOLDENRODCITY_COOLTRAINER_F1
 	const GOLDENRODCITY_COOLTRAINER_F2
-	const GOLDENRODCITY_YOUNGSTER2
 	const GOLDENRODCITY_LASS
-	const GOLDENRODCITY_GRAMPS
 	const GOLDENRODCITY_ROCKETSCOUT
 	const GOLDENRODCITY_ROCKET1
 	const GOLDENRODCITY_ROCKET2
@@ -17,10 +15,19 @@
 
 GoldenrodCity_MapScripts:
 	def_scene_scripts
+	scene_script GoldenrodCityNoop1Scene, SCENE_GOLDENRODCITY_RIVAL_MEET
+	scene_script GoldenrodCityNoop1Scene, SCENE_GOLDENRODCITY_CAFE_WARP
+	scene_script GoldenrodCityNoop2Scene, SCENE_GOLDENRODCITY_NOOP
 
 	def_callbacks
 	callback MAPCALLBACK_NEWMAP, GoldenrodCityFlypointAndFloriaCallback
 	callback MAPCALLBACK_OBJECTS, GoldenrodCityMoveTutorCallback
+
+GoldenrodCityNoop1Scene:
+	end
+
+GoldenrodCityNoop2Scene:
+	end
 
 GoldenrodCityFlypointAndFloriaCallback:
 	setflag ENGINE_FLYPOINT_GOLDENROD
@@ -155,6 +162,14 @@ MoveTutorScript:
 	closetext
 	end
 
+GoldenrodCityCafeCutsceneScript:
+	applymovement PLAYER, GoldenrodCityBlankaCafeMove
+	playsound SFX_ENTER_DOOR
+	special FadeOutToWhite
+	pause 15
+	warp GOLDENROD_CAFE, 3, 1
+	end
+
 GoldenrodCityPokefanMScript:
 	jumptextfaceplayer GoldenrodCityPokefanMText
 
@@ -267,6 +282,17 @@ GoldenrodCityPokecenterSign:
 GoldenrodCityFlowerShopSign:
 	jumptext GoldenrodCityFlowerShopSignText
 
+GoldenrodCityCafeSign:
+	jumptext GoldenrodCityCafeSignText
+
+/* GoldenrodCityAnnoyingScript:
+	applymovement PLAYER, GoldenrodRivalCutMove1
+	setevent EVENT_RIVAL_MEETING
+	end */
+
+GoldenrodCityEmptyScript:
+	end
+
 GoldenrodCityMoveTutorEnterGameCornerMovement:
 	step RIGHT
 	step RIGHT
@@ -279,6 +305,27 @@ GoldenrodCityMoveTutorWalkAroundPlayerThenEnterGameCornerMovement:
 	step RIGHT
 	step UP
 	step UP
+	step_end
+
+GoldenrodCityBlankaCafeMove:
+	step UP
+	step_end
+
+GoldenrodRivalCutMove1:
+	hide_object
+	big_step RIGHT
+	big_step RIGHT
+	big_step RIGHT
+	big_step RIGHT
+	big_step DOWN
+	big_step DOWN
+	big_step DOWN
+	big_step DOWN
+	big_step DOWN
+	big_step DOWN
+	big_step DOWN
+	big_step DOWN
+	big_step DOWN
 	step_end
 
 GoldenrodCityPokefanMText:
@@ -460,7 +507,7 @@ GoldenrodCityGameCornerSignText:
 	done
 
 GoldenrodCityNameRaterSignText:
-	text "NAME RATER"
+	text "THE TAKE RESIDENCE"
 
 	para "Get Your #MON"
 	line "Nicknames Rated"
@@ -484,6 +531,10 @@ GoldenrodCityPokeComCenterSignText: ; unreferenced
 GoldenrodCityFlowerShopSignText:
 	text "Blooming Beautiful"
 	line "FLOWER SHOP"
+	done
+
+GoldenrodCityCafeSignText:
+	text "CLEFFA CAFE"
 	done
 
 GoldenrodCityMoveTutorAskTeachAMoveText:
@@ -544,6 +595,144 @@ GoldenrodCityMoveTutorYouDontHaveEnoughCoinsText:
 	line "enough coins here…"
 	done
 
+GoldenrodCityShilohDirectionsText1:
+	done
+
+	; +Scene Planning+
+	; Hey, uh…
+	; Do you know where
+	; gold academy is?
+
+	; Wouldn't you
+	; like to know. - Blanka
+
+	; Y-yes…
+	; I am looking
+	; for directions.
+
+	; Must be new
+	; around here…
+	; <……><……><……><……><……><……>
+	; What's your
+	; name?  - Blanka
+
+	; SHILOH?
+
+	; SHILOH - Blanka
+
+	; <……><……><……><……><……><……>
+	; <……><……><……><……><……><……>
+
+	; So, are you
+	; gonna point me
+	; in the right
+	; direction or
+	; not?
+
+	; I could…
+
+	; OK. So… *No prompt button to simulate him being interupted*
+
+	; BUT!
+
+	; <……><……><……><……><……><……>
+
+	; <……><……><……><……><……><……> - Blanka
+
+	; Just west of the CAFE,
+	; right by the MAGNET
+	; TRAIN LINE. - Blanka
+
+	; Thanks… - Starts walking off
+
+	; *Runs to block his path*
+	; WAIT!!!
+	; <……><……><……><……><……><……>
+	; Are you a
+	; Pokemon Trainer?
+
+	; Yes…
+
+	; Then let's battle!
+	; It's not like we
+	; haven't locked eyes.
+
+	; [BATTLE V SHILOH]
+
+	; Where did you get
+	; that Pokemon of
+	; yours?
+
+	; It's nothing like
+	; any I've seen or
+	; heard of.
+
+	; What's it to you?
+
+	; Thought I could
+	; put that info in
+	; my Pokedex
+
+	; Hold on!
+	; How did YOU
+	; get yourself
+	; a Pokedex?
+
+	; Those things
+	; aren't just
+	; given out to
+	; any rando.
+
+	; My uncle is old
+	; friends with PROF.
+	; OAK, so he was
+	; able to give me
+	; one of his new
+	; model Pokedexes.
+
+	; YOU HAVE A NEW
+	; MODEL POKEDEX!?!? - Blanka
+
+	; Yep. - Shiloh
+
+	; How much for me
+	; to borrow it? - Blanka
+
+	; What? - Shiloh
+
+	; How much? - Blanka
+
+	; Why would I let
+	; you borrow my
+	; Pokedex? - Shiloh
+
+	; Because I'm
+	; willing to
+	; pay. - Blanka
+
+	; I just met you
+	; a few minutes ago
+	; and you've done
+	; nothing but mess
+	; with me! Why in
+	; the world would
+	; I trust you? - Shiloh
+
+	; Ehhh, I don't
+	; see the issue
+	; here. - Blanka
+
+	; Ugh! - He starts walking off again
+
+	; I found KOTORA as
+	; a stray, here in
+	; GOLDENROD. - Blanka
+
+	; Alright… - stops to say this and finally walks off
+
+
+
+
 GoldenrodCityMoveTutorMoveText:
 	text_start
 	done
@@ -567,8 +756,11 @@ GoldenrodCity_MapEvents:
 	warp_event  9,  5, GOLDENROD_UNDERGROUND_SWITCH_ROOM_ENTRANCES, 8
 	warp_event 11, 29, GOLDENROD_UNDERGROUND_SWITCH_ROOM_ENTRANCES, 5
 	warp_event 15, 27, GOLDENROD_POKECENTER_1F, 1
+	warp_event 25, 15, GOLDENROD_CAFE, 2
 
 	def_coord_events
+	coord_event 25, 16, SCENE_GOLDENRODCITY_CAFE_WARP, GoldenrodCityCafeCutsceneScript
+	; coord_event 15,  8, SCENE_GOLDENRODCITY_RIVAL_MEET, GoldenrodCityAnnoyingScript
 
 	def_bg_events
 	bg_event 10, 14, BGEVENT_READ, GoldenrodCityStationSign
@@ -578,18 +770,16 @@ GoldenrodCity_MapEvents:
 	bg_event 22, 18, BGEVENT_READ, GoldenrodCitySign
 	bg_event 28, 30, BGEVENT_READ, GoldenrodCityBikeShopSign
 	bg_event 16, 22, BGEVENT_READ, GoldenrodCityGameCornerSign
-	bg_event 12,  7, BGEVENT_READ, GoldenrodCityNameRaterSign
 	bg_event  8,  6, BGEVENT_READ, GoldenrodCityUndergroundSignNorth
 	bg_event 12, 30, BGEVENT_READ, GoldenrodCityUndergroundSignSouth
 	bg_event 16, 27, BGEVENT_UP, GoldenrodCityPokecenterSign
 	bg_event 30,  6, BGEVENT_READ, GoldenrodCityFlowerShopSign
+	bg_event 26, 17, BGEVENT_READ, GoldenrodCityCafeSign
 
 	def_object_events
 	object_event  7, 18, SPRITE_POKEFAN_M, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, GoldenrodCityPokefanMScript, EVENT_GOLDENROD_CITY_CIVILIANS
 	object_event 30, 17, SPRITE_YOUNGSTER, SPRITEMOVEDATA_WANDER, 1, 1, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, GoldenrodCityYoungster1Script, EVENT_GOLDENROD_CITY_CIVILIANS
 	object_event 12, 16, SPRITE_COOLTRAINER_F, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, PAL_NPC_GREEN, OBJECTTYPE_SCRIPT, 0, GoldenrodCityCooltrainerF1Script, EVENT_GOLDENROD_CITY_CIVILIANS
 	object_event 20, 26, SPRITE_COOLTRAINER_F, SPRITEMOVEDATA_WANDER, 1, 2, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, GoldenrodCityCooltrainerF2Script, EVENT_GOLDENROD_CITY_CIVILIANS
-	object_event 19, 17, SPRITE_YOUNGSTER, SPRITEMOVEDATA_WANDER, 1, 1, -1, -1, PAL_NPC_RED, OBJECTTYPE_SCRIPT, 0, GoldenrodCityYoungster2Script, EVENT_GOLDENROD_CITY_CIVILIANS
 	object_event 17, 10, SPRITE_LASS, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 2, 0, -1, -1, PAL_NPC_GREEN, OBJECTTYPE_SCRIPT, 0, GoldenrodCityLassScript, EVENT_GOLDENROD_CITY_CIVILIANS
-	object_event 11, 27, SPRITE_GRAMPS, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 1, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, GoldenrodCityGrampsScript, EVENT_GOLDENROD_CITY_CIVILIANS
 	object_event 12, 22, SPRITE_POKEFAN_M, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, PAL_NPC_RED, OBJECTTYPE_SCRIPT, 0, MoveTutorScript, EVENT_GOLDENROD_CITY_MOVE_TUTOR

@@ -685,3 +685,4 @@ ENDM
 	map_attributes ShilohsHouse, SHILOHS_HOUSE, $00, 0
 	map_attributes TakeHouse1F, TAKE_HOUSE_1F, $00, 0
 	map_attributes TakeHouse2F, TAKE_HOUSE_2F, $00, 0
+	map_attributes GoldenrodCafe, GOLDENROD_CAFE, $00, 0

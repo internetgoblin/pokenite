@@ -3190,8 +3190,11 @@ wMobileTradeRoomSceneID::                         db
 wMobileBattleRoomSceneID::                        db
 wKurtsHouseSceneID::							  db
 wTakeHouse2FSceneID::							  db
+wGoldenrodCafeSceneID::							  db
+wGoldenrodCitySceneID::							  db
+wTakeHouse1FSceneID::							  db
 
-	ds 47
+	ds 43
 
 ; fight counts
 wJackFightCount::    db

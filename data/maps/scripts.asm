@@ -486,5 +486,6 @@ INCLUDE "maps/SilverCaveOutside.asm"
 INCLUDE "maps/Route10North.asm"
 INCLUDE "maps/TakeHouse1F.asm"
 INCLUDE "maps/TakeHouse2F.asm"
+INCLUDE "maps/GoldenrodCafe.asm"
 
 ENDSECTION

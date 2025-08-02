@@ -88,4 +88,7 @@ MapScenes::
 	scene_var MOBILE_BATTLE_ROOM,                          wMobileBattleRoomSceneID
 	scene_var KURTS_HOUSE,								   wKurtsHouseSceneID
 	scene_var TAKE_HOUSE_2F,							   wTakeHouse2FSceneID
+	scene_var GOLDENROD_CAFE,							   wGoldenrodCafeSceneID
+	scene_var GOLDENROD_CITY,							   wGoldenrodCitySceneID
+	scene_var TAKE_HOUSE_1F,							   wTakeHouse1FSceneID
 	db -1 ; end
