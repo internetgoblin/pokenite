@@ -103,7 +103,7 @@ ElmCheckGotEggAgain:
 	iftrue ElmWaitingEggHatchScript
 	checkflag ENGINE_ZEPHYRBADGE
 	iftrue ElmAideHasEggScript
-	checkevent EVENT_GAVE_MYSTERY_EGG_TO_ELM
+	checkevent EVENT_GAVE_BABY_TO_MOM
 	iftrue ElmStudyingEggScript
 	checkevent EVENT_GOT_MYSTERY_EGG_FROM_MR_POKEMON
 	iftrue ElmAfterTheftScript
@@ -338,7 +338,7 @@ ElmAfterTheftScript:
 	promptbutton
 	writetext ElmAfterTheftText5
 	promptbutton
-	setevent EVENT_GAVE_MYSTERY_EGG_TO_ELM
+	setevent EVENT_GAVE_BABY_TO_MOM
 	setflag ENGINE_MOBILE_SYSTEM
 	setmapscene ROUTE_29, SCENE_ROUTE29_CATCH_TUTORIAL
 	clearevent EVENT_ROUTE_30_YOUNGSTER_JOEY
@@ -518,7 +518,7 @@ ElmsAideScript:
 	opentext
 	checkevent EVENT_GOT_TOGEPI_EGG_FROM_ELMS_AIDE
 	iftrue AideScript_AfterTheft
-	checkevent EVENT_GAVE_MYSTERY_EGG_TO_ELM
+	checkevent EVENT_GAVE_BABY_TO_MOM
 	iftrue AideScript_ExplainBalls
 	checkevent EVENT_GOT_MYSTERY_EGG_FROM_MR_POKEMON
 	iftrue AideScript_TheftTestimony

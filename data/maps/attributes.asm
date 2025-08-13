@@ -117,9 +117,10 @@ ENDM
 	map_attributes CianwoodCity, CIANWOOD_CITY, $35, EAST
 	connection east, Route41, ROUTE_41, 0
 
-	map_attributes GoldenrodCity, GOLDENROD_CITY, $35, NORTH | SOUTH
+	map_attributes GoldenrodCity, GOLDENROD_CITY, $35, NORTH | SOUTH | EAST
 	connection north, Route35, ROUTE_35, 5
 	connection south, Route34, ROUTE_34, 5
+	connection east, GoldAcademy, GOLD_ACADEMY, -4
 
 	map_attributes OlivineCity, OLIVINE_CITY, $35, NORTH | WEST
 	connection north, Route39, ROUTE_39, 5
@@ -374,6 +375,9 @@ ENDM
 	map_attributes Route10South, ROUTE_10_SOUTH, $2c, NORTH | SOUTH
 	connection north, Route10North, ROUTE_10_NORTH, 0
 	connection south, LavenderTown, LAVENDER_TOWN, 0
+
+	map_attributes GoldAcademy, GOLD_ACADEMY, $71, WEST
+	connection west, GoldenrodCity, GOLDENROD_CITY, 4
 
 	map_attributes Route23, ROUTE_23, $0f, 0
 	map_attributes SproutTower1F, SPROUT_TOWER_1F, $00, 0

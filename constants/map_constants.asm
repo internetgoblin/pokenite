@@ -273,7 +273,8 @@ ENDM
 	map_const DAY_CARE,                                     5,  4 ; 24
 	map_const TAKE_HOUSE_1F,                                5,  4
 	map_const TAKE_HOUSE_2F,                                3,  3
-	map_const GOLDENROD_CAFE,								4,  4						
+	map_const GOLDENROD_CAFE,								4,  4
+	map_const GOLD_ACADEMY,								   12, 15						
 	endgroup
 
 	newgroup VERMILION                                            ; 12

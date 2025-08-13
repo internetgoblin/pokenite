@@ -38,7 +38,7 @@
 	tilecoll WALL, STAIRCASE, FLOOR, FLOOR ; 25
 	tilecoll FLOOR, WALL, FLOOR, FLOOR ; 26
 	tilecoll WALL, FLOOR, FLOOR, FLOOR ; 27
-	tilecoll WALL, WALL, WALL, WALL ; 28
+	tilecoll WALL, WALL, WALL, PC ; 28
 	tilecoll WALL, DOOR, WALL, FLOOR ; 29
 	tilecoll WALL, WALL, WALL, WALL ; 2a
 	tilecoll WALL, FLOOR, FLOOR, FLOOR ; 2b

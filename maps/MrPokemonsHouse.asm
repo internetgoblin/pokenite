@@ -60,7 +60,7 @@ MrPokemonsHouse_MrPokemonScript:
 	opentext
 	checkitem RED_SCALE
 	iftrue .RedScale
-	checkevent EVENT_GAVE_MYSTERY_EGG_TO_ELM
+	checkevent EVENT_GAVE_BABY_TO_MOM
 	iftrue .AlwaysNewDiscoveries
 	writenamedtext MrPokemonsHouseNameText, MrPokemonText_ImDependingOnYou
 	waitbutton

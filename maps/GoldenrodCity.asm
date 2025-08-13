@@ -15,9 +15,8 @@
 
 GoldenrodCity_MapScripts:
 	def_scene_scripts
-	scene_script GoldenrodCityNoop1Scene, SCENE_GOLDENRODCITY_RIVAL_MEET
-	scene_script GoldenrodCityNoop1Scene, SCENE_GOLDENRODCITY_CAFE_WARP
-	scene_script GoldenrodCityNoop2Scene, SCENE_GOLDENRODCITY_NOOP
+	scene_script GoldenrodCityNoop1Scene, SCENE_GOLDENRODCITY_NOOP
+	scene_script GoldenrodCityNoop2Scene, SCENE_GOLDENRODCITY_CAFE_WARP
 
 	def_callbacks
 	callback MAPCALLBACK_NEWMAP, GoldenrodCityFlypointAndFloriaCallback
@@ -168,6 +167,7 @@ GoldenrodCityCafeCutsceneScript:
 	special FadeOutToWhite
 	pause 15
 	warp GOLDENROD_CAFE, 3, 1
+	setscene SCENE_GOLDENRODCITY_NOOP
 	end
 
 GoldenrodCityPokefanMScript:
@@ -774,7 +774,7 @@ GoldenrodCity_MapEvents:
 	bg_event 12, 30, BGEVENT_READ, GoldenrodCityUndergroundSignSouth
 	bg_event 16, 27, BGEVENT_UP, GoldenrodCityPokecenterSign
 	bg_event 30,  6, BGEVENT_READ, GoldenrodCityFlowerShopSign
-	bg_event 26, 17, BGEVENT_READ, GoldenrodCityCafeSign
+	bg_event 26, 15, BGEVENT_READ, GoldenrodCityCafeSign
 
 	def_object_events
 	object_event  7, 18, SPRITE_POKEFAN_M, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, GoldenrodCityPokefanMScript, EVENT_GOLDENROD_CITY_CIVILIANS

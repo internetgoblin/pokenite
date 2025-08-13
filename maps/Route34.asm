@@ -56,16 +56,21 @@ Route34EggCheckCallback:
 
 Route34RivalMeetSceneleft:
 	showemote EMOTE_SHOCK, PLAYER, 15
+	special FadeOutMusic
+	pause 15
 	applymovement PLAYER, Route34RivalMeetSceneleftMove
 	sjump Route34RivalMeetScene
 
 Route34RivalMeetSceneright:
 	showemote EMOTE_SHOCK, PLAYER, 15
+	special FadeOutMusic
+	pause 15
 	applymovement PLAYER, Route34RivalMeetScenerightMove
 
 Route34RivalMeetScene:
 	appear ROUTE34_RIVAL
 	applymovement ROUTE34_RIVAL, Route34RivalMeetSceneWalkIn
+	playmusic MUSIC_RIVAL_ENCOUNTER
 	opentext
 	writenamedtext Route34RivalName, Route34RivalMeetShilohText1
 	promptbutton
@@ -122,7 +127,9 @@ Route34RivalMeetScene:
 	setlasttalked ROUTE31_RIVAL
 	loadtrainer RIVAL1, SHILOH1
 	startbattle
+	dontrestartmapmusic
 	reloadmap
+	playmusic MUSIC_RIVAL_ENCOUNTER
 	; AFTER BATTLE TEXT STARTS HERE
 	opentext
 	writenamedtext Route34ShilohName, Route34RShilohAfterBattle1
@@ -172,6 +179,7 @@ Route34RivalMeetScene:
 	disappear ROUTE34_RIVAL
 	setscene SCENE_ROUTE34_NOOP
 	setevent EVENT_RIVAL_ROUTE31
+	special RestartMapMusic
 	end
 
 Route34BlankaName:

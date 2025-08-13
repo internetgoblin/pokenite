@@ -110,7 +110,7 @@ CatchingTutorialDudeScript:
 	opentext
 	checkevent EVENT_LEARNED_TO_CATCH_POKEMON
 	iftrue .BoxFull
-	checkevent EVENT_GAVE_MYSTERY_EGG_TO_ELM
+	checkevent EVENT_GAVE_BABY_TO_MOM
 	iffalse .BoxFull
 	readvar VAR_BOXSPACE
 	ifequal 0, .BoxFull

@@ -12,7 +12,7 @@ ElmPhoneCalleeScript:
 	iftrue .eggunhatched
 	checkevent EVENT_ELMS_AIDE_IN_LAB
 	iftrue .assistant
-	checkevent EVENT_GAVE_MYSTERY_EGG_TO_ELM
+	checkevent EVENT_GAVE_BABY_TO_MOM
 	iftrue .checkingegg
 	checkevent EVENT_ELM_CALLED_ABOUT_STOLEN_POKEMON
 	iftrue .stolen

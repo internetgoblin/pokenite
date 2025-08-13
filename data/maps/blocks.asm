@@ -897,5 +897,8 @@ TakeHouse1F_Blocks:
 TakeHouse2F_Blocks:
 	INCBIN "maps/TakeHouse2F.blk"
 
+GoldAcademy_Blocks:
+	INCBIN "maps/GoldAcademy.blk"
+
 	
 ENDSECTION

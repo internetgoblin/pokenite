@@ -30,7 +30,7 @@ DayCareManScript_Inside:
 	closetext
 	readvar VAR_PARTYCOUNT
 	ifequal PARTY_LENGTH, .PartyFull
-	givepoke CLEFFA, 5, NO_ITEM, AdoptedBabyName, AdoptedBabyOT
+	giveitem MYSTERY_EGG
 	opentext
 	writetext DayCareText_GotOddEgg
 	playsound SFX_KEY_ITEM

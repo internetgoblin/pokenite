@@ -28,14 +28,16 @@ TakeHouse2FInitializeRoomCallback:
 	endcallback
 
 TakeHouse2FIntroScript:
-	applymovement PLAYER, BlankaOutOfBed
 	setscene SCENE_TAKEHOUSE2F_NOOP
-	end
+	setevent EVENT_GOT_CHIKORITA_FROM_ELM
+	sjump TakeHouseKotora
 
 BlankaName:
 	db "BLANKA@"
 
 TakeHouseKotora:
+	pause 15
+	applymovement PLAYER, BlankaOutOfBed
 	opentext
 	writenamedtext BlankaName, BlankaWakeUpKotora
 	promptbutton
@@ -54,6 +56,8 @@ TakeHouseKotora:
 	end
 
 BlankaOutOfBed:
+	step DOWN
+	turn_head LEFT
 	step_end
 
 BlankaWakeUpKotora:
@@ -62,7 +66,7 @@ BlankaWakeUpKotora:
 	done
 
 PickupKotoraText:
-	text "I received"
+	text "You received"
 	line "@"
 	text_ram wStringBuffer3
 	text "!"
@@ -74,9 +78,6 @@ TakeHouse2FBookScript:
 	promptbutton
 	closetext
 	end
-
-TakeHouse2FRadioScript:
-	jumpstd Radio1Script
 
 TakeHouse2FDresserScript:
 	opentext
@@ -128,10 +129,9 @@ TakeHouse2F_MapEvents:
 
 	def_bg_events
 	bg_event  0,  1, BGEVENT_READ, TakeHouse2FBookScript
-	bg_event  1,  1, BGEVENT_READ, TakeHouse2FRadioScript
 	bg_event  2,  1, BGEVENT_READ, TakeHouse2FDresserScript
 	bg_event  3,  2, BGEVENT_READ, TakeHouse2FN64Script
 	bg_event  4,  1, BGEVENT_READ, TakeHouse2FBookshelfScript
 
 	def_object_events
-	object_event  2,  2, SPRITE_KOTORA, SPRITEMOVEDATA_POKEMON, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, TakeHouseKotora, EVENT_KOTORA_JOINS_BLANKA
+	object_event  0,  4, SPRITE_KOTORA, SPRITEMOVEDATA_POKEMON, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, TakeHouseKotora, EVENT_KOTORA_JOINS_BLANKA
